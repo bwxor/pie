@@ -96,6 +96,11 @@ namespace pie.Services
 
         public string GetFileExtension(string fileName)
         {
+            if (!fileName.Contains("."))
+            {
+                return "";
+            }
+
             return fileName.Substring(fileName.LastIndexOf('.')+1);
         }
 

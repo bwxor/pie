@@ -48,6 +48,7 @@ using LibGit2Sharp;
  * Copyright (c) 2018-2019, Alexandre Mutel
  */
 using Markdig;
+using Org.BouncyCastle.Asn1.X509;
 using pie.Classes;
 using pie.Classes.Configuration.FileBased.Impl;
 using pie.Constants;
@@ -76,7 +77,6 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Shapes;
 
 namespace pie
 {
@@ -129,6 +129,7 @@ namespace pie
         private bool doNotUpdateDirNav;
         private bool createFile;
         private bool createDirectory;
+        private CopiedFileInfo copiedFileInfo;
 
         public string[] Args;
 
@@ -482,14 +483,24 @@ namespace pie
             newFolderItem.Text = "New Folder";
             items.Items.Add(newFolderItem);
 
+            KryptonContextMenuItem copyFileItem = new KryptonContextMenuItem();
+            copyFileItem.Click += CopyFileItem_Click;
+            copyFileItem.Text = "Copy";
+            items.Items.Add(copyFileItem);
+
+            KryptonContextMenuItem pasteFileItem = new KryptonContextMenuItem();
+            pasteFileItem.Click += PasteFileItem_Click;
+            pasteFileItem.Text = "Paste";
+            items.Items.Add(pasteFileItem);
+
             KryptonContextMenuItem deleteFileItem = new KryptonContextMenuItem();
             deleteFileItem.Click += DeleteFileItem_Click;
-            deleteFileItem.Text = "Delete File";
+            deleteFileItem.Text = "Delete";
             items.Items.Add(deleteFileItem);
 
             KryptonContextMenuItem renameFileItem = new KryptonContextMenuItem();
             renameFileItem.Click += RenameFileItem_Click;
-            renameFileItem.Text = "Rename File";
+            renameFileItem.Text = "Rename";
             items.Items.Add(renameFileItem);
 
             KryptonContextMenuItem refreshItem = new KryptonContextMenuItem();
@@ -498,6 +509,77 @@ namespace pie
             items.Items.Add(refreshItem);
 
             directoryContextMenu.Items.Add(items);
+        }
+
+        private void PasteFileItem_Click(object sender, EventArgs e)
+        {
+            if (copiedFileInfo == null)
+            {
+                return;
+            }
+
+            if (directoryNavigationTreeView.SelectedNode == null)
+            {
+                directoryNavigationTreeView.SelectedNode = directoryNavigationTreeView.Nodes[0]; // Select root node if no node is selected
+            }
+            else if (directoryNavigationTreeView.SelectedNode.ImageKey.Equals("file.png"))
+            {
+                directoryNavigationTreeView.SelectedNode = directoryNavigationTreeView.SelectedNode.Parent; // If a file is selected, select its parent folder
+            }
+
+            string newPath = GenerateFilePathWithIteration(copiedFileInfo.Path);
+
+            KryptonTreeNode newFileNode = new KryptonTreeNode();
+            newFileNode.ImageKey = copiedFileInfo.FileType.Equals(FileType.FILE) ? "file.png" : "folder.png";
+            newFileNode.SelectedImageKey = "file.png";
+            newFileNode.Text = parsingService.GetFileName(newPath);
+            newFileNode.Tag = newPath;
+
+            if (copiedFileInfo.FileType.Equals(FileType.DIRECTORY))
+            {
+                CopyDirElements(directoryNavigationTreeView.SelectedNode.Tag.ToString(), newPath);
+            }
+            else
+            {
+                FileInfo fileInfo = new FileInfo(newPath);
+                fileInfo.CopyTo(newPath);
+            }
+
+            directoryNavigationTreeView.SelectedNode.Nodes.Add(newFileNode);
+
+            doNotShowBranchChangeNotification = true;
+            UpdateGitRepositoryInfo(false);
+        }
+
+        private void CopyDirElements(string fromPath, string toPath)
+        {
+            DirectoryInfo currentDirectory = new DirectoryInfo(fromPath);
+
+            foreach (DirectoryInfo dir in currentDirectory.GetDirectories())
+            {
+                Directory.CreateDirectory(toPath + dir.Name);
+                CopyDirElements(dir.FullName, toPath + dir.Name);
+            }
+            foreach (FileInfo file in currentDirectory.GetFiles())
+            {
+                file.CopyTo(Path.Combine(fromPath, file.Name));
+            }
+        }
+
+        private void CopyFileItem_Click(object sender, EventArgs e)
+        {
+            if (directoryNavigationTreeView.SelectedNode == null)
+            {
+                return;
+            }
+            else if (directoryNavigationTreeView.SelectedNode == directoryNavigationTreeView.Nodes[0])
+            {
+                return;
+            }
+
+            copiedFileInfo = new CopiedFileInfo();
+            copiedFileInfo.Path = directoryNavigationTreeView.SelectedNode.Tag.ToString();
+            copiedFileInfo.FileType = directoryNavigationTreeView.SelectedNode.ImageKey.Equals("folder.png") ? FileType.DIRECTORY : FileType.FILE;
         }
 
         private void RefreshItem_Click(object sender, EventArgs e)
@@ -566,7 +648,6 @@ namespace pie
             // if node is root, you cannot rename it
             if (selectedNode.Equals(directoryNavigationTreeView.Nodes[0]))
             {
-                ShowNotification("You cannot rename the root directory.");
                 return;
             }
 
@@ -601,7 +682,6 @@ namespace pie
             // if node is root, you cannot delete it
             if (selectedNode.Equals(directoryNavigationTreeView.Nodes[0]))
             {
-                ShowNotification("You cannot delete the root directory.");
                 return;
             }
 
@@ -625,7 +705,7 @@ namespace pie
                     }
 
                     selectedNode.Remove();
-                   
+
                 }
                 catch (Exception)
                 {
@@ -672,12 +752,12 @@ namespace pie
                 if (tabInfos[i].getOpenedFilePath() != null && path.Equals(tabInfos[i].getOpenedFilePath()))
                 {
                     string newFilePath = parsingService.GetFolderName(tabInfos[i].getOpenedFilePath());
-                    
+
                     if (!newFilePath.EndsWith("\\"))
                     {
                         newFilePath += "\\";
                     }
-                    
+
                     newFilePath += newName;
 
                     tabInfos[i].setOpenedFilePath(newFilePath);
@@ -711,7 +791,7 @@ namespace pie
                 directoryNavigationTreeView.SelectedNode = directoryNavigationTreeView.Nodes[0];
             }
 
-            if (directoryNavigationTreeView.SelectedNode.Nodes.Count > 0 && !directoryNavigationTreeView.SelectedNode.IsExpanded)
+            if ((directoryNavigationTreeView.SelectedNode.Nodes.Count > 0 && !directoryNavigationTreeView.SelectedNode.IsExpanded))
             {
                 createFile = true;
                 directoryNavigationTreeView.SelectedNode.Expand();
@@ -739,6 +819,7 @@ namespace pie
             newFolderName = selectedNode.Tag.ToString();
 
             selectedNode.Nodes.Add(newFileNode);
+
             selectedNode.Expand();
 
             dirNavModificationType = DirNavModificationType.CREATE_FILE;
@@ -776,6 +857,24 @@ namespace pie
                     }
                 }
             }
+        }
+
+        private string GenerateFilePathWithIteration(string path)
+        {
+            int iteration = 0;
+
+            string containingFolderName = parsingService.GetFolderName(path);
+            string fileName = parsingService.GetFileName(path);
+            string fileExtension = parsingService.GetFileExtension(path);
+
+            string newPath;
+
+            do
+            {
+                newPath = Path.Combine(containingFolderName, fileName + " (" + iteration++ + ")" + fileExtension);
+            } while (File.Exists(newPath));
+
+            return newPath;
         }
 
         private Metadata ProcessPluginInputMetadata()
@@ -2049,7 +2148,7 @@ namespace pie
                     }
                 }
             }
-            
+
             if (e.Modifiers == (Keys.Control | Keys.Alt))
             {
                 if (e.KeyCode == Keys.Left)
@@ -3907,11 +4006,8 @@ namespace pie
 
             KryptonTreeNode node = (KryptonTreeNode)e.Node;
 
-            if (!node.Tag.Equals(openedFolder))
-            {
-                node.Nodes.Clear();
-                AddItemsToDirectory(node);
-            }
+            node.Nodes.Clear();
+            AddItemsToDirectory(node);
 
             if (createFile)
             {
@@ -4304,6 +4400,33 @@ namespace pie
             else
             {
                 ShowNotification("No repository opened.");
+            }
+        }
+
+        private void directoryContextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            KryptonContextMenuItems items = (KryptonContextMenuItems)directoryContextMenu.Items[1];
+
+            if (directoryNavigationTreeView.SelectedNode == null || directoryNavigationTreeView.SelectedNode == directoryNavigationTreeView.Nodes[0])
+            {
+                items.Items[2].Visible = false;
+                items.Items[4].Visible = false;
+                items.Items[5].Visible = false;
+            }
+            else
+            {
+                items.Items[2].Visible = true;
+                items.Items[4].Visible = true;
+                items.Items[5].Visible = true;
+            }
+
+            if (copiedFileInfo == null)
+            {
+                items.Items[3].Visible = false;
+            }
+            else
+            {
+                items.Items[3].Visible = true;
             }
         }
     }
