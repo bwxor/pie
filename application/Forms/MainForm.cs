@@ -23,6 +23,7 @@ using BrightIdeasSoftware;
  * Copyright © The CefSharp Authors. All rights reserved.
  */
 using CefSharp;
+using CefSharp.DevTools.IndexedDB;
 using CefSharp.WinForms;
 /**
  * ConEmu.Winforms is used for integrating terminal features inside the application.
@@ -527,21 +528,24 @@ namespace pie
                 directoryNavigationTreeView.SelectedNode = directoryNavigationTreeView.SelectedNode.Parent; // If a file is selected, select its parent folder
             }
 
-            string newPath = GenerateFilePathWithIteration(copiedFileInfo.Path);
+            string newPath = GenerateFilePathWithIteration(
+                Path.Combine(directoryNavigationTreeView.SelectedNode.Tag.ToString(), parsingService.GetFileName(copiedFileInfo.Path))
+            );
 
             KryptonTreeNode newFileNode = new KryptonTreeNode();
             newFileNode.ImageKey = copiedFileInfo.FileType.Equals(FileType.FILE) ? "file.png" : "folder.png";
-            newFileNode.SelectedImageKey = "file.png";
+            newFileNode.SelectedImageKey = copiedFileInfo.FileType.Equals(FileType.FILE) ? "file.png" : "folder.png";
             newFileNode.Text = parsingService.GetFileName(newPath);
             newFileNode.Tag = newPath;
 
             if (copiedFileInfo.FileType.Equals(FileType.DIRECTORY))
             {
-                CopyDirElements(directoryNavigationTreeView.SelectedNode.Tag.ToString(), newPath);
+                Directory.CreateDirectory(newPath);
+                CopyDirElements(newFileNode, copiedFileInfo.Path, newPath);
             }
             else
             {
-                FileInfo fileInfo = new FileInfo(newPath);
+                FileInfo fileInfo = new FileInfo(copiedFileInfo.Path);
                 fileInfo.CopyTo(newPath);
             }
 
@@ -551,18 +555,33 @@ namespace pie
             UpdateGitRepositoryInfo(false);
         }
 
-        private void CopyDirElements(string fromPath, string toPath)
+        private void CopyDirElements(KryptonTreeNode currNode, string fromPath, string toPath)
         {
             DirectoryInfo currentDirectory = new DirectoryInfo(fromPath);
 
             foreach (DirectoryInfo dir in currentDirectory.GetDirectories())
             {
-                Directory.CreateDirectory(toPath + dir.Name);
-                CopyDirElements(dir.FullName, toPath + dir.Name);
+                Directory.CreateDirectory(Path.Combine(toPath, dir.Name));
+
+                KryptonTreeNode folderNode = new KryptonTreeNode();
+                folderNode.ImageKey = "folder.png";
+                folderNode.SelectedImageKey = "folder.png";
+                folderNode.Text = dir.Name;
+                folderNode.Tag = Path.Combine(toPath, dir.Name);
+                currNode.Nodes.Add(folderNode);
+
+                CopyDirElements(folderNode, dir.FullName, Path.Combine(toPath, dir.Name));
             }
             foreach (FileInfo file in currentDirectory.GetFiles())
             {
-                file.CopyTo(Path.Combine(fromPath, file.Name));
+                file.CopyTo(Path.Combine(toPath, file.Name));
+
+                KryptonTreeNode fileNode = new KryptonTreeNode();
+                fileNode.ImageKey = "file.png";
+                fileNode.SelectedImageKey = "file.png";
+                fileNode.Text = file.Name;
+                fileNode.Tag = Path.Combine(toPath, file.Name);
+                currNode.Nodes.Add(fileNode);
             }
         }
 
@@ -861,7 +880,7 @@ namespace pie
 
         private string GenerateFilePathWithIteration(string path)
         {
-            int iteration = 0;
+            string copyAppend = "";
 
             string containingFolderName = parsingService.GetFolderName(path);
             string fileName = parsingService.GetFileName(path);
@@ -871,8 +890,9 @@ namespace pie
 
             do
             {
-                newPath = Path.Combine(containingFolderName, fileName + " (" + iteration++ + ")" + fileExtension);
-            } while (File.Exists(newPath));
+                newPath = Path.Combine(containingFolderName, fileName + copyAppend + fileExtension);
+                copyAppend += " - Copy";
+            } while (File.Exists(newPath) || Directory.Exists(newPath));
 
             return newPath;
         }
@@ -2363,7 +2383,8 @@ namespace pie
 
         private void UpdateFormTitle(int index)
         {
-            this.Text = tabInfos[index].getOpenedFilePath() + " - pie";
+            string openedFilePath = tabInfos[index].getOpenedFilePath() ?? "Untitled";
+            this.Text = openedFilePath + " - pie";
         }
 
         private void UpdateFormTitle(String customTitle)
