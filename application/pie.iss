@@ -52,13 +52,28 @@ Source: "C:\git\pie\application\assoc.ico"; DestDir: "{app}"; Flags: ignoreversi
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
-; 1. show up in the “Open with” menu
-Root: HKCR; Subkey: "Applications\\{#MyAppExeName}\\shell\\open\\command"; ValueType: string; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
+; 1. Show up in the “Open with” menu
+Root: HKCR; Subkey: "Applications\\{#MyAppExeName}\\shell\\open\\command"; \
+     ValueType: string; \
+     ValueData: """{app}\{#MyAppExeName}"" ""%1"""
 
-; 2. reusable ProgID
-Root: HKCR; Subkey: "Pie.File";                        ValueType: string; ValueData: "Pie File"
-Root: HKCR; Subkey: "Pie.File\DefaultIcon";            ValueType: string; ValueData: """{app}\assoc.ico"",0"
-Root: HKCR; Subkey: "Pie.File\shell\open\command";     ValueType: string; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
+; 1a. Set custom icon for when the user picks your app via “Open with”
+Root: HKCR; Subkey: "Applications\\{#MyAppExeName}\\DefaultIcon"; \
+     ValueType: string; \
+     ValueData: """{app}\assoc.ico"",0"
+
+; 2. Reusable ProgID (for optional future use or for global extension claiming)
+Root: HKCR; Subkey: "Pie.File"; \
+     ValueType: string; \
+     ValueData: "Pie File"
+
+Root: HKCR; Subkey: "Pie.File\DefaultIcon"; \
+     ValueType: string; \
+     ValueData: """{app}\assoc.ico"",0"
+
+Root: HKCR; Subkey: "Pie.File\shell\open\command"; \
+     ValueType: string; \
+     ValueData: """{app}\{#MyAppExeName}"" ""%1"""
 
 [Code]
 function IsDotNet8VersionAtLeast(minPatch: Integer): Boolean;
