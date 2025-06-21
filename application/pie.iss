@@ -36,6 +36,7 @@ SolidCompression=yes
 WizardStyle=modern
 SetupIconFile=C:\git\pie\application\pie.ico
 LicenseFile=C:\git\pie\application\LICENSE
+ChangesAssociations=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -47,7 +48,17 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\git\pie\application\bin\Release\net8.0-windows7.0\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\git\pie\application\bin\Release\net8.0-windows7.0\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\git\pie\application\LICENSE"; DestDir: "LICENSE"
+Source: "C:\git\pie\application\assoc.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+
+[Registry]
+; 1. show up in the “Open with” menu
+Root: HKCR; Subkey: "Applications\\{#MyAppExeName}\\shell\\open\\command"; ValueType: string; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
+
+; 2. reusable ProgID
+Root: HKCR; Subkey: "Pie.File";                        ValueType: string; ValueData: "Pie File"
+Root: HKCR; Subkey: "Pie.File\DefaultIcon";            ValueType: string; ValueData: """{app}\assoc.ico"",0"
+Root: HKCR; Subkey: "Pie.File\shell\open\command";     ValueType: string; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
 
 [Code]
 function IsDotNet8VersionAtLeast(minPatch: Integer): Boolean;
