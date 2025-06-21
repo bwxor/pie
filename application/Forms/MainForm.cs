@@ -566,6 +566,11 @@ namespace pie
 
             foreach (DirectoryInfo dir in currentDirectory.GetDirectories())
             {
+                if (dir.FullName.Equals(toPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    continue; // Prevent copying the directory into itself
+                }
+
                 Directory.CreateDirectory(Path.Combine(toPath, dir.Name));
 
                 KryptonTreeNode folderNode = new KryptonTreeNode();
