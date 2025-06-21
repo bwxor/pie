@@ -514,6 +514,11 @@ namespace pie
 
         private void PasteFileItem_Click(object sender, EventArgs e)
         {
+            PasteDirNavItem();
+        }
+
+        private void PasteDirNavItem()
+        {
             if (copiedFileInfo == null)
             {
                 return;
@@ -586,6 +591,11 @@ namespace pie
         }
 
         private void CopyFileItem_Click(object sender, EventArgs e)
+        {
+            CopyDirNavItem();
+        }
+
+        private void CopyDirNavItem()
         {
             if (directoryNavigationTreeView.SelectedNode == null)
             {
@@ -2166,6 +2176,14 @@ namespace pie
                             DeleteFileFromNode();
                         }
                     }
+                    else if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+                    {
+                        CopyDirNavItem();
+                    }
+                    else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+                    {
+                        PasteDirNavItem();
+                    }
                 }
             }
 
@@ -3651,7 +3669,15 @@ namespace pie
             directoryNavigationTreeView.Nodes.Clear();
 
             KryptonTreeNode rootNode = new KryptonTreeNode();
-            rootNode.Text = "root";
+
+            string rootName = parsingService.GetFileName(path);
+            if (string.IsNullOrEmpty(rootName))
+            {
+                rootName = path;
+            }
+
+            rootNode.Text = rootName;
+
             rootNode.Tag = path;
             rootNode.ImageKey = "folder.png";
             rootNode.SelectedImageKey = "folder.png";
