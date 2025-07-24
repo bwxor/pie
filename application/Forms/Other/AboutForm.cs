@@ -53,12 +53,22 @@ namespace pie
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/mateasmario/pie");
+            ProcessStartInfo psInfo = new ProcessStartInfo
+            {
+                FileName = "https://github.com/bwxor/pie",
+                UseShellExecute = true
+            };
+            Process.Start(psInfo);
         }
 
         private void kryptonButton2_Click(object sender, EventArgs e)
         {
-            Process.Start("http://docsbymario.com");
+            ProcessStartInfo psInfo = new ProcessStartInfo
+            {
+                FileName = "https://bwxor.com/",
+                UseShellExecute = true
+            };
+            Process.Start(psInfo);
         }
     }
 }
