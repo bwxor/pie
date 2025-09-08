@@ -17,13 +17,17 @@ namespace pie.Services
         {
             // Send GET Request
             ReleaseInfo releaseInfo = Task.Run(async () => await GetAsync("https://api.github.com/repos/mateasmario/pie/releases/latest")).Result;
-            string remoteVersion = releaseInfo.Version;
-            Version assemblyVersion = Assembly.GetEntryAssembly().GetName().Version;
 
-            if (!assemblyVersion.ToString().Equals(remoteVersion.ToString()) 
-                && (!assemblyVersion.ToString().StartsWith(remoteVersion)))
+            if (releaseInfo != null)
             {
-                return new UpdateStatus(true, remoteVersion);
+                string remoteVersion = releaseInfo.Version;
+                Version assemblyVersion = Assembly.GetEntryAssembly().GetName().Version;
+
+                if (!assemblyVersion.ToString().Equals(remoteVersion.ToString())
+                    && (!assemblyVersion.ToString().StartsWith(remoteVersion)))
+                {
+                    return new UpdateStatus(true, remoteVersion);
+                }
             }
 
             return new UpdateStatus(false);

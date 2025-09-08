@@ -1447,6 +1447,7 @@ namespace pie
             TextArea.UpdateUI += TextArea_UpdateUI;
             TextArea.IndentationGuides = IndentView.LookBoth;
             TextArea.ZoomChanged += TextArea_ZoomChanged;
+            
 
             if (editorProperties.Wordwrap)
             {
@@ -2170,6 +2171,47 @@ namespace pie
 
                             TextArea.SelectionStart = selectionStart == 0 ? selectionStart : selectionStart + 1;
                         }
+                    }
+                    else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
+                    {
+                        Scintilla TextArea = (Scintilla)sender;
+                        
+                        int lowerBound = TextArea.SelectionStart;
+                        int upperBound = TextArea.SelectionStart;
+                        int currentLine = TextArea.CurrentLine;
+
+                        while (lowerBound > 0 && TextArea.Text[lowerBound - 1] != '\n')
+                        {
+                            lowerBound--;
+                        }
+
+                        while (upperBound < TextArea.TextLength && TextArea.Text[upperBound] != '\n')
+                        {
+                            upperBound++;
+                        }
+
+                        if (upperBound != TextArea.TextLength)
+                        {
+                            upperBound++;
+                        }
+
+                        bool eof = upperBound == TextArea.TextLength;
+
+                        string textToInsert = TextArea.Text.Substring(lowerBound, upperBound - lowerBound);
+                        textToInsert = eof ? "\r\n" + textToInsert : textToInsert;
+
+                        int nextLine = TextArea.LineFromPosition(upperBound);
+                        int originalIndent = TextArea.Lines[nextLine].Indentation;
+
+                        TextArea.InsertText(upperBound, textToInsert);
+
+                        TextArea.Lines[nextLine + 1].Indentation = originalIndent;
+
+                        int selectionStart = upperBound + textToInsert.Length;
+                        TextArea.SelectionStart = eof ? selectionStart : selectionStart - 2;
+
+                        e.SuppressKeyPress = true;
+                        e.Handled = true;
                     }
                 }
                 else if (sender is KryptonTreeView && ((KryptonTreeView)sender).Equals(directoryNavigationTreeView))
