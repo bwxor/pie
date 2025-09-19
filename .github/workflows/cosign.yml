@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir -p dist
           # Download all assets for the release that triggered this workflow
-          gh release download "${{ github.event.release.tag_name }}" --dir dist
+          gh release download "${{ github.event.release.tag_name }}" --repo "${{ github.repository }} --dir dist
 
       - name: Sign assets with cosign (keyless)
         env:
@@ -46,4 +46,4 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
           shopt -s nullglob
-          gh release upload "${{ github.event.release.tag_name }}" dist/*.sig dist/*.pem dist/*.sig.bundle.json --clobber
+          gh release upload "${{ github.event.release.tag_name }}" dist/*.sig dist/*.pem dist/*.sig.bundle.json  --repo "${{ github.repository }} --clobber
