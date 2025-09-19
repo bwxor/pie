@@ -17,7 +17,7 @@ jobs:
 
       - name: Download release assets
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
           mkdir -p dist
           # Download all assets for the release that triggered this workflow
