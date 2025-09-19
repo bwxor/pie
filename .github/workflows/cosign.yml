@@ -1,0 +1,47 @@
+name: Sign existing release assets
+
+on:
+  release:
+    types: [published, edited]  # runs when you publish a release or edit it (e.g., add assets)
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  sign-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Download release assets
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p dist
+          # Download all assets for the release that triggered this workflow
+          gh release download "${{ github.event.release.tag_name }}" --dir dist
+
+      - name: Sign assets with cosign (keyless)
+        env:
+          COSIGN_YES: "true"
+        run: |
+          shopt -s nullglob
+          for f in dist/*; do
+            # Skip previously generated signature/cert files if this re-runs
+            case "$f" in
+              *.sig|*.pem|*.bundle.json) continue;;
+            esac
+            cosign sign-blob "$f" \
+              --bundle "$f.sig.bundle.json" \
+              --output-signature "$f.sig" \
+              --output-certificate "$f.pem"
+          done
+
+      - name: Upload signatures back to the release
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          shopt -s nullglob
+          gh release upload "${{ github.event.release.tag_name }}" dist/*.sig dist/*.pem dist/*.sig.bundle.json --clobber
