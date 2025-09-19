@@ -5,11 +5,13 @@ on:
     types: [published, edited]  # runs when you publish a release or edit it (e.g., add assets)
 
 permissions:
-  contents: write
+  contents: read
   id-token: write
 
 jobs:
   sign-assets:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Install cosign
