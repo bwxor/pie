@@ -12,21 +12,47 @@ jobs:
   sign-assets:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Install cosign
         uses: sigstore/cosign-installer@d7543c93d881b35a8faa02e8e3605f69b7a1ce62
 
       - name: Download release assets
         env:
-          GH_TOKEN: ${{ github.token }}  # Use built-in token instead of PAT
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           mkdir -p dist
-          echo "Tag: ${{ github.event.release.tag_name }}"
-          echo "Repo: ${{ github.repository }}"
-          gh release download "${{ github.event.release.tag_name }}" --dir dist
+          
+          echo "Getting release assets for tag: ${{ github.event.release.tag_name }}"
+          echo "Repository: ${{ github.repository }}"
+          
+          # Get release information
+          curl -s \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.event.release.tag_name }}" \
+            > release_info.json
+          
+          # Check if we got valid JSON
+          if ! jq empty release_info.json 2>/dev/null; then
+            echo "Failed to get release information"
+            cat release_info.json
+            exit 1
+          fi
+          
+          # Download each asset
+          jq -r '.assets[] | "\(.url) \(.name)"' release_info.json | while IFS=' ' read -r url name; do
+            if [ -n "$url" ] && [ -n "$name" ]; then
+              echo "Downloading: $name"
+              curl -L \
+                -H "Accept: application/octet-stream" \
+                -H "Authorization: Bearer $GITHUB_TOKEN" \
+                -o "dist/$name" \
+                "$url"
+            fi
+          done
+          
+          echo "Downloaded files:"
+          ls -la dist/ || echo "No files downloaded"
 
       - name: Sign assets with cosign (keyless)
         env:
@@ -34,10 +60,25 @@ jobs:
         run: |
           set -euo pipefail
           shopt -s nullglob
-          for f in dist/*; do
+          
+          files=(dist/*)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No files to sign"
+            exit 0
+          fi
+          
+          for f in "${files[@]}"; do
+            # Skip if it's a directory or already a signature file
+            if [ -d "$f" ]; then
+              continue
+            fi
             case "$f" in
-              *.sig|*.pem|*.bundle.json) continue;;
+              *.sig|*.pem|*.bundle.json) 
+                echo "Skipping signature file: $f"
+                continue
+                ;;
             esac
+            
             echo "Signing: $f"
             cosign sign-blob "$f" \
               --bundle "$f.sig.bundle.json" \
@@ -45,12 +86,49 @@ jobs:
               --output-certificate "$f.pem"
           done
 
-      - name: Upload signatures back to the release
+      - name: Upload signatures to release
         env:
-          GH_TOKEN: ${{ github.token }}  # Use built-in token
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          shopt -s nullglob
-          gh release upload "${{ github.event.release.tag_name }}" \
-            dist/*.sig dist/*.pem dist/*.sig.bundle.json \
-            --clobber
+          
+          # Get release ID from the saved JSON
+          release_id=$(jq -r '.id' release_info.json)
+          upload_url=$(jq -r '.upload_url' release_info.json | sed 's/{?name,label}//')
+          
+          echo "Release ID: $release_id"
+          echo "Upload URL base: $upload_url"
+          
+          # Upload signature files
+          for ext in sig pem sig.bundle.json; do
+            for f in dist/*.$ext; do
+              if [ -f "$f" ]; then
+                filename=$(basename "$f")
+                echo "Uploading: $filename"
+                
+                # Delete existing asset if it exists
+                existing_id=$(curl -s \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "Authorization: Bearer $GITHUB_TOKEN" \
+                  "https://api.github.com/repos/${{ github.repository }}/releases/$release_id/assets" | \
+                  jq -r --arg name "$filename" '.[] | select(.name == $name) | .id' | head -1)
+                
+                if [ "$existing_id" != "" ] && [ "$existing_id" != "null" ]; then
+                  echo "Deleting existing asset: $filename"
+                  curl -s -X DELETE \
+                    -H "Authorization: Bearer $GITHUB_TOKEN" \
+                    "https://api.github.com/repos/${{ github.repository }}/releases/assets/$existing_id"
+                fi
+                
+                # Upload new asset
+                curl -s \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "Authorization: Bearer $GITHUB_TOKEN" \
+                  -H "Content-Type: application/octet-stream" \
+                  --data-binary "@$f" \
+                  "$upload_url?name=$filename"
+              fi
+            done
+          done
+          
+          echo "Upload complete!"
