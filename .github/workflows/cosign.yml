@@ -5,11 +5,14 @@ on:
     types: [published, edited]
 
 permissions:
-  contents: write
+  contents: read  # Changed to read at top level
   id-token: write
 
 jobs:
   sign-assets:
+    permissions:
+      contents: write  # Write permission only for this job
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Install cosign
