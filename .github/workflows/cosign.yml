@@ -19,7 +19,7 @@ jobs:
 
       - name: Download release assets
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
           mkdir -p dist
           # Download all assets for the release that triggered this workflow
@@ -43,7 +43,7 @@ jobs:
 
       - name: Upload signatures back to the release
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
           shopt -s nullglob
           gh release upload "${{ github.event.release.tag_name }}" dist/*.sig dist/*.pem dist/*.sig.bundle.json --clobber
