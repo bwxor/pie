@@ -2,7 +2,7 @@ name: Sign existing release assets
 
 on:
   release:
-    types: [published, edited]  # runs when you publish a release or edit it (e.g., add assets)
+    types: [published, edited]
 
 permissions:
   contents: read
@@ -12,8 +12,14 @@ jobs:
   sign-assets:
     permissions:
       contents: write
+      id-token: write
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout (avoid "not a git repository" from gh)
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          fetch-depth: 1
+
       - name: Install cosign
         uses: sigstore/cosign-installer@d7543c93d881b35a8faa02e8e3605f69b7a1ce62
 
@@ -21,20 +27,25 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
+          set -euo pipefail
           mkdir -p dist
-          # Download all assets for the release that triggered this workflow
-          gh release download "${{ github.event.release.tag_name }}" --repo "${{ github.repository }}" --dir dist
+          echo "Tag: ${{ github.event.release.tag_name }}"
+          echo "Repo: ${{ github.repository }}"
+          gh release download "${{ github.event.release.tag_name }}" \
+            --repo "${{ github.repository }}" \
+            --dir dist
 
       - name: Sign assets with cosign (keyless)
         env:
           COSIGN_YES: "true"
         run: |
+          set -euo pipefail
           shopt -s nullglob
           for f in dist/*; do
-            # Skip previously generated signature/cert files if this re-runs
             case "$f" in
               *.sig|*.pem|*.bundle.json) continue;;
             esac
+            echo "Signing: $f"
             cosign sign-blob "$f" \
               --bundle "$f.sig.bundle.json" \
               --output-signature "$f.sig" \
@@ -45,5 +56,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
+          set -euo pipefail
           shopt -s nullglob
-          gh release upload "${{ github.event.release.tag_name }}" dist/*.sig dist/*.pem dist/*.sig.bundle.json  --repo "${{ github.repository }}" --clobber
+          assets=(dist/*.sig dist/*.pem dist/*.sig.bundle.json)
+          if compgen -G "dist/*.sig" > /dev/null; then
+            gh release upload "${{ github.event.release.tag_name }}" \
+              --repo "${{ github.repository }}" \
+              --clobber \
+              "${assets[@]}"
+          else
+            echo "No signature files to upload."
+          fi
