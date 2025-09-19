@@ -5,35 +5,28 @@ on:
     types: [published, edited]
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
   sign-assets:
-    permissions:
-      contents: write
-      id-token: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout (avoid "not a git repository" from gh)
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
-        with:
-          fetch-depth: 1
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Install cosign
         uses: sigstore/cosign-installer@d7543c93d881b35a8faa02e8e3605f69b7a1ce62
 
       - name: Download release assets
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ github.token }}  # Use built-in token instead of PAT
         run: |
           set -euo pipefail
           mkdir -p dist
           echo "Tag: ${{ github.event.release.tag_name }}"
           echo "Repo: ${{ github.repository }}"
-          gh release download "${{ github.event.release.tag_name }}" \
-            --repo "${{ github.repository }}" \
-            --dir dist
+          gh release download "${{ github.event.release.tag_name }}" --dir dist
 
       - name: Sign assets with cosign (keyless)
         env:
@@ -54,16 +47,10 @@ jobs:
 
       - name: Upload signatures back to the release
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ github.token }}  # Use built-in token
         run: |
           set -euo pipefail
           shopt -s nullglob
-          assets=(dist/*.sig dist/*.pem dist/*.sig.bundle.json)
-          if compgen -G "dist/*.sig" > /dev/null; then
-            gh release upload "${{ github.event.release.tag_name }}" \
-              --repo "${{ github.repository }}" \
-              --clobber \
-              "${assets[@]}"
-          else
-            echo "No signature files to upload."
-          fi
+          gh release upload "${{ github.event.release.tag_name }}" \
+            dist/*.sig dist/*.pem dist/*.sig.bundle.json \
+            --clobber
