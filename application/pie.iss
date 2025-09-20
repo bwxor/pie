@@ -120,7 +120,7 @@ begin
     end;
 
     // Check if it's .NET 8.0.x and the patch is sufficient
-    if (major = 8) and (minor = 0) and (patch >= minPatch) then
+    if (major > 8) or ((major = 8) and (minor = 0) and (patch >= minPatch)) then
       Result := True;
   end;
 end;
