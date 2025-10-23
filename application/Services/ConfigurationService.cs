@@ -242,7 +242,7 @@ namespace pie.Services
             }
         }
 
-        public List<T> LoadPluginsFromFolder<T>(string directory) where T : Plugin, new()
+        public List<T> LoadPluginsFromFolder<T>(string directory) where T : Classes.Configuration.FileBased.Impl.Plugin, new()
         {
             List<T> plugins = new List<T>();
 
@@ -308,7 +308,7 @@ namespace pie.Services
 
         private List<string> GetClassesImplementingBasePluginInterface(Assembly assembly)
         {
-            return assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && typeof(IPlugin).IsAssignableFrom(t)).Select(t => t.FullName).ToList();
+            return assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && typeof(plugin.Classes.Plugin).IsAssignableFrom(t)).Select(t => t.FullName).ToList();
         }
 
         // ToDo: To be replaced with plugin system
