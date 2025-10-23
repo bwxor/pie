@@ -3,8 +3,11 @@
 
 namespace plugin.Classes.UI.Composite
 {
-    public class FileBrowserControl : Control
+    public class FolderBrowser : Control
     {
-        public string Filter { get; set; }
+        public FolderBrowser(string id)
+        {
+            Id = id;
+        }
     }
 }

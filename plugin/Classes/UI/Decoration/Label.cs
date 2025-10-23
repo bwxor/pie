@@ -6,5 +6,11 @@ namespace plugin.Classes.UI.Decoration
     public class Label : Control
     {
         public string Text { get; set; }
+
+        public Label(string id, string text)
+        {
+            Id = id;
+            Text = text;
+        }
     }
 }

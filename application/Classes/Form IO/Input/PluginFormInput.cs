@@ -16,6 +16,7 @@ namespace pie.Classes
     {
         public KryptonCustomPaletteBase Palette { get; set; }
         public EditorProperties EditorProperties { get; set; }
+        public ThemeInfo ActiveTheme { get; set; }
         public Window PluginWindow { get; set; }
         public PluginContextSupport PluginContext { get; set; }
     }

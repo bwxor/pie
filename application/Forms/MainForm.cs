@@ -347,8 +347,8 @@ namespace pie
 
         private void ProcessPlugins()
         {
+            pluginContext = new PluginContextSupport();
             pluginContext.AppVersion = GetAppVersion();
-            pluginContext.OpenedTabs = GetOpenedTabs();
 
             plugins = configurationService.LoadPluginsFromFolder<pie.Classes.Configuration.FileBased.Impl.Plugin>(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins"));
 
@@ -885,10 +885,9 @@ namespace pie
                             PluginFormInput pluginFormInput = new PluginFormInput();
                             pluginFormInput.EditorProperties = editorProperties;
                             pluginFormInput.Palette = KryptonCustomPaletteBase;
+                            pluginFormInput.ActiveTheme = activeTheme;
                             pluginFormInput.PluginWindow = window;
 
-                            PluginContextSupport pluginContext = new PluginContextSupport();
-                            pluginContext.AppVersion = GetAppVersion();
                             pluginContext.OpenedTabs = GetOpenedTabs();
                             pluginContext.OpenedDirectory = openedFolder;
                             pluginFormInput.PluginContext = pluginContext;
@@ -956,6 +955,11 @@ namespace pie
 
         private void ExecuteActions(List<ExitAction> actions, PluginFormOutput pluginFormOutput)
         {
+            if (actions == null)
+            {
+                return;
+            }
+
             foreach (var action in actions)
             {
                 if (action is CreateFileAction)
@@ -996,7 +1000,7 @@ namespace pie
 
                     Scintilla scintilla = (Scintilla)tabControl.Pages[codeIndex].Controls[0];
                     scintilla.Text = pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(modifyEditorContentAction.Content, pluginFormOutput.ControlKeyValues), 
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(modifyEditorContentAction.Content, pluginFormOutput.ControlKeyValues),
                         pluginContext);
                 }
                 else if (action is SelectDirectoryAction)
@@ -1019,7 +1023,7 @@ namespace pie
                     ExecuteTerminalCommandAction executeTerminalCommandAction = (ExecuteTerminalCommandAction)action;
                     ToggleTerminalTabControl(true);
 
-                    string command  = pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
+                    string command = pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
                             pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(executeTerminalCommandAction.Command, pluginFormOutput.ControlKeyValues),
                         pluginContext);
                     int insertPosition = terminalTabControl.Pages.Count;
@@ -1035,6 +1039,19 @@ namespace pie
                     }
 
                     NewTerminalTab(command, terminalTabControl.Pages.Count);
+                }
+                else if (action is ValidationAction)
+                {
+                    ValidationAction validationAction = (ValidationAction)action;
+                    if (pluginFormOutput.ControlKeyValues.ContainsKey(validationAction.VariableId))
+                    {
+                        bool isValid = validationAction.ValidationFunction(pluginFormOutput.ControlKeyValues[validationAction.VariableId]);
+                        if (!isValid)
+                        {
+                            ShowNotification(validationAction.ErrorMessage);
+                            return;
+                        }
+                    }
                 }
             }
         }

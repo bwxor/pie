@@ -10,7 +10,7 @@ namespace pie.Classes.Configuration.FileBased.Impl
         public object Instance { get; set; }
         public string GetName()
         {
-            return (string)Instance.GetType().GetMethod("GetName").Invoke(Instance, null);
+            return (string)Instance.GetType().GetMethod("DisplayName").Invoke(Instance, null);
         }
     }
 }
