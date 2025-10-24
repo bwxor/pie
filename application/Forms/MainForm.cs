@@ -49,6 +49,7 @@ using LibGit2Sharp;
  */
 using Markdig;
 using pie.Classes;
+using pie.Classes.Configuration.FileBased.Impl;
 using pie.Classes.Form_IO.Output;
 using pie.Classes.PluginSupport;
 using pie.Constants;
@@ -62,6 +63,8 @@ using pie.Forms.Theme;
 using pie.Services;
 using plugin.Classes;
 using plugin.Classes.Actions;
+using plugin.Classes.Actions.OnInvokeTask;
+using plugin.Classes.Actions.Window;
 using plugin.Classes.Context;
 
 /**
@@ -955,7 +958,7 @@ namespace pie
             return output;
         }
 
-        private void ExecuteActions(List<ExitAction> actions, PluginFormOutput pluginFormOutput)
+        private void ExecuteActions(List<OnWindowCloseAction> actions, PluginFormOutput pluginFormOutput)
         {
             if (actions == null)
             {
@@ -996,11 +999,12 @@ namespace pie
                         parsedStrings[j] = pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(generatorAction.Values[j], pluginFormOutput.ControlKeyValues);
                     }
 
-                    List<ExitAction> generatedActions = generatorAction.GeneratorFunction(parsedStrings);
+                    List<OnWindowCloseAction> generatedActions = generatorAction.GeneratorFunction(parsedStrings);
 
                     foreach (var ea in generatedActions)
                     {
-                        actions.Add(ea);
+                        actions.Insert(i+1, ea);
+                        i++;
                     }
                 }
 
@@ -1090,6 +1094,13 @@ namespace pie
                     if (!string.IsNullOrEmpty(valueToPutInContext))
                     {
                         pluginContext.Custom[storeInContextAction.Key] = valueToPutInContext;
+                    }
+                    else
+                    {
+                        if (pluginContext.Custom.ContainsKey(storeInContextAction.Key))
+                        {
+                            pluginContext.Custom.Remove(storeInContextAction.Key);
+                        }
                     }
                 }
             }
@@ -3833,6 +3844,43 @@ namespace pie
                 openedGitRepository = false;
                 gitTabControl.SelectedIndex = 0;
             }
+
+            // Managing plugin listeners
+            List<OnOpenDirectoryAction> onOpenDirectoryActions = new List<OnOpenDirectoryAction>();
+
+            foreach (Classes.Configuration.FileBased.Impl.Plugin plugin in plugins)
+            {
+                List<OnOpenDirectoryAction> currList = plugin.OnOpenDirectory(path, pluginContext);
+                if (currList != null)
+                {
+                    foreach (var action in currList)
+                    {
+                        onOpenDirectoryActions.Add(action);
+                    }
+                }
+            }
+
+            foreach (OnOpenDirectoryAction action in onOpenDirectoryActions)
+            {
+                if (action is StoreInContextAction)
+                {
+                    StoreInContextAction storeInContextAction = (StoreInContextAction)action;
+                    string valueToPutInContext = storeInContextAction.Value;
+
+                    if (!string.IsNullOrEmpty(valueToPutInContext))
+                    {
+                        pluginContext.Custom[storeInContextAction.Key] = valueToPutInContext;
+                    }
+                    else
+                    {
+                        if (pluginContext.Custom.ContainsKey(storeInContextAction.Key))
+                        {
+                            pluginContext.Custom.Remove(storeInContextAction.Key);
+                        }
+                    }
+                }
+            }
+
         }
 
         private void FillExpandedNodes(List<KryptonTreeNode> expandedNodes, KryptonTreeNode rootNode)
@@ -4478,6 +4526,45 @@ namespace pie
             File.Create(src).Close();
             doNotShowBranchChangeNotification = true;
             UpdateGitRepositoryInfo(false);
+
+            List<OnCreateFileAction> onCreateFileActions = new List<OnCreateFileAction>();
+
+            foreach (Classes.Configuration.FileBased.Impl.Plugin plugin in plugins)
+            {
+                List<OnCreateFileAction> currList = plugin.OnCreateFile(src, pluginContext);
+                if (currList != null)
+                {
+                    foreach(var action in currList) {
+                        onCreateFileActions.Add(action);
+                    }
+                }
+            }
+
+            foreach(OnCreateFileAction action in onCreateFileActions)
+            {
+                if (action is AppendFileContentAction)
+                {
+                    AppendFileContentAction appendFileContentAction = (AppendFileContentAction)action;
+
+
+                    if (appendFileContentAction.OnBeginning)
+                    {
+                        string existing = File.Exists(src) ? File.ReadAllText(src) : string.Empty;
+                        string updated = appendFileContentAction.NewContent + existing;
+                        File.WriteAllText(src, updated);
+                    }
+                    else
+                    {
+                        string existing = File.Exists(src) ? File.ReadAllText(src) : string.Empty;
+                        string updated = existing + appendFileContentAction.NewContent;
+                        File.WriteAllText(src, updated);
+                    }
+                }
+            }
+
+            // New: Open file after it was created
+            NewTab(TabType.CODE, null);
+            Open(src);
         }
 
         private void RenameFile(string src, string dest)

@@ -1,9 +1,9 @@
 ﻿/* SPDX-FileCopyrightText: 2023-2025 Mario-Mihai Mateas <mateasmario@aol.com> */
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
-namespace plugin.Classes.Actions
+namespace plugin.Classes.Actions.OnInvokeTask
 {
-    public class CreateFileAction : ExitAction
+    public class CreateFileAction : OnWindowCloseAction
     {
         public string Path { get; set; }
         public string Content { get; set; }
@@ -12,6 +12,6 @@ namespace plugin.Classes.Actions
         {
             Path = path;
             Content = content;
-        }   
+        }
     }
 }

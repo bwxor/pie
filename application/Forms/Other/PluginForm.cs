@@ -325,7 +325,7 @@ namespace pie.Forms.Other
             ProcessUIActions(b.OnClick);
         }
 
-        private void ProcessUIActions(List<plugin.Classes.Actions.UIAction> actions)
+        private void ProcessUIActions(List<plugin.Classes.Actions.OnInvokeTask.OnWindowOpenAction> actions)
         {
             if (actions == null)
             {
@@ -334,9 +334,9 @@ namespace pie.Forms.Other
 
             foreach (var action in actions)
             {
-                if (action is plugin.Classes.Actions.ChangeLabelTextAction)
+                if (action is plugin.Classes.Actions.OnInvokeTask.ChangeLabelTextAction)
                 {
-                    var a = action as plugin.Classes.Actions.ChangeLabelTextAction;
+                    var a = action as plugin.Classes.Actions.OnInvokeTask.ChangeLabelTextAction;
                     var foundControl = FindControlById(a.LabelId);
 
                     if (foundControl != null)
@@ -345,9 +345,9 @@ namespace pie.Forms.Other
                         targetLabel.Text = a.NewText;
                     }
                 }
-                else if (action is plugin.Classes.Actions.ShowNotificationAction)
+                else if (action is plugin.Classes.Actions.OnInvokeTask.ShowNotificationAction)
                 {
-                    var a = action as plugin.Classes.Actions.ShowNotificationAction;
+                    var a = action as plugin.Classes.Actions.OnInvokeTask.ShowNotificationAction;
                     ShowNotification(a.Message);
                 }
             }

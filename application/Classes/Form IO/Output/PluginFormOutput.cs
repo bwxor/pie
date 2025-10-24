@@ -1,4 +1,6 @@
 ﻿using plugin.Classes.Actions;
+using plugin.Classes.Actions.OnInvokeTask;
+using plugin.Classes.Actions.Window;
 using System.Collections.Generic;
 
 namespace pie.Classes.Form_IO.Output
@@ -7,7 +9,7 @@ namespace pie.Classes.Form_IO.Output
     {
         public bool ApplyChanges { get; set; }
         public Dictionary<string, string> ControlKeyValues { get; set; }
-        public List<ExitAction> OnCloseActions { get; set; }
+        public List<OnWindowCloseAction> OnCloseActions { get; set; }
     }
 }
 

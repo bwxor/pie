@@ -1,14 +1,14 @@
 ﻿/* SPDX-FileCopyrightText: 2023-2025 Mario-Mihai Mateas <mateasmario@aol.com> */
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
-namespace plugin.Classes.Actions
+namespace plugin.Classes.Actions.OnInvokeTask
 {
-    public class CreateDirectoryAction : ExitAction
+    public class CreateDirectoryAction : OnWindowCloseAction
     {
         public string DirectoryName { get; set; }
         public CreateDirectoryAction(string directoryName)
         {
             DirectoryName = directoryName;
-        }   
+        }
     }
 }
