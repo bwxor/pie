@@ -46,7 +46,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(367, 288);
+            mainPanel.Size = new System.Drawing.Size(379, 351);
             mainPanel.StateCommon.Color1 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.StateCommon.Color2 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.TabIndex = 7;
@@ -64,7 +64,7 @@
             // 
             // okButton
             // 
-            okButton.Location = new System.Drawing.Point(283, 254);
+            okButton.Location = new System.Drawing.Point(293, 301);
             okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             okButton.Name = "okButton";
             okButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -91,7 +91,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(365, 294);
+            ClientSize = new System.Drawing.Size(379, 351);
             ControlBox = false;
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

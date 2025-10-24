@@ -51,7 +51,7 @@ namespace pie.Forms.Other
         {
             Window window = Input.Plugin.InvokeTask(Input.TaskName, Input.PluginContext);
 
-            int height = 150;
+            int height = 225;
 
             foreach(plugin.Classes.UI.Control c in window.Controls)
             {
@@ -65,15 +65,15 @@ namespace pie.Forms.Other
                 }
                 else if (c is plugin.Classes.UI.Buttons.CheckButton)
                 {
-                    height += 20;
+                    height += 35;
                 }
                 else if (c is plugin.Classes.UI.ValueContainers.TextBox || c is plugin.Classes.UI.ValueContainers.ComboBox)
                 {
-                    height += 20;
+                    height += 35;
                 }
                 else
                 {
-                    height += 20;
+                    height += 35;
                 }
             }
 
