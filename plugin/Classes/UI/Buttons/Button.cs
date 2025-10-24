@@ -2,7 +2,6 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
 using plugin.Classes.Actions.OnInvokeTask;
-using plugin.Classes.Actions.Window;
 
 namespace plugin.Classes.UI.Buttons
 {

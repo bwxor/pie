@@ -2927,6 +2927,11 @@ namespace pie
             try
             {
                 repository = new Repository(openedFolder);
+
+                if (repository.Commits.Count() > 0)
+                {
+                    gitBranchesComboBox.Enabled = true;
+                }
             }
             catch (Exception)
             {
@@ -3095,6 +3100,7 @@ namespace pie
                             doNotShowBranchChangeNotification = true;
                             UpdateGitRepositoryInfo();
                             ShowNotification("Successfully commited.");
+                            gitBranchesComboBox.Enabled = true;
                         }
                     }
                 }
