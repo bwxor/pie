@@ -9,66 +9,6 @@ namespace pie.Services
 {
     public class PluginPlaceholderReplaceService
     {
-        public string ReplaceContextPlaceholders(string input, PluginContextSupport pluginContextSupport)
-        {
-            string result;
-
-            result = Regex.Replace(
-                input,
-                @"\$\{context\.version)\}",
-                match =>
-                {
-                    return pluginContextSupport.AppVersion;
-                }
-            );
-
-            result = Regex.Replace(
-                input,
-                @"\$\{context\.openedDirectory)\}",
-                match =>
-                {
-                    return pluginContextSupport.OpenedDirectory;
-                }
-            );
-
-            result = Regex.Replace(
-            input,
-            @"\$\{context\.openedFile)\}",
-                match =>
-                {
-                    foreach (var tab in pluginContextSupport.OpenedTabs)
-                    {
-                        if (tab.IsFileOpened)
-                        {
-                            return tab.Title;
-                        }
-                    }
-
-                    return "";
-                }
-            );
-
-            result = Regex.Replace(
-                input,
-                @"\$\{context\.custom\.(?<key>[^}]+)\}",
-                match =>
-                {
-                    string key = match.Groups["key"].Value;
-
-                    if (pluginContextSupport.Custom.TryGetValue(key, out string replacementValue))
-                    {
-                        return replacementValue;
-                    }
-                    else
-                    {
-                        return match.Value;
-                    }
-                }
-            );
-
-            return result;
-        }
-
         public string ReplaceInputControlPlaceholders(string input, Dictionary<string, string> inputControls)
         {
             string result;

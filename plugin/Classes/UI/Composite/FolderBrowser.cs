@@ -5,9 +5,17 @@ namespace plugin.Classes.UI.Composite
 {
     public class FolderBrowser : Control
     {
+        public string Value { get; set; }
+
         public FolderBrowser(string id)
         {
             Id = id;
+        }
+
+        public FolderBrowser(string id, string value)
+        {
+            Id = id;
+            Value = value;
         }
     }
 }

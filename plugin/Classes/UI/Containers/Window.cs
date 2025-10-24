@@ -11,17 +11,10 @@ namespace plugin.Classes.UI.Containers
         public List<Control> Controls { get; set; } = new List<Control>();
         public List<UIAction> OnOpen { get; set; }
         public List<ExitAction> OnClose { get; set; }
-        public int Size { get; set; }
 
         public Window(string title)
         {
             Title = title;
-        }
-
-        public Window(string title, int size)
-        {
-            Title = title;
-            Size = size;
         }
     }
 }

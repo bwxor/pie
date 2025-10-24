@@ -6,11 +6,19 @@ namespace plugin.Classes.UI.Composite
     public class FileBrowser : Control
     {
         public string Filter { get; set; }
+        public string Value { get; set; }
 
-        public FileBrowser(String id, String filter)
+        public FileBrowser(string id, string filter)
         {
             Id = id;
             Filter = filter;
+        }
+
+        public FileBrowser(string id, string filter, string value)
+        {
+            Id = id;
+            Filter = filter;
+            Value = value;
         }
     }
 }

@@ -275,9 +275,12 @@ namespace pie.Services
                         string className = classNames[0];
                         object instance = Activator.CreateInstance(externalAssembly.GetType(className));
 
+                        PluginInfo pluginInfo = instance.GetType().GetMethod("OnLoad").Invoke(instance, new object[] { }) as PluginInfo;
+
                         plugin = new T();
-                        plugin.Name = parsingService.RemoveFileExtension(parsingService.GetFileName(file));
+                        plugin.Name = pluginInfo.Name;
                         plugin.Instance = instance;
+                        plugin.TaskNames = pluginInfo.TaskNames;
                         plugins.Add(plugin);
                     }
                 }

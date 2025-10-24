@@ -23,7 +23,6 @@ using BrightIdeasSoftware;
  * Copyright © The CefSharp Authors. All rights reserved.
  */
 using CefSharp;
-using CefSharp.DevTools.IndexedDB;
 using CefSharp.WinForms;
 /**
  * ConEmu.Winforms is used for integrating terminal features inside the application.
@@ -63,6 +62,7 @@ using pie.Forms.Theme;
 using pie.Services;
 using plugin.Classes;
 using plugin.Classes.Actions;
+using plugin.Classes.Context;
 
 /**
  * ScintillaNET provides the text editors used in pie.
@@ -94,7 +94,7 @@ namespace pie
         private Win32APIService win32APIService = new Win32APIService();
         private PluginPlaceholderReplaceService pluginPlaceholderReplaceService = new PluginPlaceholderReplaceService();
 
-        private PluginContextSupport pluginContext;
+        private PluginContext pluginContext;
         private List<TabInfo> tabInfos = new List<TabInfo>();
         private List<ThemeInfo> themeInfos;
         private List<BuildCommand> buildCommands;
@@ -347,7 +347,7 @@ namespace pie
 
         private void ProcessPlugins()
         {
-            pluginContext = new PluginContextSupport();
+            pluginContext = new PluginContext();
             pluginContext.AppVersion = GetAppVersion();
 
             plugins = configurationService.LoadPluginsFromFolder<pie.Classes.Configuration.FileBased.Impl.Plugin>(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins"));
@@ -355,15 +355,16 @@ namespace pie
             foreach (pie.Classes.Configuration.FileBased.Impl.Plugin plugin in plugins)
             {
                 ToolStripMenuItem pluginItem = new ToolStripMenuItem();
-                pluginItem.Text = plugin.GetName();
                 pluginsToolStripMenuItem.DropDownItems.Add(pluginItem);
 
-                List<plugin.Classes.UI.Containers.Window> pluginWindows = (plugin.Instance as plugin.Classes.Plugin).GetWindows();
 
-                foreach (var window in pluginWindows)
+                pluginItem.Text = plugin.Name;
+                List<string> taskNames = plugin.TaskNames;
+
+                foreach (var taskName in taskNames)
                 {
                     ToolStripMenuItem taskItem = new ToolStripMenuItem();
-                    taskItem.Text = window.Title;
+                    taskItem.Text = taskName;
                     taskItem.Tag = plugin.Name;
                     taskItem.Click += TaskItem_Click;
                     pluginItem.DropDownItems.Add(taskItem);
@@ -876,9 +877,9 @@ namespace pie
             {
                 if (plugin.Name.Equals(taskItem.Tag))
                 {
-                    foreach (var window in (plugin.Instance as plugin.Classes.Plugin).GetWindows())
+                    foreach (var taskName in plugin.TaskNames)
                     {
-                        if (window.Title.Equals(taskItem.Text))
+                        if (taskName.Equals(taskItem.Text))
                         {
                             PluginForm pluginForm = new PluginForm();
 
@@ -886,7 +887,8 @@ namespace pie
                             pluginFormInput.EditorProperties = editorProperties;
                             pluginFormInput.Palette = KryptonCustomPaletteBase;
                             pluginFormInput.ActiveTheme = activeTheme;
-                            pluginFormInput.PluginWindow = window;
+                            pluginFormInput.Plugin = plugin;
+                            pluginFormInput.TaskName = taskName;
 
                             pluginContext.OpenedTabs = GetOpenedTabs();
                             pluginContext.OpenedDirectory = openedFolder;
@@ -900,7 +902,7 @@ namespace pie
 
                             if (pluginFormOutput != null && pluginFormOutput.ApplyChanges)
                             {
-                                ExecuteActions(window.OnClose, pluginFormOutput);
+                                ExecuteActions(pluginForm.Output.OnCloseActions, pluginFormOutput);
                             }
                         }
                     }
@@ -932,9 +934,9 @@ namespace pie
             return Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
 
-        private List<FileTabSupport> GetOpenedTabs()
+        private List<FileContext> GetOpenedTabs()
         {
-            List<FileTabSupport> output = new List<FileTabSupport>();
+            List<FileContext> output = new List<FileContext>();
 
             for (int i = 0; i < tabInfos.Count; i++)
             {
@@ -942,7 +944,7 @@ namespace pie
 
                 if (tabInfo.getTabType().Equals(TabType.CODE))
                 {
-                    FileTabSupport tab = new FileTabSupport();
+                    FileContext tab = new FileContext();
                     tab.IsFileOpened = tabInfo.getOpenedFilePath() != null;
                     tab.FilePath = tabInfo.getOpenedFilePath();
                     tab.Title = ((Scintilla)tabControl.Pages[i].Controls[0]).Text;
@@ -960,25 +962,68 @@ namespace pie
                 return;
             }
 
+            // Do validation actions first
+            foreach (var action in actions)
+            {
+                if (action is ValidationAction)
+                {
+                    ValidationAction validationAction = (ValidationAction)action;
+                    if (pluginFormOutput.ControlKeyValues.ContainsKey(validationAction.VariableId))
+                    {
+                        bool status = validationAction.ValidationFunction(pluginFormOutput.ControlKeyValues[validationAction.VariableId]);
+                        if (status)
+                        {
+                            ShowNotification(validationAction.ErrorMessage);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Now do the GeneratorActions
+
+            int i = 0;
+            while (i != actions.Count)
+            {
+                if (actions[i] is GeneratorAction)
+                {
+                    GeneratorAction generatorAction = (GeneratorAction)actions[i];
+
+                    string[] parsedStrings = new string[generatorAction.Values.Length];
+
+                    for (int j = 0; j<generatorAction.Values.Length; j++)
+                    {
+                        parsedStrings[j] = pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(generatorAction.Values[j], pluginFormOutput.ControlKeyValues);
+                    }
+
+                    List<ExitAction> generatedActions = generatorAction.GeneratorFunction(parsedStrings);
+
+                    foreach (var ea in generatedActions)
+                    {
+                        actions.Add(ea);
+                    }
+                }
+
+                i++;
+            }
+
+            // Now do other actions
             foreach (var action in actions)
             {
                 if (action is CreateFileAction)
                 {
                     CreateFileAction createFileAction = (CreateFileAction)action;
                     secureFileService.CreateFile(
-                        pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
                             pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Path, pluginFormOutput.ControlKeyValues),
-                        pluginContext),
-                        pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Content, pluginFormOutput.ControlKeyValues),
-                        pluginContext));
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Content, pluginFormOutput.ControlKeyValues)
+                    );
                 }
                 else if (action is CreateDirectoryAction)
                 {
                     CreateDirectoryAction createDirectoryAction = (CreateDirectoryAction)action;
-                    secureFileService.CreateDirectory(pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createDirectoryAction.DirectoryName, pluginFormOutput.ControlKeyValues),
-                        pluginContext));
+                    secureFileService.CreateDirectory(
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createDirectoryAction.DirectoryName, pluginFormOutput.ControlKeyValues)
+                        );
                 }
                 else if (action is ModifyEditorContentAction)
                 {
@@ -986,7 +1031,7 @@ namespace pie
 
                     int codeIndex = 0;
 
-                    for (int i = 0; i < tabInfos.Count; i++)
+                    for (int k = 0; k < tabInfos.Count; k++)
                     {
                         if (tabInfos.GetType().Equals(TabType.CODE))
                         {
@@ -999,58 +1044,52 @@ namespace pie
                     }
 
                     Scintilla scintilla = (Scintilla)tabControl.Pages[codeIndex].Controls[0];
-                    scintilla.Text = pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(modifyEditorContentAction.Content, pluginFormOutput.ControlKeyValues),
-                        pluginContext);
+                    scintilla.Text =
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(modifyEditorContentAction.Content, pluginFormOutput.ControlKeyValues);
                 }
                 else if (action is SelectDirectoryAction)
                 {
                     SelectDirectoryAction selectDirectoryAction = (SelectDirectoryAction)action;
-                    NavigateToPath(pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(selectDirectoryAction.Path, pluginFormOutput.ControlKeyValues),
-                        pluginContext));
+                    NavigateToPath(
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(selectDirectoryAction.Path, pluginFormOutput.ControlKeyValues));
                 }
                 else if (action is OpenFileAction)
                 {
                     OpenFileAction openFileAction = (OpenFileAction)action;
                     NewTab(TabType.CODE, null);
-                    Open(pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(openFileAction.Path, pluginFormOutput.ControlKeyValues),
-                        pluginContext));
+                    Open(
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(openFileAction.Path, pluginFormOutput.ControlKeyValues)
+                        );
                 }
                 else if (action is ExecuteTerminalCommandAction)
                 {
                     ExecuteTerminalCommandAction executeTerminalCommandAction = (ExecuteTerminalCommandAction)action;
                     ToggleTerminalTabControl(true);
 
-                    string command = pluginPlaceholderReplaceService.ReplaceContextPlaceholders(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(executeTerminalCommandAction.Command, pluginFormOutput.ControlKeyValues),
-                        pluginContext);
+                    string command =
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(executeTerminalCommandAction.Command, pluginFormOutput.ControlKeyValues);
                     int insertPosition = terminalTabControl.Pages.Count;
 
-                    for (int i = 0; i < terminalTabControl.Pages.Count; i++)
+                    for (int k = 0; k < terminalTabControl.Pages.Count; k++)
                     {
-                        if (terminalTabControl.Pages[i].Text.Equals(command))
+                        if (terminalTabControl.Pages[k].Text.Equals(command))
                         {
-                            insertPosition = i;
-                            terminalTabControl.Pages.Remove(terminalTabControl.Pages[i]);
+                            insertPosition = k;
+                            terminalTabControl.Pages.Remove(terminalTabControl.Pages[k]);
                             break;
                         }
                     }
 
                     NewTerminalTab(command, terminalTabControl.Pages.Count);
                 }
-                else if (action is ValidationAction)
+                else if (action is StoreInContextAction)
                 {
-                    ValidationAction validationAction = (ValidationAction)action;
-                    if (pluginFormOutput.ControlKeyValues.ContainsKey(validationAction.VariableId))
+                    StoreInContextAction storeInContextAction = (StoreInContextAction)action;
+                    string valueToPutInContext = pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(storeInContextAction.Value, pluginFormOutput.ControlKeyValues);
+
+                    if (!string.IsNullOrEmpty(valueToPutInContext))
                     {
-                        bool isValid = validationAction.ValidationFunction(pluginFormOutput.ControlKeyValues[validationAction.VariableId]);
-                        if (!isValid)
-                        {
-                            ShowNotification(validationAction.ErrorMessage);
-                            return;
-                        }
+                        pluginContext.Custom[storeInContextAction.Key] = valueToPutInContext;
                     }
                 }
             }
@@ -3663,17 +3702,22 @@ namespace pie
 
                 if (toolStripMenuItem.HasDropDownItems)
                 {
-                    foreach (ToolStripMenuItem toolStripMenuItemChild in toolStripMenuItem.DropDownItems)
+                    foreach (Object ts in toolStripMenuItem.DropDownItems)
                     {
-                        toolStripMenuItemChild.BackColor = activeTheme.Primary;
-                        toolStripMenuItemChild.ForeColor = activeTheme.Fore;
-
-                        if (toolStripMenuItemChild.HasDropDownItems)
+                        if (ts is ToolStripMenuItem)
                         {
-                            foreach (ToolStripMenuItem toolStripMenuItemChild2 in toolStripMenuItemChild.DropDownItems)
+                            ToolStripMenuItem toolStripMenuItemChild = ts as ToolStripMenuItem;
+
+                            toolStripMenuItemChild.BackColor = activeTheme.Primary;
+                            toolStripMenuItemChild.ForeColor = activeTheme.Fore;
+
+                            if (toolStripMenuItemChild.HasDropDownItems)
                             {
-                                toolStripMenuItemChild2.BackColor = activeTheme.Primary;
-                                toolStripMenuItemChild2.ForeColor = activeTheme.Fore;
+                                foreach (ToolStripMenuItem toolStripMenuItemChild2 in toolStripMenuItemChild.DropDownItems)
+                                {
+                                    toolStripMenuItemChild2.BackColor = activeTheme.Primary;
+                                    toolStripMenuItemChild2.ForeColor = activeTheme.Fore;
+                                }
                             }
                         }
                     }
@@ -4354,9 +4398,9 @@ namespace pie
                     e.CancelEdit = true;
                     return;
                 }
-                else if (e.Node.Tag.Equals(path) || string.IsNullOrEmpty(e.Label.Trim()))
+                else if (e.Node.Tag.Equals(path) || e.Label == null || string.IsNullOrEmpty(e.Label.Trim()))
                 {
-                    ShowNotification("File name cannot be empty.");
+                    //ShowNotification("File name cannot be empty.");
                     e.Node.EndEdit(true);
                     e.CancelEdit = true;
                     return;

@@ -16,6 +16,7 @@ using pie.Services;
 */
 using Krypton.Toolkit;
 using System.Drawing;
+using plugin.Classes.UI.Containers;
 
 namespace pie.Forms.Other
 {
@@ -48,10 +49,36 @@ namespace pie.Forms.Other
 
         private void PluginForm_Load(object sender, EventArgs e)
         {
-            if (Input.PluginWindow.Size > 0)
+            Window window = Input.Plugin.InvokeTask(Input.TaskName, Input.PluginContext);
+
+            int height = 150;
+
+            foreach(plugin.Classes.UI.Control c in window.Controls)
             {
-                this.Size = new Size(this.Width, Input.PluginWindow.Size);
+                if (c is plugin.Classes.UI.Decoration.Label)
+                {
+                    height += 20;
+                }
+                else if (c is plugin.Classes.UI.Decoration.SpaceDelimiter)
+                {
+                    height += 10;
+                }
+                else if (c is plugin.Classes.UI.Buttons.CheckButton)
+                {
+                    height += 20;
+                }
+                else if (c is plugin.Classes.UI.ValueContainers.TextBox || c is plugin.Classes.UI.ValueContainers.ComboBox)
+                {
+                    height += 20;
+                }
+                else
+                {
+                    height += 20;
+                }
             }
+
+            this.Size = new Size(this.Width, height);
+
 
             themeService.SetPaletteToObjects(this, Input.Palette);
 
@@ -60,8 +87,8 @@ namespace pie.Forms.Other
                 this.Opacity = 0.875;
             }
 
-            this.Text = Input.PluginWindow.Title;
-            foreach (var control in Input.PluginWindow.Controls)
+            this.Text = window.Title;
+            foreach (var control in window.Controls)
             {
                 Control controlToAdd = null;
 
@@ -149,12 +176,15 @@ namespace pie.Forms.Other
                         comboBox.Items.Add(item);
                     }
 
+                    comboBox.SelectedIndex = b.DefaultIndex;
+
                     controlToAdd.Tag = b;
 
                     if (control != null)
                     {
                         TableLayoutPanel.RowCount += 1;
                         TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        controlToAdd.Dock = DockStyle.Top;
                         dynamicControls.Add(controlToAdd);
                     }
                 }
@@ -168,6 +198,12 @@ namespace pie.Forms.Other
                     KryptonTextBox kryptonTextBox = new KryptonTextBox();
                     kryptonTextBox.ReadOnly = true;
                     kryptonTextBox.Tag = fileBrowserControl;
+
+                    if (fileBrowserControl.Value != null)
+                    {
+                        kryptonTextBox.Text = fileBrowserControl.Value;
+                    }
+
                     container.Panel1.Controls.Add(kryptonTextBox);
                     kryptonTextBox.Dock = DockStyle.Fill;
 
@@ -180,7 +216,7 @@ namespace pie.Forms.Other
                     container.Panel2.Controls.Add(kryptonButton);
                     kryptonButton.Dock = DockStyle.Left;
 
-                    container.SplitterDistance = (int)(container.Width * 0.7);
+                    container.SplitterDistance = (int)(container.Width);
                     container.SplitterWidth = 0;
                     container.Height = kryptonTextBox.Height;
 
@@ -201,6 +237,12 @@ namespace pie.Forms.Other
                     KryptonTextBox kryptonTextBox = new KryptonTextBox();
                     kryptonTextBox.ReadOnly = true;
                     kryptonTextBox.Tag = folderBrowserControl;
+                    if (folderBrowserControl.Value != null)
+
+                    {
+                        kryptonTextBox.Text = folderBrowserControl.Value;
+                    }
+
                     container.Panel1.Controls.Add(kryptonTextBox);
                     kryptonTextBox.Dock = DockStyle.Fill;
 
@@ -212,7 +254,7 @@ namespace pie.Forms.Other
                     container.Panel2.Controls.Add(kryptonButton);
                     kryptonButton.Dock = DockStyle.Left;
 
-                    container.SplitterDistance = (int)(container.Width * 0.7);
+                    container.SplitterDistance = (int)(container.Width);
                     container.SplitterWidth = 0;
                     container.Height = kryptonTextBox.Height;
 
@@ -232,18 +274,19 @@ namespace pie.Forms.Other
                 }
             }
 
+            Output.OnCloseActions = window.OnClose;
             themeService.SetPaletteToObjects(this, Input.Palette);
-            ProcessUIActions(Input.PluginWindow.OnOpen);
+            ProcessUIActions(window.OnOpen);
         }
 
         private void FolderBrowserClick(object sender, EventArgs e)
         {
-            if (sender is System.Windows.Forms.Button == false)
+            if (sender is KryptonButton == false)
             {
                 return;
             }
 
-            var kryptonTextBox = ((System.Windows.Forms.Button)sender).Tag as KryptonTextBox;
+            var kryptonTextBox = ((KryptonButton)sender).Tag as KryptonTextBox;
 
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
 
@@ -255,12 +298,12 @@ namespace pie.Forms.Other
 
         private void FileBrowserButtonClick(object sender, EventArgs e)
         {
-            if (sender is System.Windows.Forms.Button == false)
+            if (sender is KryptonButton == false)
             {
                 return;
             }
 
-            var fileBrowserSupport = ((System.Windows.Forms.Button)sender).Tag as FileBrowserPluginSupport;
+            var fileBrowserSupport = ((KryptonButton)sender).Tag as FileBrowserPluginSupport;
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = fileBrowserSupport.Filter;
@@ -273,12 +316,12 @@ namespace pie.Forms.Other
 
         private void ButtonClick(object sender, EventArgs e)
         {
-            if (sender is System.Windows.Forms.Button == false)
+            if (sender is KryptonButton  == false)
             {
                 return;
             }
 
-            plugin.Classes.UI.Buttons.Button b = ((System.Windows.Forms.Button)sender).Tag as plugin.Classes.UI.Buttons.Button;
+            plugin.Classes.UI.Buttons.Button b = ((KryptonButton)sender).Tag as plugin.Classes.UI.Buttons.Button;
             ProcessUIActions(b.OnClick);
         }
 
@@ -299,24 +342,13 @@ namespace pie.Forms.Other
                     if (foundControl != null)
                     {
                         KryptonLabel targetLabel = foundControl as KryptonLabel;
-                        targetLabel.Text = pluginPlaceholderReplace.ReplaceContextPlaceholders(a.NewText, Input.PluginContext);
-                    }
-                }
-                else if (action is plugin.Classes.Actions.ChangeTextBoxValueAction)
-                {
-                    var a = action as plugin.Classes.Actions.ChangeTextBoxValueAction;
-                    var foundControl = FindControlById(a.TextBoxId);
-
-                    if (foundControl != null)
-                    {
-                        KryptonTextBox targetTextBox = foundControl as KryptonTextBox;
-                        targetTextBox.Text = pluginPlaceholderReplace.ReplaceContextPlaceholders(a.NewValue, Input.PluginContext);
+                        targetLabel.Text = a.NewText;
                     }
                 }
                 else if (action is plugin.Classes.Actions.ShowNotificationAction)
                 {
                     var a = action as plugin.Classes.Actions.ShowNotificationAction;
-                    ShowNotification(pluginPlaceholderReplace.ReplaceContextPlaceholders(a.Message, Input.PluginContext));
+                    ShowNotification(a.Message);
                 }
             }
         }
@@ -366,23 +398,23 @@ namespace pie.Forms.Other
                 }
                 else if (c.Tag is plugin.Classes.UI.Buttons.CheckButton)
                 {
-                    Output.ControlKeyValues.Add((c.Tag as plugin.Classes.UI.Buttons.CheckButton).Id, (c as KryptonCheckBox).Checked.ToString());
+                    Output.ControlKeyValues.Add((c.Tag as plugin.Classes.UI.Buttons.CheckButton).Id, (c as KryptonCheckBox).Checked.ToString().ToLower());
                 }
                 else if (c.Tag is plugin.Classes.UI.ValueContainers.ComboBox)
                 {
                     Output.ControlKeyValues.Add((c.Tag as plugin.Classes.UI.ValueContainers.ComboBox).Id, (c as KryptonComboBox).Text ?? "");
                 }
-                // ToDo: Check if these two work
-                else if (c.Tags is plugin.Classes.UI.Composite.FileBrowser)
+                else if (c.Tag is plugin.Classes.UI.Composite.FileBrowser)
                 {
                     Output.ControlKeyValues.Add((c.Tag as plugin.Classes.UI.Composite.FileBrowser).Id, (c as KryptonTextBox).Text ?? "");
                 }
-                else if (c.Tags is plugin.Classes.UI.Composite.FolderBrowser)
+                else if (c.Tag is plugin.Classes.UI.Composite.FolderBrowser)
                 {
                     Output.ControlKeyValues.Add((c.Tag as plugin.Classes.UI.Composite.FolderBrowser).Id, (c as KryptonTextBox).Text ?? "");
                 }
 
-            Close();
+                Close();
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

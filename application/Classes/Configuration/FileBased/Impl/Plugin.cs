@@ -2,15 +2,19 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
 using pie.Classes.ConfigurationEntities;
+using plugin.Classes.Context;
+using plugin.Classes.UI.Containers;
+using System.Collections.Generic;
 
 namespace pie.Classes.Configuration.FileBased.Impl
 {
     public class Plugin : MultiFileConfigurationEntity
     {
         public object Instance { get; set; }
-        public string GetName()
+        public List<string> TaskNames { get; set; }
+        public Window InvokeTask(string taskName, PluginContext pluginContext)
         {
-            return (string)Instance.GetType().GetMethod("DisplayName").Invoke(Instance, null);
+            return (Window)Instance.GetType().GetMethod("OnInvokeTask").Invoke(Instance, new object[] { taskName, pluginContext });
         }
     }
 }

@@ -6,5 +6,10 @@ namespace plugin.Classes.Actions
     public class ExecuteTerminalCommandAction : ExitAction
     {
         public string Command { get; set; }
+
+        public ExecuteTerminalCommandAction(string command)
+        {
+            Command = command;
+        }
     }
 }

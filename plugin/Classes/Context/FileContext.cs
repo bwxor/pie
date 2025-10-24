@@ -1,9 +1,9 @@
 ﻿/* SPDX-FileCopyrightText: 2023-2025 Mario-Mihai Mateas <mateasmario@aol.com> */
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
-namespace pie.Classes.PluginSupport
+namespace plugin.Classes.Context
 {
-    public class FileTabSupport
+    public class FileContext
     {
         public bool IsFileOpened { get; set; }
         public string FilePath { get; set; }

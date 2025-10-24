@@ -7,7 +7,7 @@
  * Copyright (c) 2017 - 2022, Krypton Suite
 */
 using Krypton.Toolkit;
-using plugin.Classes;
+using plugin.Classes.Context;
 using plugin.Classes.UI.Containers;
 
 namespace pie.Classes
@@ -17,7 +17,8 @@ namespace pie.Classes
         public KryptonCustomPaletteBase Palette { get; set; }
         public EditorProperties EditorProperties { get; set; }
         public ThemeInfo ActiveTheme { get; set; }
-        public Window PluginWindow { get; set; }
-        public PluginContextSupport PluginContext { get; set; }
+        public PluginContext PluginContext { get; set; }
+        public pie.Classes.Configuration.FileBased.Impl.Plugin Plugin { get; set; }
+        public string TaskName { get; set; }
     }
 }

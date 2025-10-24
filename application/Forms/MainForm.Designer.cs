@@ -74,24 +74,25 @@
             saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             interfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            showTerminalTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            themesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            themeDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             enableGlassEffectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            cheatsheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            aboutPieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            themeDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            themesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            showTerminalTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             buildAndRunToolstripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             mainMenuStrip = new System.Windows.Forms.MenuStrip();
             preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             buildCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            gitSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             databasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             codeTemplatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            gitSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             enableWordWrapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             enableAutosaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             pluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            cheatsheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aboutPieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             kryptonRibbon1 = new Krypton.Ribbon.KryptonRibbon();
             KryptonCustomPaletteBase = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             kryptonPage2 = new Krypton.Navigator.KryptonPage();
@@ -354,34 +355,10 @@
             // 
             // interfaceToolStripMenuItem
             // 
-            interfaceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { showTerminalTabToolStripMenuItem, themesToolStripMenuItem, themeDesignerToolStripMenuItem, enableGlassEffectToolStripMenuItem, cheatsheetToolStripMenuItem, updateToolStripMenuItem, aboutPieToolStripMenuItem });
+            interfaceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { enableGlassEffectToolStripMenuItem, themeDesignerToolStripMenuItem, themesToolStripMenuItem, showTerminalTabToolStripMenuItem });
             interfaceToolStripMenuItem.Name = "interfaceToolStripMenuItem";
-            interfaceToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            interfaceToolStripMenuItem.Text = "Interface";
-            // 
-            // showTerminalTabToolStripMenuItem
-            // 
-            showTerminalTabToolStripMenuItem.Image = Properties.Resources.terminal;
-            showTerminalTabToolStripMenuItem.Name = "showTerminalTabToolStripMenuItem";
-            showTerminalTabToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            showTerminalTabToolStripMenuItem.Text = "Show Terminal Tab";
-            showTerminalTabToolStripMenuItem.Click += showBuildToolsToolStripMenuItem_Click;
-            // 
-            // themesToolStripMenuItem
-            // 
-            themesToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            themesToolStripMenuItem.Image = Properties.Resources.color_wheel;
-            themesToolStripMenuItem.Name = "themesToolStripMenuItem";
-            themesToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            themesToolStripMenuItem.Text = "Themes";
-            // 
-            // themeDesignerToolStripMenuItem
-            // 
-            themeDesignerToolStripMenuItem.Image = Properties.Resources.graphic_designer;
-            themeDesignerToolStripMenuItem.Name = "themeDesignerToolStripMenuItem";
-            themeDesignerToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            themeDesignerToolStripMenuItem.Text = "Theme Designer";
-            themeDesignerToolStripMenuItem.Click += themeDesignerToolStripMenuItem_Click;
+            interfaceToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            interfaceToolStripMenuItem.Text = "Appearance";
             // 
             // enableGlassEffectToolStripMenuItem
             // 
@@ -391,93 +368,100 @@
             enableGlassEffectToolStripMenuItem.Text = "Enable Glass Effect";
             enableGlassEffectToolStripMenuItem.Click += glassModeToolStripMenuItem_Click;
             // 
-            // cheatsheetToolStripMenuItem
+            // themeDesignerToolStripMenuItem
             // 
-            cheatsheetToolStripMenuItem.Image = Properties.Resources.open_book;
-            cheatsheetToolStripMenuItem.Name = "cheatsheetToolStripMenuItem";
-            cheatsheetToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            cheatsheetToolStripMenuItem.Text = "Cheatsheet";
-            cheatsheetToolStripMenuItem.Click += cheatsheetToolStripMenuItem_Click;
+            themeDesignerToolStripMenuItem.Image = Properties.Resources.graphic_designer;
+            themeDesignerToolStripMenuItem.Name = "themeDesignerToolStripMenuItem";
+            themeDesignerToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            themeDesignerToolStripMenuItem.Text = "Theme Designer";
+            themeDesignerToolStripMenuItem.Click += themeDesignerToolStripMenuItem_Click;
             // 
-            // updateToolStripMenuItem
+            // themesToolStripMenuItem
             // 
-            updateToolStripMenuItem.Image = Properties.Resources.update;
-            updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            updateToolStripMenuItem.Text = "Update to x";
-            updateToolStripMenuItem.Click += updateToolStripMenuItem_Click;
+            themesToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            themesToolStripMenuItem.Image = Properties.Resources.color_wheel;
+            themesToolStripMenuItem.Name = "themesToolStripMenuItem";
+            themesToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            themesToolStripMenuItem.Text = "Themes";
             // 
-            // aboutPieToolStripMenuItem
+            // showTerminalTabToolStripMenuItem
             // 
-            aboutPieToolStripMenuItem.Image = Properties.Resources.info;
-            aboutPieToolStripMenuItem.Name = "aboutPieToolStripMenuItem";
-            aboutPieToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            aboutPieToolStripMenuItem.Text = "About pie";
-            aboutPieToolStripMenuItem.Click += aboutPieToolStripMenuItem_Click;
+            showTerminalTabToolStripMenuItem.Image = Properties.Resources.terminal;
+            showTerminalTabToolStripMenuItem.Name = "showTerminalTabToolStripMenuItem";
+            showTerminalTabToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            showTerminalTabToolStripMenuItem.Text = "Show Terminal Tab";
+            showTerminalTabToolStripMenuItem.Click += showBuildToolsToolStripMenuItem_Click;
             // 
             // buildAndRunToolstripMenuItem
             // 
             buildAndRunToolstripMenuItem.Name = "buildAndRunToolstripMenuItem";
-            buildAndRunToolstripMenuItem.Size = new System.Drawing.Size(83, 20);
-            buildAndRunToolstripMenuItem.Text = "Build && Run";
+            buildAndRunToolstripMenuItem.Size = new System.Drawing.Size(46, 20);
+            buildAndRunToolstripMenuItem.Text = "Build";
             // 
             // mainMenuStrip
             // 
             mainMenuStrip.BackColor = System.Drawing.Color.White;
             mainMenuStrip.Font = new System.Drawing.Font("Segoe UI", 9F);
             mainMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, interfaceToolStripMenuItem, preferencesToolStripMenuItem, pluginsToolStripMenuItem, formatToolStripMenuItem, buildAndRunToolstripMenuItem });
+            mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, interfaceToolStripMenuItem, preferencesToolStripMenuItem, pluginsToolStripMenuItem, buildAndRunToolstripMenuItem, helpToolStripMenuItem });
             mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             mainMenuStrip.Name = "mainMenuStrip";
             mainMenuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            mainMenuStrip.Size = new System.Drawing.Size(1071, 24);
+            mainMenuStrip.Size = new System.Drawing.Size(1107, 24);
             mainMenuStrip.TabIndex = 1;
             mainMenuStrip.Text = "menuStrip1";
             // 
             // preferencesToolStripMenuItem
             // 
-            preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { buildCommandsToolStripMenuItem, databasesToolStripMenuItem, codeTemplatesToolStripMenuItem, gitSettingsToolStripMenuItem, enableWordWrapToolStripMenuItem, enableAutosaveToolStripMenuItem });
+            preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { buildCommandsToolStripMenuItem, gitSettingsToolStripMenuItem, databasesToolStripMenuItem, codeTemplatesToolStripMenuItem, formatToolStripMenuItem, enableWordWrapToolStripMenuItem, enableAutosaveToolStripMenuItem });
             preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            preferencesToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            preferencesToolStripMenuItem.Text = "Preferences";
+            preferencesToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            preferencesToolStripMenuItem.Text = "Configuration";
             // 
             // buildCommandsToolStripMenuItem
             // 
             buildCommandsToolStripMenuItem.Image = Properties.Resources.gears;
             buildCommandsToolStripMenuItem.Name = "buildCommandsToolStripMenuItem";
-            buildCommandsToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            buildCommandsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             buildCommandsToolStripMenuItem.Text = "Build Commands";
             buildCommandsToolStripMenuItem.Click += preferencesToolStripMenuItem_Click;
+            // 
+            // gitSettingsToolStripMenuItem
+            // 
+            gitSettingsToolStripMenuItem.Image = (System.Drawing.Image)resources.GetObject("gitSettingsToolStripMenuItem.Image");
+            gitSettingsToolStripMenuItem.Name = "gitSettingsToolStripMenuItem";
+            gitSettingsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            gitSettingsToolStripMenuItem.Text = "Git Settings";
+            gitSettingsToolStripMenuItem.Click += manageCommitCredentialsToolStripMenuItem_Click;
             // 
             // databasesToolStripMenuItem
             // 
             databasesToolStripMenuItem.Image = Properties.Resources.database;
             databasesToolStripMenuItem.Name = "databasesToolStripMenuItem";
-            databasesToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
-            databasesToolStripMenuItem.Text = "Databases";
+            databasesToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            databasesToolStripMenuItem.Text = "Database Connections";
             databasesToolStripMenuItem.Click += databasesToolStripMenuItem_Click;
             // 
             // codeTemplatesToolStripMenuItem
             // 
             codeTemplatesToolStripMenuItem.Image = (System.Drawing.Image)resources.GetObject("codeTemplatesToolStripMenuItem.Image");
             codeTemplatesToolStripMenuItem.Name = "codeTemplatesToolStripMenuItem";
-            codeTemplatesToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            codeTemplatesToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             codeTemplatesToolStripMenuItem.Text = "Code Templates";
             codeTemplatesToolStripMenuItem.Click += codeTemplatesToolStripMenuItem_Click;
             // 
-            // gitSettingsToolStripMenuItem
+            // formatToolStripMenuItem
             // 
-            gitSettingsToolStripMenuItem.Image = (System.Drawing.Image)resources.GetObject("gitSettingsToolStripMenuItem.Image");
-            gitSettingsToolStripMenuItem.Name = "gitSettingsToolStripMenuItem";
-            gitSettingsToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
-            gitSettingsToolStripMenuItem.Text = "Git Settings";
-            gitSettingsToolStripMenuItem.Click += manageCommitCredentialsToolStripMenuItem_Click;
+            formatToolStripMenuItem.Name = "formatToolStripMenuItem";
+            formatToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            formatToolStripMenuItem.Text = "Formatting Methods";
+            formatToolStripMenuItem.Click += smartFormatterToolStripMenuItem_Click;
             // 
             // enableWordWrapToolStripMenuItem
             // 
             enableWordWrapToolStripMenuItem.Image = Properties.Resources.paragraph;
             enableWordWrapToolStripMenuItem.Name = "enableWordWrapToolStripMenuItem";
-            enableWordWrapToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            enableWordWrapToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             enableWordWrapToolStripMenuItem.Text = "Enable Word Wrap";
             enableWordWrapToolStripMenuItem.Click += wordWrapToolStripMenuItem_Click;
             // 
@@ -485,7 +469,7 @@
             // 
             enableAutosaveToolStripMenuItem.Image = Properties.Resources.diskette__1_;
             enableAutosaveToolStripMenuItem.Name = "enableAutosaveToolStripMenuItem";
-            enableAutosaveToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            enableAutosaveToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             enableAutosaveToolStripMenuItem.Text = "Enable Autosave";
             enableAutosaveToolStripMenuItem.Click += enableAutosaveToolStripMenuItem_Click;
             // 
@@ -495,12 +479,36 @@
             pluginsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             pluginsToolStripMenuItem.Text = "Plugins";
             // 
-            // formatToolStripMenuItem
+            // helpToolStripMenuItem
             // 
-            formatToolStripMenuItem.Name = "formatToolStripMenuItem";
-            formatToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            formatToolStripMenuItem.Text = "Format";
-            formatToolStripMenuItem.Click += smartFormatterToolStripMenuItem_Click;
+            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { updateToolStripMenuItem, cheatsheetToolStripMenuItem, aboutPieToolStripMenuItem });
+            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            helpToolStripMenuItem.Text = "Help";
+            // 
+            // updateToolStripMenuItem
+            // 
+            updateToolStripMenuItem.Image = Properties.Resources.update;
+            updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            updateToolStripMenuItem.Size = new System.Drawing.Size(138, 26);
+            updateToolStripMenuItem.Text = "Update to x";
+            updateToolStripMenuItem.Click += updateToolStripMenuItem_Click;
+            // 
+            // cheatsheetToolStripMenuItem
+            // 
+            cheatsheetToolStripMenuItem.Image = Properties.Resources.open_book;
+            cheatsheetToolStripMenuItem.Name = "cheatsheetToolStripMenuItem";
+            cheatsheetToolStripMenuItem.Size = new System.Drawing.Size(138, 26);
+            cheatsheetToolStripMenuItem.Text = "Cheatsheet";
+            cheatsheetToolStripMenuItem.Click += cheatsheetToolStripMenuItem_Click;
+            // 
+            // aboutPieToolStripMenuItem
+            // 
+            aboutPieToolStripMenuItem.Image = Properties.Resources.info;
+            aboutPieToolStripMenuItem.Name = "aboutPieToolStripMenuItem";
+            aboutPieToolStripMenuItem.Size = new System.Drawing.Size(138, 26);
+            aboutPieToolStripMenuItem.Text = "About pie";
+            aboutPieToolStripMenuItem.Click += aboutPieToolStripMenuItem_Click;
             // 
             // kryptonRibbon1
             // 
@@ -621,11 +629,11 @@
             terminalTabControl.ControlKryptonFormFeatures = false;
             terminalTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             terminalTabControl.KryptonContextMenu = terminalContextMenu;
-            terminalTabControl.Location = new System.Drawing.Point(0, 332);
+            terminalTabControl.Location = new System.Drawing.Point(0, 283);
             terminalTabControl.NavigatorMode = Krypton.Navigator.NavigatorMode.BarTabGroup;
             terminalTabControl.Owner = null;
             terminalTabControl.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
-            terminalTabControl.Size = new System.Drawing.Size(1071, 214);
+            terminalTabControl.Size = new System.Drawing.Size(1107, 214);
             terminalTabControl.StateCommon.Tab.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             terminalTabControl.TabIndex = 3;
             terminalTabControl.Text = "kryptonNavigator1";
@@ -738,7 +746,7 @@
             // 
             kryptonSplitContainer.Panel2.Controls.Add(tabControl);
             kryptonSplitContainer.SeparatorStyle = Krypton.Toolkit.SeparatorStyle.HighProfile;
-            kryptonSplitContainer.Size = new System.Drawing.Size(1071, 308);
+            kryptonSplitContainer.Size = new System.Drawing.Size(1107, 259);
             kryptonSplitContainer.SplitterDistance = 225;
             kryptonSplitContainer.SplitterWidth = 3;
             kryptonSplitContainer.TabIndex = 13;
@@ -777,7 +785,7 @@
             sidebarTabControl.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
             sidebarTabControl.Pages.AddRange(new Krypton.Navigator.KryptonPage[] { explorerPage, gitPage });
             sidebarTabControl.SelectedIndex = 0;
-            sidebarTabControl.Size = new System.Drawing.Size(225, 308);
+            sidebarTabControl.Size = new System.Drawing.Size(225, 259);
             sidebarTabControl.StateCommon.Tab.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             sidebarTabControl.TabIndex = 14;
             sidebarTabControl.Text = "sidebarTabControl";
@@ -794,7 +802,7 @@
             explorerPage.LastVisibleSet = true;
             explorerPage.MinimumSize = new System.Drawing.Size(150, 50);
             explorerPage.Name = "explorerPage";
-            explorerPage.Size = new System.Drawing.Size(223, 281);
+            explorerPage.Size = new System.Drawing.Size(223, 232);
             explorerPage.Text = "Explorer";
             explorerPage.ToolTipTitle = "View the contents of the opened folder.";
             explorerPage.UniqueName = "d51b93d59f194a90a2d0f602b7566d8d";
@@ -813,7 +821,7 @@
             directoryNavigationTreeView.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             directoryNavigationTreeView.SelectedImageIndex = 0;
             directoryNavigationTreeView.ShowNodeToolTips = true;
-            directoryNavigationTreeView.Size = new System.Drawing.Size(223, 281);
+            directoryNavigationTreeView.Size = new System.Drawing.Size(223, 232);
             directoryNavigationTreeView.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
             directoryNavigationTreeView.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.None;
             directoryNavigationTreeView.TabIndex = 11;
@@ -1186,7 +1194,7 @@
             tabControl.NavigatorMode = Krypton.Navigator.NavigatorMode.BarTabGroup;
             tabControl.Owner = null;
             tabControl.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
-            tabControl.Size = new System.Drawing.Size(843, 308);
+            tabControl.Size = new System.Drawing.Size(879, 259);
             tabControl.StateCommon.Tab.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             tabControl.TabIndex = 2;
             tabControl.Text = "kryptonDockableNavigator1";
@@ -1204,7 +1212,7 @@
             AllowDrop = true;
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            ClientSize = new System.Drawing.Size(1071, 546);
+            ClientSize = new System.Drawing.Size(1107, 497);
             Controls.Add(kryptonSplitContainer);
             Controls.Add(terminalTabControl);
             Controls.Add(mainMenuStrip);
@@ -1304,7 +1312,6 @@
         private System.Windows.Forms.ToolStripMenuItem interfaceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showTerminalTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem themesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutPieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildAndRunToolstripMenuItem;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private Krypton.Ribbon.KryptonRibbon kryptonRibbon1;
@@ -1326,11 +1333,8 @@
         private System.Windows.Forms.ToolStripMenuItem databasesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableWordWrapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableAutosaveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem formatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableGlassEffectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cheatsheetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem themeDesignerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem codeTemplatesToolStripMenuItem;
         private Krypton.Navigator.KryptonNavigator terminalTabControl;
         private Krypton.Toolkit.KryptonButton logButton;
@@ -1370,6 +1374,11 @@
         private Krypton.Toolkit.KryptonContextMenu directoryContextMenu;
         private Krypton.Toolkit.KryptonButton mergeButton;
         private Krypton.Toolkit.KryptonButton newBranchButton;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cheatsheetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutPieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
     }
 }
 
