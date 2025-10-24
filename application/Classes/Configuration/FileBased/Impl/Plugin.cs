@@ -2,29 +2,28 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
 using pie.Classes.ConfigurationEntities;
-using plugin.Classes;
-using System;
+using plugin.Classes.Actions.Window;
+using plugin.Classes.Context;
+using plugin.Classes.UI.Containers;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace pie.Classes.Configuration.FileBased.Impl
 {
     public class Plugin : MultiFileConfigurationEntity
     {
         public object Instance { get; set; }
-        public string GetName()
+        public List<string> TaskNames { get; set; }
+        public Window InvokeTask(string taskName, PluginContext pluginContext)
         {
-            return (string)Instance.GetType().GetMethod("GetName").Invoke(Instance, null);
+            return (Window)Instance.GetType().GetMethod("OnInvokeTask").Invoke(Instance, new object[] { taskName, pluginContext });
         }
-        public Dictionary<PluginTask, Func<PluginTaskInput, PluginTaskOutput>> GetTasks()
+        public List<OnCreateFileAction> OnCreateFile(string fullFilePath, PluginContext pluginContext)
         {
-            return (Dictionary <PluginTask, Func <PluginTaskInput, PluginTaskOutput>>) Instance.GetType().GetMethod("GetTaskDictionary").Invoke(Instance, null);
+            return (List<OnCreateFileAction>)Instance.GetType().GetMethod("OnCreateFile").Invoke(Instance, new object[] { fullFilePath, pluginContext });
         }
-        public PluginTaskOutput InvokeTask(Func<PluginTaskInput, PluginTaskOutput> taskFunction, PluginTaskInput pluginTaskInput)
+        public List<OnOpenDirectoryAction> OnOpenDirectory(string directoryPath, PluginContext pluginContext)
         {
-            MethodInfo method = Instance.GetType().GetMethod(taskFunction.GetMethodInfo().Name);
-            var output = method.Invoke(Instance, [pluginTaskInput]);
-            return (PluginTaskOutput)output;
+            return (List<OnOpenDirectoryAction>)Instance.GetType().GetMethod("OnOpenDirectory").Invoke(Instance, new object[] { directoryPath, pluginContext });
         }
     }
 }

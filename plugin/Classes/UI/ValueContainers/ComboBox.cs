@@ -1,0 +1,25 @@
+﻿/* SPDX-FileCopyrightText: 2023-2025 Mario-Mihai Mateas <mateasmario@aol.com> */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+
+namespace plugin.Classes.UI.ValueContainers
+{
+    public class ComboBox : Control
+    {
+        public List<string> Items { get; set; } = new List<string>();
+        public int DefaultIndex { get; set; }
+
+        public ComboBox(string id, List<string> items)
+        {
+            Id = id;
+            Items = items;
+            DefaultIndex = 0;
+        }
+
+        public ComboBox(string id, List<string> items, int defaultIndex)
+        {
+            Id = id;
+            Items = items;
+            DefaultIndex = defaultIndex;
+        }
+    }
+}

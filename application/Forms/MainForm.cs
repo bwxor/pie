@@ -23,7 +23,6 @@ using BrightIdeasSoftware;
  * Copyright © The CefSharp Authors. All rights reserved.
  */
 using CefSharp;
-using CefSharp.DevTools.IndexedDB;
 using CefSharp.WinForms;
 /**
  * ConEmu.Winforms is used for integrating terminal features inside the application.
@@ -49,9 +48,10 @@ using LibGit2Sharp;
  * Copyright (c) 2018-2019, Alexandre Mutel
  */
 using Markdig;
-using Org.BouncyCastle.Asn1.X509;
 using pie.Classes;
 using pie.Classes.Configuration.FileBased.Impl;
+using pie.Classes.Form_IO.Output;
+using pie.Classes.PluginSupport;
 using pie.Constants;
 using pie.Enums;
 using pie.Forms.CodeTemplates;
@@ -62,6 +62,11 @@ using pie.Forms.Other;
 using pie.Forms.Theme;
 using pie.Services;
 using plugin.Classes;
+using plugin.Classes.Actions;
+using plugin.Classes.Actions.OnInvokeTask;
+using plugin.Classes.Actions.Window;
+using plugin.Classes.Context;
+
 /**
  * ScintillaNET provides the text editors used in pie.
  * 
@@ -90,15 +95,16 @@ namespace pie
         private ScintillaLexerService scintillaLexerService = new ScintillaLexerService();
         private SecureFileService secureFileService = new SecureFileService();
         private Win32APIService win32APIService = new Win32APIService();
-        private PluginContext pluginContext = new PluginContext();
+        private PluginPlaceholderReplaceService pluginPlaceholderReplaceService = new PluginPlaceholderReplaceService();
 
+        private PluginContext pluginContext;
         private List<TabInfo> tabInfos = new List<TabInfo>();
         private List<ThemeInfo> themeInfos;
         private List<BuildCommand> buildCommands;
         private List<DatabaseConnection> databases;
         private List<CodeTemplate> codeTemplates;
         private List<Formatter> formatters;
-        private List<Plugin> plugins;
+        private List<pie.Classes.Configuration.FileBased.Impl.Plugin> plugins;
         private List<LanguageDefinition> languageDefinitions;
         private List<LanguageMapping> languageMappings;
         private EditorProperties editorProperties;
@@ -344,20 +350,24 @@ namespace pie
 
         private void ProcessPlugins()
         {
-            plugins = configurationService.LoadPluginsFromFolder<Plugin>(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins"));
+            pluginContext = new PluginContext();
+            pluginContext.AppVersion = GetAppVersion();
 
-            foreach (Plugin plugin in plugins)
+            plugins = configurationService.LoadPluginsFromFolder<pie.Classes.Configuration.FileBased.Impl.Plugin>(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins"));
+
+            foreach (pie.Classes.Configuration.FileBased.Impl.Plugin plugin in plugins)
             {
                 ToolStripMenuItem pluginItem = new ToolStripMenuItem();
-                pluginItem.Text = plugin.GetName();
                 pluginsToolStripMenuItem.DropDownItems.Add(pluginItem);
 
-                Dictionary<PluginTask, Func<PluginTaskInput, PluginTaskOutput>> pluginTasks = plugin.GetTasks();
 
-                foreach (var pluginTask in pluginTasks)
+                pluginItem.Text = plugin.Name;
+                List<string> taskNames = plugin.TaskNames;
+
+                foreach (var taskName in taskNames)
                 {
                     ToolStripMenuItem taskItem = new ToolStripMenuItem();
-                    taskItem.Text = pluginTask.Key.Name;
+                    taskItem.Text = taskName;
                     taskItem.Tag = plugin.Name;
                     taskItem.Click += TaskItem_Click;
                     pluginItem.DropDownItems.Add(taskItem);
@@ -866,26 +876,36 @@ namespace pie
         {
             ToolStripMenuItem taskItem = (ToolStripMenuItem)sender;
 
-            foreach (Plugin plugin in plugins)
+            foreach (pie.Classes.Configuration.FileBased.Impl.Plugin plugin in plugins)
             {
                 if (plugin.Name.Equals(taskItem.Tag))
                 {
-                    foreach (var task in plugin.GetTasks())
+                    foreach (var taskName in plugin.TaskNames)
                     {
-                        if (task.Key.Name.Equals(taskItem.Text))
+                        if (taskName.Equals(taskItem.Text))
                         {
-                            PluginTaskInput pluginTaskInput = new PluginTaskInput();
+                            PluginForm pluginForm = new PluginForm();
 
-                            pluginTaskInput.Context = pluginContext;
-                            pluginTaskInput.Metadata = ProcessPluginInputMetadata();
-                            pluginTaskInput.Tabs = ProcessPluginInputTabs();
-                            pluginTaskInput.OpenedDirectory = openedFolder;
+                            PluginFormInput pluginFormInput = new PluginFormInput();
+                            pluginFormInput.EditorProperties = editorProperties;
+                            pluginFormInput.Palette = KryptonCustomPaletteBase;
+                            pluginFormInput.ActiveTheme = activeTheme;
+                            pluginFormInput.Plugin = plugin;
+                            pluginFormInput.TaskName = taskName;
 
-                            PluginTaskOutput pluginTaskOutput = plugin.InvokeTask(task.Value, pluginTaskInput);
+                            pluginContext.OpenedTabs = GetOpenedTabs();
+                            pluginContext.OpenedDirectory = openedFolder;
+                            pluginFormInput.PluginContext = pluginContext;
 
-                            if (pluginTaskOutput != null && pluginTaskOutput.Actions != null)
+                            pluginForm.Input = pluginFormInput;
+
+                            pluginForm.ShowDialog();
+
+                            PluginFormOutput pluginFormOutput = pluginForm.Output;
+
+                            if (pluginFormOutput != null && pluginFormOutput.ApplyChanges)
                             {
-                                ExecuteActions(pluginTaskOutput);
+                                ExecuteActions(pluginForm.Output.OnCloseActions, pluginFormOutput);
                             }
                         }
                     }
@@ -912,18 +932,14 @@ namespace pie
             return newPath;
         }
 
-        private Metadata ProcessPluginInputMetadata()
+        private string GetAppVersion()
         {
-            Metadata output = new Metadata();
-
-            output.Version = Assembly.GetEntryAssembly().GetName().Version.ToString();
-
-            return output;
+            return Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
 
-        private List<Tab> ProcessPluginInputTabs()
+        private List<FileContext> GetOpenedTabs()
         {
-            List<Tab> output = new List<Tab>();
+            List<FileContext> output = new List<FileContext>();
 
             for (int i = 0; i < tabInfos.Count; i++)
             {
@@ -931,10 +947,10 @@ namespace pie
 
                 if (tabInfo.getTabType().Equals(TabType.CODE))
                 {
-                    Tab tab = new Tab();
+                    FileContext tab = new FileContext();
                     tab.IsFileOpened = tabInfo.getOpenedFilePath() != null;
                     tab.FilePath = tabInfo.getOpenedFilePath();
-                    tab.Text = ((Scintilla)tabControl.Pages[i].Controls[0]).Text;
+                    tab.Title = ((Scintilla)tabControl.Pages[i].Controls[0]).Text;
                     output.Add(tab);
                 }
             }
@@ -942,19 +958,76 @@ namespace pie
             return output;
         }
 
-        private void ExecuteActions(PluginTaskOutput pluginTaskOutput)
+        private void ExecuteActions(List<OnWindowCloseAction> actions, PluginFormOutput pluginFormOutput)
         {
-            foreach (PluginAction action in pluginTaskOutput.Actions)
+            if (actions == null)
+            {
+                return;
+            }
+
+            // Do validation actions first
+            foreach (var action in actions)
+            {
+                if (action is ValidationAction)
+                {
+                    ValidationAction validationAction = (ValidationAction)action;
+                    if (pluginFormOutput.ControlKeyValues.ContainsKey(validationAction.VariableId))
+                    {
+                        bool status = validationAction.ValidationFunction(pluginFormOutput.ControlKeyValues[validationAction.VariableId]);
+                        if (status)
+                        {
+                            ShowNotification(validationAction.ErrorMessage);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Now do the GeneratorActions
+
+            int i = 0;
+            while (i != actions.Count)
+            {
+                if (actions[i] is GeneratorAction)
+                {
+                    GeneratorAction generatorAction = (GeneratorAction)actions[i];
+
+                    string[] parsedStrings = new string[generatorAction.Values.Length];
+
+                    for (int j = 0; j<generatorAction.Values.Length; j++)
+                    {
+                        parsedStrings[j] = pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(generatorAction.Values[j], pluginFormOutput.ControlKeyValues);
+                    }
+
+                    List<OnWindowCloseAction> generatedActions = generatorAction.GeneratorFunction(parsedStrings);
+
+                    foreach (var ea in generatedActions)
+                    {
+                        actions.Insert(i+1, ea);
+                        i++;
+                    }
+                }
+
+                i++;
+            }
+
+            // Now do other actions
+            foreach (var action in actions)
             {
                 if (action is CreateFileAction)
                 {
                     CreateFileAction createFileAction = (CreateFileAction)action;
-                    secureFileService.CreateFile(createFileAction.Path, createFileAction.Content);
+                    secureFileService.CreateFile(
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Path, pluginFormOutput.ControlKeyValues),
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Content, pluginFormOutput.ControlKeyValues)
+                    );
                 }
                 else if (action is CreateDirectoryAction)
                 {
                     CreateDirectoryAction createDirectoryAction = (CreateDirectoryAction)action;
-                    secureFileService.CreateDirectory(createDirectoryAction.DirectoryName);
+                    secureFileService.CreateDirectory(
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createDirectoryAction.DirectoryName, pluginFormOutput.ControlKeyValues)
+                        );
                 }
                 else if (action is ModifyEditorContentAction)
                 {
@@ -962,7 +1035,7 @@ namespace pie
 
                     int codeIndex = 0;
 
-                    for (int i = 0; i < tabInfos.Count; i++)
+                    for (int k = 0; k < tabInfos.Count; k++)
                     {
                         if (tabInfos.GetType().Equals(TabType.CODE))
                         {
@@ -975,39 +1048,60 @@ namespace pie
                     }
 
                     Scintilla scintilla = (Scintilla)tabControl.Pages[codeIndex].Controls[0];
-                    scintilla.Text = modifyEditorContentAction.Content;
+                    scintilla.Text =
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(modifyEditorContentAction.Content, pluginFormOutput.ControlKeyValues);
                 }
                 else if (action is SelectDirectoryAction)
                 {
                     SelectDirectoryAction selectDirectoryAction = (SelectDirectoryAction)action;
-                    NavigateToPath(selectDirectoryAction.Path);
+                    NavigateToPath(
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(selectDirectoryAction.Path, pluginFormOutput.ControlKeyValues));
                 }
-                else if (action is OpenTabAction)
+                else if (action is OpenFileAction)
                 {
-                    OpenTabAction openTabAction = (OpenTabAction)action;
+                    OpenFileAction openFileAction = (OpenFileAction)action;
                     NewTab(TabType.CODE, null);
-                    Open(openTabAction.Path);
+                    Open(
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(openFileAction.Path, pluginFormOutput.ControlKeyValues)
+                        );
                 }
-                else if (action is RunTerminalCommandAction)
+                else if (action is ExecuteTerminalCommandAction)
                 {
-                    RunTerminalCommandAction runTerminalCommandAction = (RunTerminalCommandAction)action;
+                    ExecuteTerminalCommandAction executeTerminalCommandAction = (ExecuteTerminalCommandAction)action;
                     ToggleTerminalTabControl(true);
 
-                    string command = runTerminalCommandAction.Command;
-
+                    string command =
+                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(executeTerminalCommandAction.Command, pluginFormOutput.ControlKeyValues);
                     int insertPosition = terminalTabControl.Pages.Count;
 
-                    for (int i = 0; i < terminalTabControl.Pages.Count; i++)
+                    for (int k = 0; k < terminalTabControl.Pages.Count; k++)
                     {
-                        if (terminalTabControl.Pages[i].Text.Equals(command))
+                        if (terminalTabControl.Pages[k].Text.Equals(command))
                         {
-                            insertPosition = i;
-                            terminalTabControl.Pages.Remove(terminalTabControl.Pages[i]);
+                            insertPosition = k;
+                            terminalTabControl.Pages.Remove(terminalTabControl.Pages[k]);
                             break;
                         }
                     }
 
                     NewTerminalTab(command, terminalTabControl.Pages.Count);
+                }
+                else if (action is StoreInContextAction)
+                {
+                    StoreInContextAction storeInContextAction = (StoreInContextAction)action;
+                    string valueToPutInContext = pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(storeInContextAction.Value, pluginFormOutput.ControlKeyValues);
+
+                    if (!string.IsNullOrEmpty(valueToPutInContext))
+                    {
+                        pluginContext.Custom[storeInContextAction.Key] = valueToPutInContext;
+                    }
+                    else
+                    {
+                        if (pluginContext.Custom.ContainsKey(storeInContextAction.Key))
+                        {
+                            pluginContext.Custom.Remove(storeInContextAction.Key);
+                        }
+                    }
                 }
             }
         }
@@ -1488,7 +1582,7 @@ namespace pie
         {
             if (e.Message != null)
             {
-                this.Invoke(new Action(() =>
+                this.Invoke(new System.Action(() =>
                 {
                     renderContextMenu.Close();
                 }));
@@ -2833,6 +2927,11 @@ namespace pie
             try
             {
                 repository = new Repository(openedFolder);
+
+                if (repository.Commits.Count() > 0)
+                {
+                    gitBranchesComboBox.Enabled = true;
+                }
             }
             catch (Exception)
             {
@@ -3001,6 +3100,7 @@ namespace pie
                             doNotShowBranchChangeNotification = true;
                             UpdateGitRepositoryInfo();
                             ShowNotification("Successfully commited.");
+                            gitBranchesComboBox.Enabled = true;
                         }
                     }
                 }
@@ -3619,17 +3719,22 @@ namespace pie
 
                 if (toolStripMenuItem.HasDropDownItems)
                 {
-                    foreach (ToolStripMenuItem toolStripMenuItemChild in toolStripMenuItem.DropDownItems)
+                    foreach (Object ts in toolStripMenuItem.DropDownItems)
                     {
-                        toolStripMenuItemChild.BackColor = activeTheme.Primary;
-                        toolStripMenuItemChild.ForeColor = activeTheme.Fore;
-
-                        if (toolStripMenuItemChild.HasDropDownItems)
+                        if (ts is ToolStripMenuItem)
                         {
-                            foreach (ToolStripMenuItem toolStripMenuItemChild2 in toolStripMenuItemChild.DropDownItems)
+                            ToolStripMenuItem toolStripMenuItemChild = ts as ToolStripMenuItem;
+
+                            toolStripMenuItemChild.BackColor = activeTheme.Primary;
+                            toolStripMenuItemChild.ForeColor = activeTheme.Fore;
+
+                            if (toolStripMenuItemChild.HasDropDownItems)
                             {
-                                toolStripMenuItemChild2.BackColor = activeTheme.Primary;
-                                toolStripMenuItemChild2.ForeColor = activeTheme.Fore;
+                                foreach (ToolStripMenuItem toolStripMenuItemChild2 in toolStripMenuItemChild.DropDownItems)
+                                {
+                                    toolStripMenuItemChild2.BackColor = activeTheme.Primary;
+                                    toolStripMenuItemChild2.ForeColor = activeTheme.Fore;
+                                }
                             }
                         }
                     }
@@ -3745,6 +3850,43 @@ namespace pie
                 openedGitRepository = false;
                 gitTabControl.SelectedIndex = 0;
             }
+
+            // Managing plugin listeners
+            List<OnOpenDirectoryAction> onOpenDirectoryActions = new List<OnOpenDirectoryAction>();
+
+            foreach (Classes.Configuration.FileBased.Impl.Plugin plugin in plugins)
+            {
+                List<OnOpenDirectoryAction> currList = plugin.OnOpenDirectory(path, pluginContext);
+                if (currList != null)
+                {
+                    foreach (var action in currList)
+                    {
+                        onOpenDirectoryActions.Add(action);
+                    }
+                }
+            }
+
+            foreach (OnOpenDirectoryAction action in onOpenDirectoryActions)
+            {
+                if (action is StoreInContextAction)
+                {
+                    StoreInContextAction storeInContextAction = (StoreInContextAction)action;
+                    string valueToPutInContext = storeInContextAction.Value;
+
+                    if (!string.IsNullOrEmpty(valueToPutInContext))
+                    {
+                        pluginContext.Custom[storeInContextAction.Key] = valueToPutInContext;
+                    }
+                    else
+                    {
+                        if (pluginContext.Custom.ContainsKey(storeInContextAction.Key))
+                        {
+                            pluginContext.Custom.Remove(storeInContextAction.Key);
+                        }
+                    }
+                }
+            }
+
         }
 
         private void FillExpandedNodes(List<KryptonTreeNode> expandedNodes, KryptonTreeNode rootNode)
@@ -4310,9 +4452,9 @@ namespace pie
                     e.CancelEdit = true;
                     return;
                 }
-                else if (e.Node.Tag.Equals(path) || string.IsNullOrEmpty(e.Label.Trim()))
+                else if (e.Node.Tag.Equals(path) || e.Label == null || string.IsNullOrEmpty(e.Label.Trim()))
                 {
-                    ShowNotification("File name cannot be empty.");
+                    //ShowNotification("File name cannot be empty.");
                     e.Node.EndEdit(true);
                     e.CancelEdit = true;
                     return;
@@ -4390,6 +4532,45 @@ namespace pie
             File.Create(src).Close();
             doNotShowBranchChangeNotification = true;
             UpdateGitRepositoryInfo(false);
+
+            List<OnCreateFileAction> onCreateFileActions = new List<OnCreateFileAction>();
+
+            foreach (Classes.Configuration.FileBased.Impl.Plugin plugin in plugins)
+            {
+                List<OnCreateFileAction> currList = plugin.OnCreateFile(src, pluginContext);
+                if (currList != null)
+                {
+                    foreach(var action in currList) {
+                        onCreateFileActions.Add(action);
+                    }
+                }
+            }
+
+            foreach(OnCreateFileAction action in onCreateFileActions)
+            {
+                if (action is AppendFileContentAction)
+                {
+                    AppendFileContentAction appendFileContentAction = (AppendFileContentAction)action;
+
+
+                    if (appendFileContentAction.OnBeginning)
+                    {
+                        string existing = File.Exists(src) ? File.ReadAllText(src) : string.Empty;
+                        string updated = appendFileContentAction.NewContent + existing;
+                        File.WriteAllText(src, updated);
+                    }
+                    else
+                    {
+                        string existing = File.Exists(src) ? File.ReadAllText(src) : string.Empty;
+                        string updated = existing + appendFileContentAction.NewContent;
+                        File.WriteAllText(src, updated);
+                    }
+                }
+            }
+
+            // New: Open file after it was created
+            NewTab(TabType.CODE, null);
+            Open(src);
         }
 
         private void RenameFile(string src, string dest)
