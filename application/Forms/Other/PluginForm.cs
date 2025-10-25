@@ -51,33 +51,33 @@ namespace pie.Forms.Other
         {
             Window window = Input.Plugin.InvokeTask(Input.TaskName, Input.PluginContext);
 
-            int height = 150;
+            //int height = 225;
 
-            foreach(plugin.Classes.UI.Control c in window.Controls)
-            {
-                if (c is plugin.Classes.UI.Decoration.Label)
-                {
-                    height += 20;
-                }
-                else if (c is plugin.Classes.UI.Decoration.SpaceDelimiter)
-                {
-                    height += 10;
-                }
-                else if (c is plugin.Classes.UI.Buttons.CheckButton)
-                {
-                    height += 20;
-                }
-                else if (c is plugin.Classes.UI.ValueContainers.TextBox || c is plugin.Classes.UI.ValueContainers.ComboBox)
-                {
-                    height += 20;
-                }
-                else
-                {
-                    height += 20;
-                }
-            }
+            //foreach(plugin.Classes.UI.Control c in window.Controls)
+            //{
+            //    if (c is plugin.Classes.UI.Decoration.Label)
+            //    {
+            //        height += 20;
+            //    }
+            //    else if (c is plugin.Classes.UI.Decoration.SpaceDelimiter)
+            //    {
+            //        height += 10;
+            //    }
+            //    else if (c is plugin.Classes.UI.Buttons.CheckButton)
+            //    {
+            //        height += 35;
+            //    }
+            //    else if (c is plugin.Classes.UI.ValueContainers.TextBox || c is plugin.Classes.UI.ValueContainers.ComboBox)
+            //    {
+            //        height += 35;
+            //    }
+            //    else
+            //    {
+            //        height += 35;
+            //    }
+            //}
 
-            this.Size = new Size(this.Width, height);
+            //this.Size = new Size(this.Width, height);
 
 
             themeService.SetPaletteToObjects(this, Input.Palette);
@@ -106,8 +106,8 @@ namespace pie.Forms.Other
 
                     if (control != null)
                     {
-                        TableLayoutPanel.RowCount += 1;
-                        TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        DynamicTableLayoutPanel.RowCount += 1;
+                        DynamicTableLayoutPanel.Controls.Add(controlToAdd, 0, DynamicTableLayoutPanel.RowCount - 1);
                         dynamicControls.Add(controlToAdd);
                     }
                 }
@@ -124,8 +124,8 @@ namespace pie.Forms.Other
 
                     if (control != null)
                     {
-                        TableLayoutPanel.RowCount += 1;
-                        TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        DynamicTableLayoutPanel.RowCount += 1;
+                        DynamicTableLayoutPanel.Controls.Add(controlToAdd, 0, DynamicTableLayoutPanel.RowCount - 1);
                         dynamicControls.Add(controlToAdd);
                     }
                 }
@@ -143,8 +143,8 @@ namespace pie.Forms.Other
 
                     if (control != null)
                     {
-                        TableLayoutPanel.RowCount += 1;
-                        TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        DynamicTableLayoutPanel.RowCount += 1;
+                        DynamicTableLayoutPanel.Controls.Add(controlToAdd, 0, DynamicTableLayoutPanel.RowCount - 1);
                         dynamicControls.Add(controlToAdd);
                     }
                 }
@@ -159,8 +159,8 @@ namespace pie.Forms.Other
 
                     if (control != null)
                     {
-                        TableLayoutPanel.RowCount += 1;
-                        TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        DynamicTableLayoutPanel.RowCount += 1;
+                        DynamicTableLayoutPanel.Controls.Add(controlToAdd, 0, DynamicTableLayoutPanel.RowCount - 1);
                         dynamicControls.Add(controlToAdd);
                     }
                 }
@@ -182,8 +182,8 @@ namespace pie.Forms.Other
 
                     if (control != null)
                     {
-                        TableLayoutPanel.RowCount += 1;
-                        TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        DynamicTableLayoutPanel.RowCount += 1;
+                        DynamicTableLayoutPanel.Controls.Add(controlToAdd, 0, DynamicTableLayoutPanel.RowCount - 1);
                         controlToAdd.Dock = DockStyle.Top;
                         dynamicControls.Add(controlToAdd);
                     }
@@ -222,8 +222,8 @@ namespace pie.Forms.Other
 
                     if (control != null)
                     {
-                        TableLayoutPanel.RowCount += 1;
-                        TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        DynamicTableLayoutPanel.RowCount += 1;
+                        DynamicTableLayoutPanel.Controls.Add(controlToAdd, 0, DynamicTableLayoutPanel.RowCount - 1);
                         dynamicControls.Add(kryptonTextBox);
                     }
                 }
@@ -260,8 +260,8 @@ namespace pie.Forms.Other
 
                     if (control != null)
                     {
-                        TableLayoutPanel.RowCount += 1;
-                        TableLayoutPanel.Controls.Add(controlToAdd, 0, TableLayoutPanel.RowCount - 1);
+                        DynamicTableLayoutPanel.RowCount += 1;
+                        DynamicTableLayoutPanel.Controls.Add(controlToAdd, 0, DynamicTableLayoutPanel.RowCount - 1);
                         dynamicControls.Add(kryptonTextBox);
                     }
                 }
@@ -269,8 +269,8 @@ namespace pie.Forms.Other
                 {
                     KryptonLabel label = new KryptonLabel();
                     label.Text = "";
-                    TableLayoutPanel.RowCount += 1;
-                    TableLayoutPanel.Controls.Add(label, 0, TableLayoutPanel.RowCount - 1);
+                    DynamicTableLayoutPanel.RowCount += 1;
+                    DynamicTableLayoutPanel.Controls.Add(label, 0, DynamicTableLayoutPanel.RowCount - 1);
                 }
             }
 

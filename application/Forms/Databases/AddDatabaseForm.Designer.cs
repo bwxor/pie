@@ -29,261 +29,295 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDatabaseForm));
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.postgresqlCheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.mssqlCheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.mysqlCheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.typeLabel = new Krypton.Toolkit.KryptonLabel();
-            this.hostnameTipLabel = new Krypton.Toolkit.KryptonLabel();
-            this.databaseConnectionNameTipLabel = new Krypton.Toolkit.KryptonLabel();
-            this.databasePasswordTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.passwordLabel = new Krypton.Toolkit.KryptonLabel();
-            this.databaseUsernameTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.usernameLabel = new Krypton.Toolkit.KryptonLabel();
-            this.testConnectionButton = new Krypton.Toolkit.KryptonButton();
-            this.databaseNameTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.databaseNameLabel = new Krypton.Toolkit.KryptonLabel();
-            this.databasePortTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.portLabel = new Krypton.Toolkit.KryptonLabel();
-            this.databaseHostnameTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.databaseConnectionNameTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.saveButton = new Krypton.Toolkit.KryptonButton();
-            this.databaseConnectionNameLabel = new Krypton.Toolkit.KryptonLabel();
-            this.hostnameLabel = new Krypton.Toolkit.KryptonLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            this.SuspendLayout();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            postgresqlCheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            mssqlCheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            mysqlCheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            typeLabel = new Krypton.Toolkit.KryptonLabel();
+            hostnameTipLabel = new Krypton.Toolkit.KryptonLabel();
+            databaseConnectionNameTipLabel = new Krypton.Toolkit.KryptonLabel();
+            databasePasswordTextBox = new Krypton.Toolkit.KryptonTextBox();
+            passwordLabel = new Krypton.Toolkit.KryptonLabel();
+            databaseUsernameTextBox = new Krypton.Toolkit.KryptonTextBox();
+            usernameLabel = new Krypton.Toolkit.KryptonLabel();
+            databaseNameTextBox = new Krypton.Toolkit.KryptonTextBox();
+            databaseNameLabel = new Krypton.Toolkit.KryptonLabel();
+            databasePortTextBox = new Krypton.Toolkit.KryptonTextBox();
+            portLabel = new Krypton.Toolkit.KryptonLabel();
+            databaseHostnameTextBox = new Krypton.Toolkit.KryptonTextBox();
+            databaseConnectionNameTextBox = new Krypton.Toolkit.KryptonTextBox();
+            databaseConnectionNameLabel = new Krypton.Toolkit.KryptonLabel();
+            hostnameLabel = new Krypton.Toolkit.KryptonLabel();
+            testConnectionButton = new Krypton.Toolkit.KryptonButton();
+            saveButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.postgresqlCheckButton);
-            this.mainPanel.Controls.Add(this.mssqlCheckButton);
-            this.mainPanel.Controls.Add(this.mysqlCheckButton);
-            this.mainPanel.Controls.Add(this.typeLabel);
-            this.mainPanel.Controls.Add(this.hostnameTipLabel);
-            this.mainPanel.Controls.Add(this.databaseConnectionNameTipLabel);
-            this.mainPanel.Controls.Add(this.databasePasswordTextBox);
-            this.mainPanel.Controls.Add(this.passwordLabel);
-            this.mainPanel.Controls.Add(this.databaseUsernameTextBox);
-            this.mainPanel.Controls.Add(this.usernameLabel);
-            this.mainPanel.Controls.Add(this.testConnectionButton);
-            this.mainPanel.Controls.Add(this.databaseNameTextBox);
-            this.mainPanel.Controls.Add(this.databaseNameLabel);
-            this.mainPanel.Controls.Add(this.databasePortTextBox);
-            this.mainPanel.Controls.Add(this.portLabel);
-            this.mainPanel.Controls.Add(this.databaseHostnameTextBox);
-            this.mainPanel.Controls.Add(this.databaseConnectionNameTextBox);
-            this.mainPanel.Controls.Add(this.saveButton);
-            this.mainPanel.Controls.Add(this.databaseConnectionNameLabel);
-            this.mainPanel.Controls.Add(this.hostnameLabel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(411, 416);
-            this.mainPanel.TabIndex = 7;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(postgresqlCheckButton);
+            mainPanel.Controls.Add(mssqlCheckButton);
+            mainPanel.Controls.Add(mysqlCheckButton);
+            mainPanel.Controls.Add(typeLabel);
+            mainPanel.Controls.Add(hostnameTipLabel);
+            mainPanel.Controls.Add(databaseConnectionNameTipLabel);
+            mainPanel.Controls.Add(databasePasswordTextBox);
+            mainPanel.Controls.Add(passwordLabel);
+            mainPanel.Controls.Add(databaseUsernameTextBox);
+            mainPanel.Controls.Add(usernameLabel);
+            mainPanel.Controls.Add(databaseNameTextBox);
+            mainPanel.Controls.Add(databaseNameLabel);
+            mainPanel.Controls.Add(databasePortTextBox);
+            mainPanel.Controls.Add(portLabel);
+            mainPanel.Controls.Add(databaseHostnameTextBox);
+            mainPanel.Controls.Add(databaseConnectionNameTextBox);
+            mainPanel.Controls.Add(databaseConnectionNameLabel);
+            mainPanel.Controls.Add(hostnameLabel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(490, 494);
+            mainPanel.TabIndex = 7;
             // 
             // postgresqlCheckButton
             // 
-            this.postgresqlCheckButton.Location = new System.Drawing.Point(277, 27);
-            this.postgresqlCheckButton.Name = "postgresqlCheckButton";
-            this.postgresqlCheckButton.Size = new System.Drawing.Size(128, 49);
-            this.postgresqlCheckButton.TabIndex = 20;
-            this.postgresqlCheckButton.Values.Image = global::pie.Properties.Resources.postgresql_black;
-            this.postgresqlCheckButton.Values.Text = "PostgreSQL";
-            this.postgresqlCheckButton.Click += new System.EventHandler(this.kryptonCheckButton1_Click);
+            postgresqlCheckButton.Location = new System.Drawing.Point(323, 31);
+            postgresqlCheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            postgresqlCheckButton.Name = "postgresqlCheckButton";
+            postgresqlCheckButton.Size = new System.Drawing.Size(149, 57);
+            postgresqlCheckButton.TabIndex = 20;
+            postgresqlCheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            postgresqlCheckButton.Values.Image = Properties.Resources.postgresql_black;
+            postgresqlCheckButton.Values.Text = "PostgreSQL";
+            postgresqlCheckButton.Click += kryptonCheckButton1_Click;
             // 
             // mssqlCheckButton
             // 
-            this.mssqlCheckButton.Location = new System.Drawing.Point(143, 27);
-            this.mssqlCheckButton.Name = "mssqlCheckButton";
-            this.mssqlCheckButton.Size = new System.Drawing.Size(128, 49);
-            this.mssqlCheckButton.TabIndex = 19;
-            this.mssqlCheckButton.Values.Image = global::pie.Properties.Resources.microsoft_black;
-            this.mssqlCheckButton.Values.Text = " Microsoft SQL";
-            this.mssqlCheckButton.Click += new System.EventHandler(this.kryptonCheckButton1_Click);
+            mssqlCheckButton.Location = new System.Drawing.Point(167, 31);
+            mssqlCheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mssqlCheckButton.Name = "mssqlCheckButton";
+            mssqlCheckButton.Size = new System.Drawing.Size(149, 57);
+            mssqlCheckButton.TabIndex = 19;
+            mssqlCheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            mssqlCheckButton.Values.Image = Properties.Resources.microsoft_black;
+            mssqlCheckButton.Values.Text = " Microsoft SQL";
+            mssqlCheckButton.Click += kryptonCheckButton1_Click;
             // 
             // mysqlCheckButton
             // 
-            this.mysqlCheckButton.Location = new System.Drawing.Point(8, 27);
-            this.mysqlCheckButton.Name = "mysqlCheckButton";
-            this.mysqlCheckButton.Size = new System.Drawing.Size(128, 49);
-            this.mysqlCheckButton.TabIndex = 18;
-            this.mysqlCheckButton.Values.Image = global::pie.Properties.Resources.mysql_black;
-            this.mysqlCheckButton.Values.Text = "MySQL";
-            this.mysqlCheckButton.Click += new System.EventHandler(this.kryptonCheckButton1_Click);
+            mysqlCheckButton.Location = new System.Drawing.Point(9, 31);
+            mysqlCheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mysqlCheckButton.Name = "mysqlCheckButton";
+            mysqlCheckButton.Size = new System.Drawing.Size(149, 57);
+            mysqlCheckButton.TabIndex = 18;
+            mysqlCheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            mysqlCheckButton.Values.Image = Properties.Resources.mysql_black;
+            mysqlCheckButton.Values.Text = "MySQL";
+            mysqlCheckButton.Click += kryptonCheckButton1_Click;
             // 
             // typeLabel
             // 
-            this.typeLabel.Location = new System.Drawing.Point(5, 3);
-            this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(37, 20);
-            this.typeLabel.TabIndex = 17;
-            this.typeLabel.Values.Text = "Type";
+            typeLabel.Location = new System.Drawing.Point(6, 3);
+            typeLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            typeLabel.Name = "typeLabel";
+            typeLabel.Size = new System.Drawing.Size(37, 20);
+            typeLabel.TabIndex = 17;
+            typeLabel.Values.Text = "Type";
             // 
             // hostnameTipLabel
             // 
-            this.hostnameTipLabel.Location = new System.Drawing.Point(5, 194);
-            this.hostnameTipLabel.Name = "hostnameTipLabel";
-            this.hostnameTipLabel.Size = new System.Drawing.Size(393, 14);
-            this.hostnameTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hostnameTipLabel.TabIndex = 15;
-            this.hostnameTipLabel.Values.Text = "This is the server your database is hosted on. Try \'localhost\' if your database i" +
-    "s hosted locally.";
+            hostnameTipLabel.Location = new System.Drawing.Point(6, 224);
+            hostnameTipLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            hostnameTipLabel.Name = "hostnameTipLabel";
+            hostnameTipLabel.Size = new System.Drawing.Size(393, 14);
+            hostnameTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            hostnameTipLabel.TabIndex = 15;
+            hostnameTipLabel.Values.Text = "This is the server your database is hosted on. Try 'localhost' if your database is hosted locally.";
             // 
             // databaseConnectionNameTipLabel
             // 
-            this.databaseConnectionNameTipLabel.Location = new System.Drawing.Point(5, 131);
-            this.databaseConnectionNameTipLabel.Name = "databaseConnectionNameTipLabel";
-            this.databaseConnectionNameTipLabel.Size = new System.Drawing.Size(313, 14);
-            this.databaseConnectionNameTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.databaseConnectionNameTipLabel.TabIndex = 14;
-            this.databaseConnectionNameTipLabel.Values.Text = "This specifies only how you want the connection to be displayed in the list.";
+            databaseConnectionNameTipLabel.Location = new System.Drawing.Point(6, 151);
+            databaseConnectionNameTipLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseConnectionNameTipLabel.Name = "databaseConnectionNameTipLabel";
+            databaseConnectionNameTipLabel.Size = new System.Drawing.Size(313, 14);
+            databaseConnectionNameTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            databaseConnectionNameTipLabel.TabIndex = 14;
+            databaseConnectionNameTipLabel.Values.Text = "This specifies only how you want the connection to be displayed in the list.";
             // 
             // databasePasswordTextBox
             // 
-            this.databasePasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.databasePasswordTextBox.Location = new System.Drawing.Point(7, 334);
-            this.databasePasswordTextBox.Name = "databasePasswordTextBox";
-            this.databasePasswordTextBox.PasswordChar = '*';
-            this.databasePasswordTextBox.Size = new System.Drawing.Size(395, 23);
-            this.databasePasswordTextBox.TabIndex = 6;
+            databasePasswordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            databasePasswordTextBox.Location = new System.Drawing.Point(8, 385);
+            databasePasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databasePasswordTextBox.Name = "databasePasswordTextBox";
+            databasePasswordTextBox.PasswordChar = '*';
+            databasePasswordTextBox.Size = new System.Drawing.Size(464, 23);
+            databasePasswordTextBox.TabIndex = 6;
             // 
             // passwordLabel
             // 
-            this.passwordLabel.Location = new System.Drawing.Point(3, 313);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(62, 20);
-            this.passwordLabel.TabIndex = 13;
-            this.passwordLabel.Values.Text = "Password";
+            passwordLabel.Location = new System.Drawing.Point(4, 361);
+            passwordLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            passwordLabel.Name = "passwordLabel";
+            passwordLabel.Size = new System.Drawing.Size(62, 20);
+            passwordLabel.TabIndex = 13;
+            passwordLabel.Values.Text = "Password";
             // 
             // databaseUsernameTextBox
             // 
-            this.databaseUsernameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.databaseUsernameTextBox.Location = new System.Drawing.Point(7, 284);
-            this.databaseUsernameTextBox.Name = "databaseUsernameTextBox";
-            this.databaseUsernameTextBox.Size = new System.Drawing.Size(395, 23);
-            this.databaseUsernameTextBox.TabIndex = 5;
+            databaseUsernameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            databaseUsernameTextBox.Location = new System.Drawing.Point(8, 328);
+            databaseUsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseUsernameTextBox.Name = "databaseUsernameTextBox";
+            databaseUsernameTextBox.Size = new System.Drawing.Size(464, 23);
+            databaseUsernameTextBox.TabIndex = 5;
             // 
             // usernameLabel
             // 
-            this.usernameLabel.Location = new System.Drawing.Point(3, 263);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(65, 20);
-            this.usernameLabel.TabIndex = 11;
-            this.usernameLabel.Values.Text = "Username";
-            // 
-            // testConnectionButton
-            // 
-            this.testConnectionButton.Location = new System.Drawing.Point(208, 376);
-            this.testConnectionButton.Name = "testConnectionButton";
-            this.testConnectionButton.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.testConnectionButton.Size = new System.Drawing.Size(110, 25);
-            this.testConnectionButton.TabIndex = 7;
-            this.testConnectionButton.Values.Text = "Test Connection";
-            this.testConnectionButton.Click += new System.EventHandler(this.kryptonButton2_Click);
+            usernameLabel.Location = new System.Drawing.Point(4, 303);
+            usernameLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            usernameLabel.Name = "usernameLabel";
+            usernameLabel.Size = new System.Drawing.Size(65, 20);
+            usernameLabel.TabIndex = 11;
+            usernameLabel.Values.Text = "Username";
             // 
             // databaseNameTextBox
             // 
-            this.databaseNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.databaseNameTextBox.Location = new System.Drawing.Point(8, 234);
-            this.databaseNameTextBox.Name = "databaseNameTextBox";
-            this.databaseNameTextBox.Size = new System.Drawing.Size(395, 23);
-            this.databaseNameTextBox.TabIndex = 4;
+            databaseNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            databaseNameTextBox.Location = new System.Drawing.Point(9, 270);
+            databaseNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseNameTextBox.Name = "databaseNameTextBox";
+            databaseNameTextBox.Size = new System.Drawing.Size(464, 23);
+            databaseNameTextBox.TabIndex = 4;
             // 
             // databaseNameLabel
             // 
-            this.databaseNameLabel.Location = new System.Drawing.Point(4, 213);
-            this.databaseNameLabel.Name = "databaseNameLabel";
-            this.databaseNameLabel.Size = new System.Drawing.Size(97, 20);
-            this.databaseNameLabel.TabIndex = 8;
-            this.databaseNameLabel.Values.Text = "Database Name";
+            databaseNameLabel.Location = new System.Drawing.Point(5, 246);
+            databaseNameLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseNameLabel.Name = "databaseNameLabel";
+            databaseNameLabel.Size = new System.Drawing.Size(97, 20);
+            databaseNameLabel.TabIndex = 8;
+            databaseNameLabel.Values.Text = "Database Name";
             // 
             // databasePortTextBox
             // 
-            this.databasePortTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.databasePortTextBox.Location = new System.Drawing.Point(310, 170);
-            this.databasePortTextBox.Name = "databasePortTextBox";
-            this.databasePortTextBox.Size = new System.Drawing.Size(93, 23);
-            this.databasePortTextBox.TabIndex = 3;
+            databasePortTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            databasePortTextBox.Location = new System.Drawing.Point(362, 196);
+            databasePortTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databasePortTextBox.Name = "databasePortTextBox";
+            databasePortTextBox.Size = new System.Drawing.Size(111, 23);
+            databasePortTextBox.TabIndex = 3;
             // 
             // portLabel
             // 
-            this.portLabel.Location = new System.Drawing.Point(306, 149);
-            this.portLabel.Name = "portLabel";
-            this.portLabel.Size = new System.Drawing.Size(33, 20);
-            this.portLabel.TabIndex = 6;
-            this.portLabel.Values.Text = "Port";
+            portLabel.Location = new System.Drawing.Point(357, 172);
+            portLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            portLabel.Name = "portLabel";
+            portLabel.Size = new System.Drawing.Size(33, 20);
+            portLabel.TabIndex = 6;
+            portLabel.Values.Text = "Port";
             // 
             // databaseHostnameTextBox
             // 
-            this.databaseHostnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.databaseHostnameTextBox.Location = new System.Drawing.Point(8, 170);
-            this.databaseHostnameTextBox.Name = "databaseHostnameTextBox";
-            this.databaseHostnameTextBox.Size = new System.Drawing.Size(296, 23);
-            this.databaseHostnameTextBox.TabIndex = 2;
+            databaseHostnameTextBox.Location = new System.Drawing.Point(9, 196);
+            databaseHostnameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseHostnameTextBox.Name = "databaseHostnameTextBox";
+            databaseHostnameTextBox.Size = new System.Drawing.Size(340, 23);
+            databaseHostnameTextBox.TabIndex = 2;
             // 
             // databaseConnectionNameTextBox
             // 
-            this.databaseConnectionNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.databaseConnectionNameTextBox.Location = new System.Drawing.Point(8, 106);
-            this.databaseConnectionNameTextBox.Name = "databaseConnectionNameTextBox";
-            this.databaseConnectionNameTextBox.Size = new System.Drawing.Size(395, 23);
-            this.databaseConnectionNameTextBox.TabIndex = 0;
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(324, 376);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.saveButton.Size = new System.Drawing.Size(79, 25);
-            this.saveButton.TabIndex = 8;
-            this.saveButton.Values.Text = "Save";
-            this.saveButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            databaseConnectionNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            databaseConnectionNameTextBox.Location = new System.Drawing.Point(9, 122);
+            databaseConnectionNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseConnectionNameTextBox.Name = "databaseConnectionNameTextBox";
+            databaseConnectionNameTextBox.Size = new System.Drawing.Size(464, 23);
+            databaseConnectionNameTextBox.TabIndex = 0;
             // 
             // databaseConnectionNameLabel
             // 
-            this.databaseConnectionNameLabel.Location = new System.Drawing.Point(4, 85);
-            this.databaseConnectionNameLabel.Name = "databaseConnectionNameLabel";
-            this.databaseConnectionNameLabel.Size = new System.Drawing.Size(86, 20);
-            this.databaseConnectionNameLabel.TabIndex = 2;
-            this.databaseConnectionNameLabel.Values.Text = "Display Name";
+            databaseConnectionNameLabel.Location = new System.Drawing.Point(5, 98);
+            databaseConnectionNameLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseConnectionNameLabel.Name = "databaseConnectionNameLabel";
+            databaseConnectionNameLabel.Size = new System.Drawing.Size(86, 20);
+            databaseConnectionNameLabel.TabIndex = 2;
+            databaseConnectionNameLabel.Values.Text = "Display Name";
             // 
             // hostnameLabel
             // 
-            this.hostnameLabel.Location = new System.Drawing.Point(4, 149);
-            this.hostnameLabel.Name = "hostnameLabel";
-            this.hostnameLabel.Size = new System.Drawing.Size(66, 20);
-            this.hostnameLabel.TabIndex = 3;
-            this.hostnameLabel.Values.Text = "Hostname";
+            hostnameLabel.Location = new System.Drawing.Point(5, 172);
+            hostnameLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            hostnameLabel.Name = "hostnameLabel";
+            hostnameLabel.Size = new System.Drawing.Size(66, 20);
+            hostnameLabel.TabIndex = 3;
+            hostnameLabel.Values.Text = "Hostname";
+            // 
+            // testConnectionButton
+            // 
+            testConnectionButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            testConnectionButton.Location = new System.Drawing.Point(244, 20);
+            testConnectionButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            testConnectionButton.Name = "testConnectionButton";
+            testConnectionButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            testConnectionButton.Size = new System.Drawing.Size(128, 29);
+            testConnectionButton.TabIndex = 7;
+            testConnectionButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            testConnectionButton.Values.Text = "Test Connection";
+            testConnectionButton.Click += kryptonButton2_Click;
+            // 
+            // saveButton
+            // 
+            saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            saveButton.Location = new System.Drawing.Point(379, 20);
+            saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            saveButton.Name = "saveButton";
+            saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            saveButton.Size = new System.Drawing.Size(92, 29);
+            saveButton.TabIndex = 8;
+            saveButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            saveButton.Values.Text = "Save";
+            saveButton.Click += kryptonButton1_Click;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(saveButton);
+            ButtonPanel.Controls.Add(testConnectionButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 433);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(490, 61);
+            ButtonPanel.TabIndex = 8;
             // 
             // AddDatabaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 416);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "AddDatabaseForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add / Edit Database";
-            this.Load += new System.EventHandler(this.AddDatabaseForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(490, 494);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "AddDatabaseForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Add / Edit Database";
+            Load += AddDatabaseForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -310,5 +344,6 @@
         private Krypton.Toolkit.KryptonCheckButton mysqlCheckButton;
         private Krypton.Toolkit.KryptonCheckButton mssqlCheckButton;
         private Krypton.Toolkit.KryptonCheckButton postgresqlCheckButton;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

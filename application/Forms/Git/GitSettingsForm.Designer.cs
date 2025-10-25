@@ -42,12 +42,16 @@
             saveButton = new Krypton.Toolkit.KryptonButton();
             authorNameLabel = new Krypton.Toolkit.KryptonLabel();
             authorEmailLabel = new Krypton.Toolkit.KryptonLabel();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
+            mainPanel.AutoSize = true;
             mainPanel.Controls.Add(proxyTipLabel);
             mainPanel.Controls.Add(proxyTextBox);
             mainPanel.Controls.Add(proxyLabel);
@@ -57,14 +61,13 @@
             mainPanel.Controls.Add(remoteServerPasswordLabel);
             mainPanel.Controls.Add(authorEmailTextBox);
             mainPanel.Controls.Add(authorNameTextBox);
-            mainPanel.Controls.Add(saveButton);
             mainPanel.Controls.Add(authorNameLabel);
             mainPanel.Controls.Add(authorEmailLabel);
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(480, 366);
+            mainPanel.Size = new System.Drawing.Size(487, 374);
             mainPanel.TabIndex = 8;
             // 
             // proxyTipLabel
@@ -82,7 +85,7 @@
             proxyTextBox.Location = new System.Drawing.Point(9, 268);
             proxyTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             proxyTextBox.Name = "proxyTextBox";
-            proxyTextBox.Size = new System.Drawing.Size(461, 23);
+            proxyTextBox.Size = new System.Drawing.Size(466, 23);
             proxyTextBox.TabIndex = 20;
             // 
             // proxyLabel
@@ -101,7 +104,7 @@
             remoteServerPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             remoteServerPasswordTextBox.Name = "remoteServerPasswordTextBox";
             remoteServerPasswordTextBox.PasswordChar = '●';
-            remoteServerPasswordTextBox.Size = new System.Drawing.Size(461, 23);
+            remoteServerPasswordTextBox.Size = new System.Drawing.Size(466, 23);
             remoteServerPasswordTextBox.TabIndex = 3;
             // 
             // remoteServerUsernameTextBox
@@ -110,7 +113,7 @@
             remoteServerUsernameTextBox.Location = new System.Drawing.Point(9, 152);
             remoteServerUsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             remoteServerUsernameTextBox.Name = "remoteServerUsernameTextBox";
-            remoteServerUsernameTextBox.Size = new System.Drawing.Size(462, 23);
+            remoteServerUsernameTextBox.Size = new System.Drawing.Size(467, 23);
             remoteServerUsernameTextBox.TabIndex = 2;
             // 
             // remoteServerUsernameLabel
@@ -137,7 +140,7 @@
             authorEmailTextBox.Location = new System.Drawing.Point(9, 95);
             authorEmailTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             authorEmailTextBox.Name = "authorEmailTextBox";
-            authorEmailTextBox.Size = new System.Drawing.Size(461, 23);
+            authorEmailTextBox.Size = new System.Drawing.Size(466, 23);
             authorEmailTextBox.TabIndex = 1;
             // 
             // authorNameTextBox
@@ -146,12 +149,13 @@
             authorNameTextBox.Location = new System.Drawing.Point(9, 37);
             authorNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             authorNameTextBox.Name = "authorNameTextBox";
-            authorNameTextBox.Size = new System.Drawing.Size(462, 23);
+            authorNameTextBox.Size = new System.Drawing.Size(467, 23);
             authorNameTextBox.TabIndex = 0;
             // 
             // saveButton
             // 
-            saveButton.Location = new System.Drawing.Point(378, 330);
+            saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            saveButton.Location = new System.Drawing.Point(384, 11);
             saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             saveButton.Name = "saveButton";
             saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -179,11 +183,22 @@
             authorEmailLabel.TabIndex = 3;
             authorEmailLabel.Values.Text = "Author Email";
             // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(saveButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 327);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(487, 47);
+            ButtonPanel.TabIndex = 9;
+            // 
             // GitSettingsForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(480, 366);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(487, 374);
+            Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -197,7 +212,10 @@
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -216,5 +234,6 @@
         private Krypton.Toolkit.KryptonTextBox proxyTextBox;
         private Krypton.Toolkit.KryptonLabel proxyLabel;
         private Krypton.Toolkit.KryptonLabel proxyTipLabel;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

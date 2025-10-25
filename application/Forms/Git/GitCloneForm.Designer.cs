@@ -36,13 +36,16 @@
             cloneIntoTextBox = new Krypton.Toolkit.KryptonTextBox();
             repositoryURLTextBox = new Krypton.Toolkit.KryptonTextBox();
             browseButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
-            mainPanel.Controls.Add(cloneButton);
+            mainPanel.AutoSize = true;
             mainPanel.Controls.Add(cloneIntoLabel);
             mainPanel.Controls.Add(repositoryURLLabel);
             mainPanel.Controls.Add(cloneIntoTextBox);
@@ -52,12 +55,13 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(637, 171);
+            mainPanel.Size = new System.Drawing.Size(601, 200);
             mainPanel.TabIndex = 3;
             // 
             // cloneButton
             // 
-            cloneButton.Location = new System.Drawing.Point(545, 133);
+            cloneButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            cloneButton.Location = new System.Drawing.Point(499, 6);
             cloneButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             cloneButton.Name = "cloneButton";
             cloneButton.Size = new System.Drawing.Size(89, 29);
@@ -89,7 +93,7 @@
             cloneIntoTextBox.Location = new System.Drawing.Point(14, 83);
             cloneIntoTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             cloneIntoTextBox.Name = "cloneIntoTextBox";
-            cloneIntoTextBox.Size = new System.Drawing.Size(524, 23);
+            cloneIntoTextBox.Size = new System.Drawing.Size(473, 23);
             cloneIntoTextBox.TabIndex = 3;
             // 
             // repositoryURLTextBox
@@ -97,25 +101,36 @@
             repositoryURLTextBox.Location = new System.Drawing.Point(14, 29);
             repositoryURLTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             repositoryURLTextBox.Name = "repositoryURLTextBox";
-            repositoryURLTextBox.Size = new System.Drawing.Size(524, 23);
+            repositoryURLTextBox.Size = new System.Drawing.Size(473, 23);
             repositoryURLTextBox.TabIndex = 2;
             // 
             // browseButton
             // 
-            browseButton.Location = new System.Drawing.Point(545, 83);
+            browseButton.Location = new System.Drawing.Point(495, 82);
             browseButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             browseButton.Name = "browseButton";
-            browseButton.Size = new System.Drawing.Size(89, 29);
+            browseButton.Size = new System.Drawing.Size(89, 28);
             browseButton.TabIndex = 1;
             browseButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             browseButton.Values.Text = "Browse";
             browseButton.Click += kryptonButton1_Click_1;
             // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(cloneButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 162);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(601, 38);
+            ButtonPanel.TabIndex = 4;
+            // 
             // GitCloneForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(637, 171);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(601, 200);
+            Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -129,7 +144,10 @@
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -142,5 +160,6 @@
         private Krypton.Toolkit.KryptonTextBox cloneIntoTextBox;
         private Krypton.Toolkit.KryptonTextBox repositoryURLTextBox;
         private Krypton.Toolkit.KryptonButton browseButton;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

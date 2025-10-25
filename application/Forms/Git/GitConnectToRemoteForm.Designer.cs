@@ -33,25 +33,29 @@
             connectButton = new Krypton.Toolkit.KryptonButton();
             repositoryURLLabel = new Krypton.Toolkit.KryptonLabel();
             repositoryURLTextBox = new Krypton.Toolkit.KryptonTextBox();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
-            mainPanel.Controls.Add(connectButton);
+            mainPanel.AutoSize = true;
             mainPanel.Controls.Add(repositoryURLLabel);
             mainPanel.Controls.Add(repositoryURLTextBox);
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(448, 112);
+            mainPanel.Size = new System.Drawing.Size(452, 107);
             mainPanel.TabIndex = 4;
             // 
             // connectButton
             // 
-            connectButton.Location = new System.Drawing.Point(349, 74);
+            connectButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            connectButton.Location = new System.Drawing.Point(350, 4);
             connectButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             connectButton.Name = "connectButton";
             connectButton.Size = new System.Drawing.Size(89, 29);
@@ -71,17 +75,29 @@
             // 
             // repositoryURLTextBox
             // 
+            repositoryURLTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             repositoryURLTextBox.Location = new System.Drawing.Point(14, 29);
             repositoryURLTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             repositoryURLTextBox.Name = "repositoryURLTextBox";
             repositoryURLTextBox.Size = new System.Drawing.Size(424, 23);
             repositoryURLTextBox.TabIndex = 2;
             // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(connectButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 71);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(452, 36);
+            ButtonPanel.TabIndex = 5;
+            // 
             // GitConnectToRemoteForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(448, 112);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(452, 107);
+            Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -94,7 +110,10 @@
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -103,5 +122,6 @@
         private Krypton.Toolkit.KryptonButton connectButton;
         private Krypton.Toolkit.KryptonLabel repositoryURLLabel;
         private Krypton.Toolkit.KryptonTextBox repositoryURLTextBox;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

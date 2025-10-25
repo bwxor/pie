@@ -31,22 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotificationFatalForm));
             mainPanel = new Krypton.Toolkit.KryptonPanel();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            okButton = new Krypton.Toolkit.KryptonButton();
             titleLabel = new Krypton.Toolkit.KryptonLabel();
+            okButton = new Krypton.Toolkit.KryptonButton();
+            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
+            kryptonPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
+            mainPanel.AutoSize = true;
             mainPanel.Controls.Add(kryptonLabel1);
-            mainPanel.Controls.Add(okButton);
             mainPanel.Controls.Add(titleLabel);
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(367, 288);
+            mainPanel.Size = new System.Drawing.Size(382, 337);
             mainPanel.StateCommon.Color1 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.StateCommon.Color2 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.TabIndex = 7;
@@ -62,19 +65,6 @@
             kryptonLabel1.TabIndex = 8;
             kryptonLabel1.Values.Text = resources.GetString("kryptonLabel1.Values.Text");
             // 
-            // okButton
-            // 
-            okButton.Location = new System.Drawing.Point(283, 254);
-            okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            okButton.Name = "okButton";
-            okButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            okButton.Size = new System.Drawing.Size(74, 29);
-            okButton.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            okButton.TabIndex = 6;
-            okButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
-            okButton.Values.Text = "OK";
-            okButton.Click += okButton_Click;
-            // 
             // titleLabel
             // 
             titleLabel.Location = new System.Drawing.Point(0, 10);
@@ -87,12 +77,39 @@
             titleLabel.TabIndex = 5;
             titleLabel.Values.Text = "Oops... something's not right";
             // 
+            // okButton
+            // 
+            okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            okButton.Location = new System.Drawing.Point(304, 30);
+            okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            okButton.Name = "okButton";
+            okButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            okButton.Size = new System.Drawing.Size(74, 29);
+            okButton.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            okButton.TabIndex = 6;
+            okButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            okButton.Values.Text = "OK";
+            okButton.Click += okButton_Click;
+            // 
+            // kryptonPanel1
+            // 
+            kryptonPanel1.Controls.Add(okButton);
+            kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            kryptonPanel1.Location = new System.Drawing.Point(0, 266);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new System.Drawing.Size(382, 71);
+            kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(192, 0, 0);
+            kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.FromArgb(192, 0, 0);
+            kryptonPanel1.TabIndex = 8;
+            // 
             // NotificationFatalForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(365, 294);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(382, 337);
             ControlBox = false;
+            Controls.Add(kryptonPanel1);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -116,7 +133,10 @@
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
+            kryptonPanel1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -124,7 +144,8 @@
 
         private Krypton.Toolkit.KryptonPanel mainPanel;
         private Krypton.Toolkit.KryptonLabel titleLabel;
-        private Krypton.Toolkit.KryptonButton okButton;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonButton okButton;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }

@@ -32,31 +32,36 @@
             mainPanel = new Krypton.Toolkit.KryptonPanel();
             commitMessageRichTextBox = new Krypton.Toolkit.KryptonRichTextBox();
             saveButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
+            mainPanel.AutoSize = true;
             mainPanel.Controls.Add(commitMessageRichTextBox);
-            mainPanel.Controls.Add(saveButton);
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(410, 159);
+            mainPanel.Size = new System.Drawing.Size(313, 177);
             mainPanel.TabIndex = 3;
             // 
             // commitMessageRichTextBox
             // 
+            commitMessageRichTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             commitMessageRichTextBox.Location = new System.Drawing.Point(3, 12);
             commitMessageRichTextBox.Name = "commitMessageRichTextBox";
-            commitMessageRichTextBox.Size = new System.Drawing.Size(405, 96);
+            commitMessageRichTextBox.Size = new System.Drawing.Size(310, 119);
             commitMessageRichTextBox.TabIndex = 3;
             commitMessageRichTextBox.Text = "";
             // 
             // saveButton
             // 
-            saveButton.Location = new System.Drawing.Point(331, 126);
+            saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            saveButton.Location = new System.Drawing.Point(234, 8);
             saveButton.Name = "saveButton";
             saveButton.Size = new System.Drawing.Size(76, 25);
             saveButton.TabIndex = 1;
@@ -64,11 +69,22 @@
             saveButton.Values.Text = "Save";
             saveButton.Click += saveButton_Click;
             // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(saveButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 137);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(313, 40);
+            ButtonPanel.TabIndex = 4;
+            // 
             // GitCommitMessageForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(410, 159);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(313, 177);
+            Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -80,7 +96,10 @@
             Load += GitCommitMessageForm_Load;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -88,5 +107,6 @@
         private Krypton.Toolkit.KryptonPanel mainPanel;
         private Krypton.Toolkit.KryptonButton saveButton;
         private Krypton.Toolkit.KryptonRichTextBox commitMessageRichTextBox;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

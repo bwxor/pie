@@ -175,6 +175,7 @@ namespace pie
              * Temporal coupling between ProcessCommandLineArguments and the initialization methods.
              * ProcessCommandLineArguments is called after the configuration data is loaded from files and the dynamic design is set.
              */
+            AutoScaleMode = AutoScaleMode.None;
             EnableDoubleBuffering();
             InitializeComponent();
             GetConfigurationDataFromFiles();
@@ -2927,11 +2928,6 @@ namespace pie
             try
             {
                 repository = new Repository(openedFolder);
-
-                if (repository.Commits.Count() > 0)
-                {
-                    gitBranchesComboBox.Enabled = true;
-                }
             }
             catch (Exception)
             {
@@ -3100,7 +3096,6 @@ namespace pie
                             doNotShowBranchChangeNotification = true;
                             UpdateGitRepositoryInfo();
                             ShowNotification("Successfully commited.");
-                            gitBranchesComboBox.Enabled = true;
                         }
                     }
                 }

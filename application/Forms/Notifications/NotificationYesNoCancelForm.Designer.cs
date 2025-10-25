@@ -30,42 +30,44 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotificationYesNoCancelForm));
             mainPanel = new Krypton.Toolkit.KryptonPanel();
-            contentRichTextBox = new Krypton.Toolkit.KryptonRichTextBox();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             yesButton = new Krypton.Toolkit.KryptonButton();
-            noButton = new Krypton.Toolkit.KryptonButton();
             cancelButton = new Krypton.Toolkit.KryptonButton();
+            noButton = new Krypton.Toolkit.KryptonButton();
+            contentRichTextBox = new Krypton.Toolkit.KryptonRichTextBox();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
+            mainPanel.Controls.Add(ButtonPanel);
             mainPanel.Controls.Add(contentRichTextBox);
-            mainPanel.Controls.Add(yesButton);
-            mainPanel.Controls.Add(noButton);
-            mainPanel.Controls.Add(cancelButton);
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(435, 103);
+            mainPanel.Padding = new System.Windows.Forms.Padding(5);
+            mainPanel.Size = new System.Drawing.Size(445, 121);
             mainPanel.TabIndex = 8;
             // 
-            // contentRichTextBox
+            // ButtonPanel
             // 
-            contentRichTextBox.Location = new System.Drawing.Point(4, 9);
-            contentRichTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            contentRichTextBox.Name = "contentRichTextBox";
-            contentRichTextBox.ReadOnly = true;
-            contentRichTextBox.Size = new System.Drawing.Size(420, 52);
-            contentRichTextBox.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            contentRichTextBox.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            contentRichTextBox.TabIndex = 3;
-            contentRichTextBox.Text = "";
+            ButtonPanel.Controls.Add(yesButton);
+            ButtonPanel.Controls.Add(cancelButton);
+            ButtonPanel.Controls.Add(noButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(5, 65);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(435, 51);
+            ButtonPanel.TabIndex = 4;
             // 
             // yesButton
             // 
-            yesButton.Location = new System.Drawing.Point(183, 74);
+            yesButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            yesButton.Location = new System.Drawing.Point(199, 17);
             yesButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             yesButton.Name = "yesButton";
             yesButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -75,21 +77,10 @@
             yesButton.Values.Text = "Yes";
             yesButton.Click += kryptonButton3_Click;
             // 
-            // noButton
-            // 
-            noButton.Location = new System.Drawing.Point(264, 74);
-            noButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            noButton.Name = "noButton";
-            noButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            noButton.Size = new System.Drawing.Size(74, 29);
-            noButton.TabIndex = 1;
-            noButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
-            noButton.Values.Text = "No";
-            noButton.Click += kryptonButton2_Click;
-            // 
             // cancelButton
             // 
-            cancelButton.Location = new System.Drawing.Point(344, 74);
+            cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            cancelButton.Location = new System.Drawing.Point(360, 17);
             cancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             cancelButton.Name = "cancelButton";
             cancelButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -99,11 +90,38 @@
             cancelButton.Values.Text = "Cancel";
             cancelButton.Click += kryptonButton1_Click;
             // 
+            // noButton
+            // 
+            noButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            noButton.Location = new System.Drawing.Point(280, 17);
+            noButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            noButton.Name = "noButton";
+            noButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            noButton.Size = new System.Drawing.Size(74, 29);
+            noButton.TabIndex = 1;
+            noButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            noButton.Values.Text = "No";
+            noButton.Click += kryptonButton2_Click;
+            // 
+            // contentRichTextBox
+            // 
+            contentRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            contentRichTextBox.Location = new System.Drawing.Point(5, 5);
+            contentRichTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            contentRichTextBox.Name = "contentRichTextBox";
+            contentRichTextBox.ReadOnly = true;
+            contentRichTextBox.Size = new System.Drawing.Size(435, 111);
+            contentRichTextBox.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            contentRichTextBox.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            contentRichTextBox.TabIndex = 3;
+            contentRichTextBox.Text = "";
+            // 
             // NotificationYesNoCancelForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(435, 103);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(445, 121);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -115,6 +133,8 @@
             Load += NotificationYesNoCancel_Load;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
 
         }
@@ -126,5 +146,6 @@
         private Krypton.Toolkit.KryptonButton noButton;
         private Krypton.Toolkit.KryptonButton cancelButton;
         private Krypton.Toolkit.KryptonRichTextBox contentRichTextBox;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

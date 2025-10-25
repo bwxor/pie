@@ -50,12 +50,13 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(488, 98);
+            mainPanel.Size = new System.Drawing.Size(479, 111);
             mainPanel.TabIndex = 8;
             // 
             // matchWholeWordCheckBox
             // 
-            matchWholeWordCheckBox.Location = new System.Drawing.Point(213, 66);
+            matchWholeWordCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            matchWholeWordCheckBox.Location = new System.Drawing.Point(214, 67);
             matchWholeWordCheckBox.Name = "matchWholeWordCheckBox";
             matchWholeWordCheckBox.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             matchWholeWordCheckBox.Size = new System.Drawing.Size(125, 22);
@@ -64,7 +65,8 @@
             // 
             // matchCaseCheckBox
             // 
-            matchCaseCheckBox.Location = new System.Drawing.Point(128, 66);
+            matchCaseCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            matchCaseCheckBox.Location = new System.Drawing.Point(129, 67);
             matchCaseCheckBox.Name = "matchCaseCheckBox";
             matchCaseCheckBox.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             matchCaseCheckBox.Size = new System.Drawing.Size(85, 22);
@@ -73,7 +75,8 @@
             // 
             // regularExpressionCheckBox
             // 
-            regularExpressionCheckBox.Location = new System.Drawing.Point(5, 66);
+            regularExpressionCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            regularExpressionCheckBox.Location = new System.Drawing.Point(6, 67);
             regularExpressionCheckBox.Name = "regularExpressionCheckBox";
             regularExpressionCheckBox.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             regularExpressionCheckBox.Size = new System.Drawing.Size(126, 22);
@@ -83,9 +86,10 @@
             // 
             // findTextBox
             // 
-            findTextBox.Location = new System.Drawing.Point(3, 11);
+            findTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            findTextBox.Location = new System.Drawing.Point(4, 11);
             findTextBox.Name = "findTextBox";
-            findTextBox.Size = new System.Drawing.Size(358, 23);
+            findTextBox.Size = new System.Drawing.Size(347, 23);
             findTextBox.TabIndex = 1;
             findTextBox.Text = "Find...";
             findTextBox.KeyDown += findTextBox_KeyDown;
@@ -93,9 +97,10 @@
             // 
             // replaceTextBox
             // 
-            replaceTextBox.Location = new System.Drawing.Point(3, 38);
+            replaceTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            replaceTextBox.Location = new System.Drawing.Point(4, 38);
             replaceTextBox.Name = "replaceTextBox";
-            replaceTextBox.Size = new System.Drawing.Size(358, 23);
+            replaceTextBox.Size = new System.Drawing.Size(347, 23);
             replaceTextBox.TabIndex = 3;
             replaceTextBox.Text = "Replace...";
             replaceTextBox.KeyDown += replaceTextBox_KeyDown;
@@ -103,7 +108,8 @@
             // 
             // kryptonButton3
             // 
-            kryptonButton3.Location = new System.Drawing.Point(366, 65);
+            kryptonButton3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            kryptonButton3.Location = new System.Drawing.Point(361, 65);
             kryptonButton3.Name = "kryptonButton3";
             kryptonButton3.Size = new System.Drawing.Size(114, 25);
             kryptonButton3.TabIndex = 15;
@@ -114,7 +120,8 @@
             // 
             // kryptonButton2
             // 
-            kryptonButton2.Location = new System.Drawing.Point(366, 38);
+            kryptonButton2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            kryptonButton2.Location = new System.Drawing.Point(361, 38);
             kryptonButton2.Name = "kryptonButton2";
             kryptonButton2.Size = new System.Drawing.Size(114, 25);
             kryptonButton2.TabIndex = 4;
@@ -125,7 +132,8 @@
             // 
             // kryptonButton1
             // 
-            kryptonButton1.Location = new System.Drawing.Point(366, 11);
+            kryptonButton1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            kryptonButton1.Location = new System.Drawing.Point(361, 11);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.Size = new System.Drawing.Size(114, 25);
             kryptonButton1.StateTracking.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -139,7 +147,8 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(488, 98);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(479, 111);
             Controls.Add(findTextBox);
             Controls.Add(replaceTextBox);
             Controls.Add(kryptonButton3);

@@ -1,19 +1,20 @@
 ﻿/* SPDX-FileCopyrightText: 2023-2025 Mario-Mihai Mateas <mateasmario@aol.com> */
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
-using System;
-using System.Windows.Forms;
-using pie.Services;
-using pie.Classes;
-
+using Krypton.Navigator;
 /** 
  * Krypton Suite's Standard Toolkit was often used in order to design the .NET controls found inside this application.
  * 
  * Copyright (c) 2017 - 2022, Krypton Suite
 */
 using Krypton.Toolkit;
-using System.IO;
+using pie.Classes;
 using pie.Constants;
+using pie.Services;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace pie.Forms.Theme
 {
@@ -182,6 +183,32 @@ namespace pie.Forms.Theme
                 ThemeInfo themeInfo = new ThemeInfo();
                 themeInfo.Name = newThemeForm.Output.NewThemeName;
 
+                themeInfo.Primary = Input.ActiveTheme.Primary;
+                themeInfo.Secondary = Input.ActiveTheme.Secondary;
+                themeInfo.Button = Input.ActiveTheme.Button;
+                themeInfo.ButtonFrame = Input.ActiveTheme.ButtonFrame;
+                themeInfo.ButtonHover= Input.ActiveTheme.ButtonHover;
+                themeInfo.Fore = Input.ActiveTheme.Fore;
+                themeInfo.FormBorder = Input.ActiveTheme.FormBorder;
+                themeInfo.Selection = Input.ActiveTheme.Selection;
+                themeInfo.CaretLineBack = Input.ActiveTheme.CaretLineBack;
+                themeInfo.NumberMargin = Input.ActiveTheme.NumberMargin;
+                themeInfo.Folding = Input.ActiveTheme.Folding;
+                themeInfo.Comment = Input.ActiveTheme.Comment;
+                themeInfo.CommentLine = Input.ActiveTheme.CommentLine;
+                themeInfo.CommentBlock = Input.ActiveTheme.CommentBlock;
+                themeInfo.Number = Input.ActiveTheme.Number;
+                themeInfo.Word = Input.ActiveTheme.Word;
+                themeInfo.String = Input.ActiveTheme.String;
+                themeInfo.Operator = Input.ActiveTheme.Operator;
+                themeInfo.Preprocessor= Input.ActiveTheme.Preprocessor;
+                themeInfo.Triple= Input.ActiveTheme.Triple;
+                themeInfo.Decorator= Input.ActiveTheme.Decorator;
+                themeInfo.Attribute= Input.ActiveTheme.Attribute;
+                themeInfo.Entity= Input.ActiveTheme.Entity;
+                themeInfo.User1= Input.ActiveTheme.User1;
+                themeInfo.User2= Input.ActiveTheme.User2;
+
                 Input.ThemeInfos.Add(themeInfo);
                 themeListView.AddObject(themeInfo);
             }
@@ -195,7 +222,15 @@ namespace pie.Forms.Theme
             if (dialogResult == DialogResult.OK)
             {
                 KryptonPanel kryptonPanel = (KryptonPanel)sender;
-                kryptonPanel.StateCommon.Color1 = colorDialog.Color;
+                 
+                if (colorDialog.Color.Equals(Color.Fuchsia))
+                {
+                    kryptonPanel.StateCommon.Color1 = Color.FromArgb(255, 250, 0, 250);
+                }
+                else
+                {
+                    kryptonPanel.StateCommon.Color1 = colorDialog.Color;
+                }
 
                 int indexOfPanel = kryptonPanel.Name.IndexOf("Panel");
                 string propertyName = kryptonPanel.Name.Remove(indexOfPanel, "Panel".Length);

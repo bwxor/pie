@@ -29,203 +29,246 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CodeTemplatesForm));
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.textAreaPanel = new Krypton.Toolkit.KryptonPanel();
-            this.placeholderLabel = new Krypton.Toolkit.KryptonLabel();
-            this.template0CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template9CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template8CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template7CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template6CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template5CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template4CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template3CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template2CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.template1CheckButton = new Krypton.Toolkit.KryptonCheckButton();
-            this.tipLabel = new Krypton.Toolkit.KryptonLabel();
-            this.saveButton = new Krypton.Toolkit.KryptonButton();
-            this.buttonPanel = new Krypton.Toolkit.KryptonPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textAreaPanel)).BeginInit();
-            this.textAreaPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonPanel)).BeginInit();
-            this.buttonPanel.SuspendLayout();
-            this.SuspendLayout();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            HotkeyPanel = new Krypton.Toolkit.KryptonPanel();
+            template1CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            tipLabel = new Krypton.Toolkit.KryptonLabel();
+            template6CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template0CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template5CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template2CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template7CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template9CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template4CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template3CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            template8CheckButton = new Krypton.Toolkit.KryptonCheckButton();
+            textAreaPanel = new Krypton.Toolkit.KryptonPanel();
+            placeholderLabel = new Krypton.Toolkit.KryptonLabel();
+            saveButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)HotkeyPanel).BeginInit();
+            HotkeyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)textAreaPanel).BeginInit();
+            textAreaPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.buttonPanel);
-            this.mainPanel.Controls.Add(this.textAreaPanel);
-            this.mainPanel.Controls.Add(this.saveButton);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(412, 416);
-            this.mainPanel.TabIndex = 8;
+            mainPanel.Controls.Add(HotkeyPanel);
+            mainPanel.Controls.Add(textAreaPanel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(475, 535);
+            mainPanel.TabIndex = 8;
             // 
-            // textAreaPanel
+            // HotkeyPanel
             // 
-            this.textAreaPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textAreaPanel.Controls.Add(this.placeholderLabel);
-            this.textAreaPanel.Location = new System.Drawing.Point(11, 76);
-            this.textAreaPanel.Name = "textAreaPanel";
-            this.textAreaPanel.Size = new System.Drawing.Size(391, 285);
-            this.textAreaPanel.TabIndex = 28;
-            // 
-            // placeholderLabel
-            // 
-            this.placeholderLabel.Location = new System.Drawing.Point(105, 126);
-            this.placeholderLabel.Name = "placeholderLabel";
-            this.placeholderLabel.Size = new System.Drawing.Size(177, 20);
-            this.placeholderLabel.TabIndex = 0;
-            this.placeholderLabel.Values.Text = "Select a hotkey to begin with...";
-            // 
-            // template0CheckButton
-            // 
-            this.template0CheckButton.Location = new System.Drawing.Point(335, 8);
-            this.template0CheckButton.Name = "template0CheckButton";
-            this.template0CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template0CheckButton.TabIndex = 27;
-            this.template0CheckButton.Values.Text = "0";
-            // 
-            // template9CheckButton
-            // 
-            this.template9CheckButton.Location = new System.Drawing.Point(300, 8);
-            this.template9CheckButton.Name = "template9CheckButton";
-            this.template9CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template9CheckButton.TabIndex = 26;
-            this.template9CheckButton.Values.Text = "9";
-            // 
-            // template8CheckButton
-            // 
-            this.template8CheckButton.Location = new System.Drawing.Point(265, 8);
-            this.template8CheckButton.Name = "template8CheckButton";
-            this.template8CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template8CheckButton.TabIndex = 25;
-            this.template8CheckButton.Values.Text = "8";
-            // 
-            // template7CheckButton
-            // 
-            this.template7CheckButton.Location = new System.Drawing.Point(230, 8);
-            this.template7CheckButton.Name = "template7CheckButton";
-            this.template7CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template7CheckButton.TabIndex = 24;
-            this.template7CheckButton.Values.Text = "7";
-            // 
-            // template6CheckButton
-            // 
-            this.template6CheckButton.Location = new System.Drawing.Point(195, 8);
-            this.template6CheckButton.Name = "template6CheckButton";
-            this.template6CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template6CheckButton.TabIndex = 23;
-            this.template6CheckButton.Values.Text = "6";
-            // 
-            // template5CheckButton
-            // 
-            this.template5CheckButton.Location = new System.Drawing.Point(160, 8);
-            this.template5CheckButton.Name = "template5CheckButton";
-            this.template5CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template5CheckButton.TabIndex = 22;
-            this.template5CheckButton.Values.Text = "5";
-            // 
-            // template4CheckButton
-            // 
-            this.template4CheckButton.Location = new System.Drawing.Point(125, 8);
-            this.template4CheckButton.Name = "template4CheckButton";
-            this.template4CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template4CheckButton.TabIndex = 21;
-            this.template4CheckButton.Values.Text = "4";
-            // 
-            // template3CheckButton
-            // 
-            this.template3CheckButton.Location = new System.Drawing.Point(90, 8);
-            this.template3CheckButton.Name = "template3CheckButton";
-            this.template3CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template3CheckButton.TabIndex = 20;
-            this.template3CheckButton.Values.Text = "3";
-            // 
-            // template2CheckButton
-            // 
-            this.template2CheckButton.Location = new System.Drawing.Point(55, 8);
-            this.template2CheckButton.Name = "template2CheckButton";
-            this.template2CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template2CheckButton.TabIndex = 19;
-            this.template2CheckButton.Values.Text = "2";
+            HotkeyPanel.AutoSize = true;
+            HotkeyPanel.Controls.Add(template1CheckButton);
+            HotkeyPanel.Controls.Add(tipLabel);
+            HotkeyPanel.Controls.Add(template6CheckButton);
+            HotkeyPanel.Controls.Add(template0CheckButton);
+            HotkeyPanel.Controls.Add(template5CheckButton);
+            HotkeyPanel.Controls.Add(template2CheckButton);
+            HotkeyPanel.Controls.Add(template7CheckButton);
+            HotkeyPanel.Controls.Add(template9CheckButton);
+            HotkeyPanel.Controls.Add(template4CheckButton);
+            HotkeyPanel.Controls.Add(template3CheckButton);
+            HotkeyPanel.Controls.Add(template8CheckButton);
+            HotkeyPanel.Location = new System.Drawing.Point(13, 14);
+            HotkeyPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            HotkeyPanel.Name = "HotkeyPanel";
+            HotkeyPanel.Size = new System.Drawing.Size(456, 67);
+            HotkeyPanel.TabIndex = 30;
             // 
             // template1CheckButton
             // 
-            this.template1CheckButton.Location = new System.Drawing.Point(20, 8);
-            this.template1CheckButton.Name = "template1CheckButton";
-            this.template1CheckButton.Size = new System.Drawing.Size(35, 25);
-            this.template1CheckButton.TabIndex = 18;
-            this.template1CheckButton.Values.Text = "1";
+            template1CheckButton.Location = new System.Drawing.Point(23, 9);
+            template1CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template1CheckButton.Name = "template1CheckButton";
+            template1CheckButton.Size = new System.Drawing.Size(41, 29);
+            template1CheckButton.TabIndex = 18;
+            template1CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template1CheckButton.Values.Text = "1";
             // 
             // tipLabel
             // 
-            this.tipLabel.Location = new System.Drawing.Point(39, 36);
-            this.tipLabel.Name = "tipLabel";
-            this.tipLabel.Size = new System.Drawing.Size(317, 14);
-            this.tipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipLabel.TabIndex = 15;
-            this.tipLabel.Values.Text = "Code Templates are activated by pressing the Ctrl + (0-9) key combination.";
+            tipLabel.Location = new System.Drawing.Point(46, 42);
+            tipLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tipLabel.Name = "tipLabel";
+            tipLabel.Size = new System.Drawing.Size(317, 14);
+            tipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tipLabel.TabIndex = 15;
+            tipLabel.Values.Text = "Code Templates are activated by pressing the Ctrl + (0-9) key combination.";
+            // 
+            // template6CheckButton
+            // 
+            template6CheckButton.Location = new System.Drawing.Point(227, 9);
+            template6CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template6CheckButton.Name = "template6CheckButton";
+            template6CheckButton.Size = new System.Drawing.Size(41, 29);
+            template6CheckButton.TabIndex = 23;
+            template6CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template6CheckButton.Values.Text = "6";
+            // 
+            // template0CheckButton
+            // 
+            template0CheckButton.Location = new System.Drawing.Point(391, 9);
+            template0CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template0CheckButton.Name = "template0CheckButton";
+            template0CheckButton.Size = new System.Drawing.Size(41, 29);
+            template0CheckButton.TabIndex = 27;
+            template0CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template0CheckButton.Values.Text = "0";
+            // 
+            // template5CheckButton
+            // 
+            template5CheckButton.Location = new System.Drawing.Point(187, 9);
+            template5CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template5CheckButton.Name = "template5CheckButton";
+            template5CheckButton.Size = new System.Drawing.Size(41, 29);
+            template5CheckButton.TabIndex = 22;
+            template5CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template5CheckButton.Values.Text = "5";
+            // 
+            // template2CheckButton
+            // 
+            template2CheckButton.Location = new System.Drawing.Point(64, 9);
+            template2CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template2CheckButton.Name = "template2CheckButton";
+            template2CheckButton.Size = new System.Drawing.Size(41, 29);
+            template2CheckButton.TabIndex = 19;
+            template2CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template2CheckButton.Values.Text = "2";
+            // 
+            // template7CheckButton
+            // 
+            template7CheckButton.Location = new System.Drawing.Point(268, 9);
+            template7CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template7CheckButton.Name = "template7CheckButton";
+            template7CheckButton.Size = new System.Drawing.Size(41, 29);
+            template7CheckButton.TabIndex = 24;
+            template7CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template7CheckButton.Values.Text = "7";
+            // 
+            // template9CheckButton
+            // 
+            template9CheckButton.Location = new System.Drawing.Point(350, 9);
+            template9CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template9CheckButton.Name = "template9CheckButton";
+            template9CheckButton.Size = new System.Drawing.Size(41, 29);
+            template9CheckButton.TabIndex = 26;
+            template9CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template9CheckButton.Values.Text = "9";
+            // 
+            // template4CheckButton
+            // 
+            template4CheckButton.Location = new System.Drawing.Point(146, 9);
+            template4CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template4CheckButton.Name = "template4CheckButton";
+            template4CheckButton.Size = new System.Drawing.Size(41, 29);
+            template4CheckButton.TabIndex = 21;
+            template4CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template4CheckButton.Values.Text = "4";
+            // 
+            // template3CheckButton
+            // 
+            template3CheckButton.Location = new System.Drawing.Point(105, 9);
+            template3CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template3CheckButton.Name = "template3CheckButton";
+            template3CheckButton.Size = new System.Drawing.Size(41, 29);
+            template3CheckButton.TabIndex = 20;
+            template3CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template3CheckButton.Values.Text = "3";
+            // 
+            // template8CheckButton
+            // 
+            template8CheckButton.Location = new System.Drawing.Point(309, 9);
+            template8CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template8CheckButton.Name = "template8CheckButton";
+            template8CheckButton.Size = new System.Drawing.Size(41, 29);
+            template8CheckButton.TabIndex = 25;
+            template8CheckButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            template8CheckButton.Values.Text = "8";
+            // 
+            // textAreaPanel
+            // 
+            textAreaPanel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textAreaPanel.AutoSize = true;
+            textAreaPanel.Controls.Add(placeholderLabel);
+            textAreaPanel.Location = new System.Drawing.Point(13, 88);
+            textAreaPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textAreaPanel.Name = "textAreaPanel";
+            textAreaPanel.Size = new System.Drawing.Size(448, 390);
+            textAreaPanel.TabIndex = 28;
+            // 
+            // placeholderLabel
+            // 
+            placeholderLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            placeholderLabel.Location = new System.Drawing.Point(146, 145);
+            placeholderLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            placeholderLabel.Name = "placeholderLabel";
+            placeholderLabel.Size = new System.Drawing.Size(177, 20);
+            placeholderLabel.TabIndex = 0;
+            placeholderLabel.Values.Text = "Select a hotkey to begin with...";
             // 
             // saveButton
             // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(324, 376);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.saveButton.Size = new System.Drawing.Size(79, 25);
-            this.saveButton.TabIndex = 8;
-            this.saveButton.Values.Text = "Save";
-            this.saveButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            saveButton.Location = new System.Drawing.Point(370, 16);
+            saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            saveButton.Name = "saveButton";
+            saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            saveButton.Size = new System.Drawing.Size(92, 29);
+            saveButton.TabIndex = 8;
+            saveButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            saveButton.Values.Text = "Save";
+            saveButton.Click += kryptonButton1_Click;
             // 
-            // buttonPanel
+            // ButtonPanel
             // 
-            this.buttonPanel.Controls.Add(this.template1CheckButton);
-            this.buttonPanel.Controls.Add(this.tipLabel);
-            this.buttonPanel.Controls.Add(this.template6CheckButton);
-            this.buttonPanel.Controls.Add(this.template0CheckButton);
-            this.buttonPanel.Controls.Add(this.template5CheckButton);
-            this.buttonPanel.Controls.Add(this.template2CheckButton);
-            this.buttonPanel.Controls.Add(this.template7CheckButton);
-            this.buttonPanel.Controls.Add(this.template9CheckButton);
-            this.buttonPanel.Controls.Add(this.template4CheckButton);
-            this.buttonPanel.Controls.Add(this.template3CheckButton);
-            this.buttonPanel.Controls.Add(this.template8CheckButton);
-            this.buttonPanel.Location = new System.Drawing.Point(11, 12);
-            this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(391, 58);
-            this.buttonPanel.TabIndex = 30;
+            ButtonPanel.Controls.Add(saveButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 478);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(475, 57);
+            ButtonPanel.TabIndex = 9;
             // 
             // CodeTemplatesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 416);
-            this.Controls.Add(this.mainPanel);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "CodeTemplatesForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Code Templates";
-            this.Load += new System.EventHandler(this.CodeTemplatesForm_Load);
-            this.Resize += new System.EventHandler(this.CodeTemplatesForm_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textAreaPanel)).EndInit();
-            this.textAreaPanel.ResumeLayout(false);
-            this.textAreaPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonPanel)).EndInit();
-            this.buttonPanel.ResumeLayout(false);
-            this.buttonPanel.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(475, 535);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "CodeTemplatesForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Code Templates";
+            Load += CodeTemplatesForm_Load;
+            Resize += CodeTemplatesForm_Resize;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)HotkeyPanel).EndInit();
+            HotkeyPanel.ResumeLayout(false);
+            HotkeyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)textAreaPanel).EndInit();
+            textAreaPanel.ResumeLayout(false);
+            textAreaPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
 
@@ -246,6 +289,7 @@
         private Krypton.Toolkit.KryptonCheckButton template9CheckButton;
         private Krypton.Toolkit.KryptonPanel textAreaPanel;
         private Krypton.Toolkit.KryptonLabel placeholderLabel;
-        private Krypton.Toolkit.KryptonPanel buttonPanel;
+        private Krypton.Toolkit.KryptonPanel HotkeyPanel;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

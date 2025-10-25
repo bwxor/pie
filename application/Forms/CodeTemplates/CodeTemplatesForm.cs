@@ -214,7 +214,7 @@ namespace pie.Forms.CodeTemplates
 
         private void CodeTemplatesForm_Resize(object sender, EventArgs e)
         {
-            buttonPanel.Left = (this.Width - buttonPanel.Width) / 2;
+            HotkeyPanel.Left = (this.Width - HotkeyPanel.Width) / 2;
             placeholderLabel.Left = (this.Width - placeholderLabel.Width) / 2;
         }
     }
