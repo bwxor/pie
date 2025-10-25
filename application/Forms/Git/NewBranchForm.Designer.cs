@@ -33,20 +33,23 @@
             branchNameTextBox = new Krypton.Toolkit.KryptonTextBox();
             saveButton = new Krypton.Toolkit.KryptonButton();
             branchNameLabel = new Krypton.Toolkit.KryptonLabel();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
+            mainPanel.AutoSize = true;
             mainPanel.Controls.Add(branchNameTextBox);
-            mainPanel.Controls.Add(saveButton);
             mainPanel.Controls.Add(branchNameLabel);
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(419, 110);
+            mainPanel.Size = new System.Drawing.Size(368, 118);
             mainPanel.TabIndex = 9;
             // 
             // branchNameTextBox
@@ -55,12 +58,13 @@
             branchNameTextBox.Location = new System.Drawing.Point(9, 37);
             branchNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             branchNameTextBox.Name = "branchNameTextBox";
-            branchNameTextBox.Size = new System.Drawing.Size(406, 23);
+            branchNameTextBox.Size = new System.Drawing.Size(355, 23);
             branchNameTextBox.TabIndex = 0;
             // 
             // saveButton
             // 
-            saveButton.Location = new System.Drawing.Point(320, 74);
+            saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            saveButton.Location = new System.Drawing.Point(272, 3);
             saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             saveButton.Name = "saveButton";
             saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -79,11 +83,22 @@
             branchNameLabel.TabIndex = 2;
             branchNameLabel.Values.Text = "Branch Name";
             // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(saveButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 80);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(368, 38);
+            ButtonPanel.TabIndex = 10;
+            // 
             // NewBranchForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(419, 110);
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(368, 118);
+            Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -95,7 +110,10 @@
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -104,5 +122,6 @@
         private Krypton.Toolkit.KryptonTextBox branchNameTextBox;
         private Krypton.Toolkit.KryptonLabel branchNameLabel;
         private Krypton.Toolkit.KryptonButton saveButton;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

@@ -407,7 +407,7 @@
             mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             mainMenuStrip.Name = "mainMenuStrip";
             mainMenuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            mainMenuStrip.Size = new System.Drawing.Size(1191, 24);
+            mainMenuStrip.Size = new System.Drawing.Size(1195, 24);
             mainMenuStrip.TabIndex = 1;
             mainMenuStrip.Text = "menuStrip1";
             // 
@@ -629,11 +629,11 @@
             terminalTabControl.ControlKryptonFormFeatures = false;
             terminalTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             terminalTabControl.KryptonContextMenu = terminalContextMenu;
-            terminalTabControl.Location = new System.Drawing.Point(0, 284);
+            terminalTabControl.Location = new System.Drawing.Point(0, 272);
             terminalTabControl.NavigatorMode = Krypton.Navigator.NavigatorMode.BarTabGroup;
             terminalTabControl.Owner = null;
             terminalTabControl.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
-            terminalTabControl.Size = new System.Drawing.Size(1191, 214);
+            terminalTabControl.Size = new System.Drawing.Size(1195, 214);
             terminalTabControl.StateCommon.Tab.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             terminalTabControl.TabIndex = 3;
             terminalTabControl.Text = "kryptonNavigator1";
@@ -746,7 +746,7 @@
             // 
             kryptonSplitContainer.Panel2.Controls.Add(tabControl);
             kryptonSplitContainer.SeparatorStyle = Krypton.Toolkit.SeparatorStyle.HighProfile;
-            kryptonSplitContainer.Size = new System.Drawing.Size(1191, 260);
+            kryptonSplitContainer.Size = new System.Drawing.Size(1195, 248);
             kryptonSplitContainer.SplitterDistance = 314;
             kryptonSplitContainer.SplitterWidth = 3;
             kryptonSplitContainer.TabIndex = 13;
@@ -785,7 +785,7 @@
             sidebarTabControl.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
             sidebarTabControl.Pages.AddRange(new Krypton.Navigator.KryptonPage[] { explorerPage, gitPage });
             sidebarTabControl.SelectedIndex = 0;
-            sidebarTabControl.Size = new System.Drawing.Size(314, 260);
+            sidebarTabControl.Size = new System.Drawing.Size(314, 248);
             sidebarTabControl.StateCommon.Tab.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             sidebarTabControl.TabIndex = 14;
             sidebarTabControl.Text = "sidebarTabControl";
@@ -802,7 +802,7 @@
             explorerPage.LastVisibleSet = true;
             explorerPage.MinimumSize = new System.Drawing.Size(150, 50);
             explorerPage.Name = "explorerPage";
-            explorerPage.Size = new System.Drawing.Size(312, 233);
+            explorerPage.Size = new System.Drawing.Size(312, 221);
             explorerPage.Text = "Explorer";
             explorerPage.ToolTipTitle = "View the contents of the opened folder.";
             explorerPage.UniqueName = "d51b93d59f194a90a2d0f602b7566d8d";
@@ -821,7 +821,7 @@
             directoryNavigationTreeView.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             directoryNavigationTreeView.SelectedImageIndex = 0;
             directoryNavigationTreeView.ShowNodeToolTips = true;
-            directoryNavigationTreeView.Size = new System.Drawing.Size(312, 233);
+            directoryNavigationTreeView.Size = new System.Drawing.Size(312, 221);
             directoryNavigationTreeView.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
             directoryNavigationTreeView.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.None;
             directoryNavigationTreeView.TabIndex = 11;
@@ -1194,7 +1194,7 @@
             tabControl.NavigatorMode = Krypton.Navigator.NavigatorMode.BarTabGroup;
             tabControl.Owner = null;
             tabControl.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
-            tabControl.Size = new System.Drawing.Size(874, 260);
+            tabControl.Size = new System.Drawing.Size(878, 248);
             tabControl.StateCommon.Tab.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             tabControl.TabIndex = 2;
             tabControl.Text = "kryptonDockableNavigator1";
@@ -1212,7 +1212,7 @@
             AllowDrop = true;
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            ClientSize = new System.Drawing.Size(1191, 498);
+            ClientSize = new System.Drawing.Size(1195, 486);
             Controls.Add(kryptonSplitContainer);
             Controls.Add(terminalTabControl);
             Controls.Add(mainMenuStrip);

@@ -29,114 +29,132 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
-            this.versionLabel = new Krypton.Toolkit.KryptonLabel();
-            this.titleLabel = new Krypton.Toolkit.KryptonLabel();
-            this.descriptionLabel = new Krypton.Toolkit.KryptonLabel();
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.websiteButton = new Krypton.Toolkit.KryptonButton();
-            this.repoButton = new Krypton.Toolkit.KryptonButton();
-            this.iconPictureBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).BeginInit();
-            this.SuspendLayout();
+            versionLabel = new Krypton.Toolkit.KryptonLabel();
+            titleLabel = new Krypton.Toolkit.KryptonLabel();
+            descriptionLabel = new Krypton.Toolkit.KryptonLabel();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            websiteButton = new Krypton.Toolkit.KryptonButton();
+            repoButton = new Krypton.Toolkit.KryptonButton();
+            iconPictureBox = new System.Windows.Forms.PictureBox();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // versionLabel
             // 
-            this.versionLabel.LabelStyle = Krypton.Toolkit.LabelStyle.ToolTip;
-            this.versionLabel.Location = new System.Drawing.Point(5, 44);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(58, 22);
-            this.versionLabel.TabIndex = 2;
-            this.versionLabel.Values.Text = "Version x";
+            versionLabel.LabelStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            versionLabel.Location = new System.Drawing.Point(5, 44);
+            versionLabel.Name = "versionLabel";
+            versionLabel.Size = new System.Drawing.Size(58, 22);
+            versionLabel.TabIndex = 2;
+            versionLabel.Values.Text = "Version x";
             // 
             // titleLabel
             // 
-            this.titleLabel.Location = new System.Drawing.Point(2, 8);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(105, 33);
-            this.titleLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.TabIndex = 5;
-            this.titleLabel.Values.Text = "pie Beta";
+            titleLabel.Location = new System.Drawing.Point(2, 8);
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new System.Drawing.Size(105, 33);
+            titleLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            titleLabel.TabIndex = 5;
+            titleLabel.Values.Text = "pie Beta";
             // 
             // descriptionLabel
             // 
-            this.descriptionLabel.LabelStyle = Krypton.Toolkit.LabelStyle.ToolTip;
-            this.descriptionLabel.Location = new System.Drawing.Point(5, 70);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(349, 118);
-            this.descriptionLabel.TabIndex = 4;
-            this.descriptionLabel.Values.Text = resources.GetString("kryptonLabel2.Values.Text");
+            descriptionLabel.LabelStyle = Krypton.Toolkit.LabelStyle.ToolTip;
+            descriptionLabel.Location = new System.Drawing.Point(5, 70);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(349, 118);
+            descriptionLabel.TabIndex = 4;
+            descriptionLabel.Values.Text = resources.GetString("descriptionLabel.Values.Text");
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.websiteButton);
-            this.mainPanel.Controls.Add(this.repoButton);
-            this.mainPanel.Controls.Add(this.iconPictureBox);
-            this.mainPanel.Controls.Add(this.titleLabel);
-            this.mainPanel.Controls.Add(this.versionLabel);
-            this.mainPanel.Controls.Add(this.descriptionLabel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(346, 253);
-            this.mainPanel.TabIndex = 6;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(iconPictureBox);
+            mainPanel.Controls.Add(titleLabel);
+            mainPanel.Controls.Add(versionLabel);
+            mainPanel.Controls.Add(descriptionLabel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(356, 286);
+            mainPanel.TabIndex = 6;
             // 
             // websiteButton
             // 
-            this.websiteButton.Location = new System.Drawing.Point(176, 215);
-            this.websiteButton.Name = "websiteButton";
-            this.websiteButton.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.websiteButton.Size = new System.Drawing.Size(165, 25);
-            this.websiteButton.TabIndex = 8;
-            this.websiteButton.Values.Text = "Author\'s Personal Website";
-            this.websiteButton.Click += new System.EventHandler(this.kryptonButton2_Click);
+            websiteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            websiteButton.Location = new System.Drawing.Point(238, 17);
+            websiteButton.Name = "websiteButton";
+            websiteButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            websiteButton.Size = new System.Drawing.Size(113, 25);
+            websiteButton.TabIndex = 8;
+            websiteButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            websiteButton.Values.Text = "Author's Website";
+            websiteButton.Click += kryptonButton2_Click;
             // 
             // repoButton
             // 
-            this.repoButton.Location = new System.Drawing.Point(5, 215);
-            this.repoButton.Name = "repoButton";
-            this.repoButton.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.repoButton.Size = new System.Drawing.Size(165, 25);
-            this.repoButton.TabIndex = 7;
-            this.repoButton.Values.Text = "GitHub Repository";
-            this.repoButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            repoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            repoButton.Location = new System.Drawing.Point(119, 17);
+            repoButton.Name = "repoButton";
+            repoButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            repoButton.Size = new System.Drawing.Size(113, 25);
+            repoButton.TabIndex = 7;
+            repoButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            repoButton.Values.Text = "GitHub Repo";
+            repoButton.Click += kryptonButton1_Click;
             // 
             // iconPictureBox
             // 
-            this.iconPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("iconPictureBox.BackgroundImage")));
-            this.iconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.iconPictureBox.Location = new System.Drawing.Point(288, 6);
-            this.iconPictureBox.Name = "iconPictureBox";
-            this.iconPictureBox.Size = new System.Drawing.Size(51, 48);
-            this.iconPictureBox.TabIndex = 6;
-            this.iconPictureBox.TabStop = false;
+            iconPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            iconPictureBox.BackColor = System.Drawing.Color.Transparent;
+            iconPictureBox.BackgroundImage = (System.Drawing.Image)resources.GetObject("iconPictureBox.BackgroundImage");
+            iconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            iconPictureBox.Location = new System.Drawing.Point(297, 8);
+            iconPictureBox.Name = "iconPictureBox";
+            iconPictureBox.Size = new System.Drawing.Size(51, 48);
+            iconPictureBox.TabIndex = 6;
+            iconPictureBox.TabStop = false;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(websiteButton);
+            ButtonPanel.Controls.Add(repoButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 236);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(356, 50);
+            ButtonPanel.TabIndex = 7;
             // 
             // AboutForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(346, 253);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "AboutForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "About";
-            this.Load += new System.EventHandler(this.AboutForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            BackColor = System.Drawing.SystemColors.ControlLightLight;
+            ClientSize = new System.Drawing.Size(356, 286);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "AboutForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "About";
+            Load += AboutForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -148,5 +166,6 @@
         private System.Windows.Forms.PictureBox iconPictureBox;
         private Krypton.Toolkit.KryptonButton repoButton;
         private Krypton.Toolkit.KryptonButton websiteButton;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

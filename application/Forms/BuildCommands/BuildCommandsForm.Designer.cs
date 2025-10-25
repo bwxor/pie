@@ -29,158 +29,170 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildCommandsForm));
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonListBox1 = new Krypton.Toolkit.KryptonListBox();
-            this.kryptonPage1 = new Krypton.Navigator.KryptonPage();
-            this.buildCommandsLabel = new Krypton.Toolkit.KryptonLabel();
-            this.removeButton = new Krypton.Toolkit.KryptonButton();
-            this.addButton = new Krypton.Toolkit.KryptonButton();
-            this.applyButton = new Krypton.Toolkit.KryptonButton();
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.buildCommandsListView = new BrightIdeasSoftware.ObjectListView();
-            this.BuildCommandNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).BeginInit();
-            this.kryptonPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buildCommandsListView)).BeginInit();
-            this.SuspendLayout();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            kryptonListBox1 = new Krypton.Toolkit.KryptonListBox();
+            kryptonPage1 = new Krypton.Navigator.KryptonPage();
+            buildCommandsLabel = new Krypton.Toolkit.KryptonLabel();
+            removeButton = new Krypton.Toolkit.KryptonButton();
+            addButton = new Krypton.Toolkit.KryptonButton();
+            applyButton = new Krypton.Toolkit.KryptonButton();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            buildCommandsListView = new BrightIdeasSoftware.ObjectListView();
+            BuildCommandNameColumn = new BrightIdeasSoftware.OLVColumn();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)kryptonPage1).BeginInit();
+            kryptonPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)buildCommandsListView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(5, 9);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(149, 20);
-            this.kryptonLabel1.TabIndex = 1;
-            this.kryptonLabel1.Values.Text = "Custom Build Commands";
+            kryptonLabel1.Location = new System.Drawing.Point(5, 9);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new System.Drawing.Size(149, 20);
+            kryptonLabel1.TabIndex = 1;
+            kryptonLabel1.Values.Text = "Custom Build Commands";
             // 
             // kryptonListBox1
             // 
-            this.kryptonListBox1.Items.AddRange(new object[] {
-            "sdasd"});
-            this.kryptonListBox1.Location = new System.Drawing.Point(10, 30);
-            this.kryptonListBox1.Name = "kryptonListBox1";
-            this.kryptonListBox1.Size = new System.Drawing.Size(519, 184);
-            this.kryptonListBox1.TabIndex = 0;
+            kryptonListBox1.Items.AddRange(new object[] { "sdasd" });
+            kryptonListBox1.Location = new System.Drawing.Point(10, 30);
+            kryptonListBox1.Name = "kryptonListBox1";
+            kryptonListBox1.Size = new System.Drawing.Size(519, 184);
+            kryptonListBox1.TabIndex = 0;
             // 
             // kryptonPage1
             // 
-            this.kryptonPage1.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kryptonPage1.Controls.Add(this.kryptonLabel1);
-            this.kryptonPage1.Controls.Add(this.kryptonListBox1);
-            this.kryptonPage1.Flags = 65534;
-            this.kryptonPage1.LastVisibleSet = true;
-            this.kryptonPage1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kryptonPage1.Name = "kryptonPage1";
-            this.kryptonPage1.Size = new System.Drawing.Size(541, 445);
-            this.kryptonPage1.Text = "Building";
-            this.kryptonPage1.ToolTipTitle = "Page ToolTip";
-            this.kryptonPage1.UniqueName = "26EE49FE8BF4430326BBCAF7F39C9913";
+            kryptonPage1.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            kryptonPage1.Controls.Add(kryptonLabel1);
+            kryptonPage1.Controls.Add(kryptonListBox1);
+            kryptonPage1.Flags = 65534;
+            kryptonPage1.LastVisibleSet = true;
+            kryptonPage1.MinimumSize = new System.Drawing.Size(50, 50);
+            kryptonPage1.Name = "kryptonPage1";
+            kryptonPage1.Size = new System.Drawing.Size(541, 445);
+            kryptonPage1.Text = "Building";
+            kryptonPage1.ToolTipTitle = "Page ToolTip";
+            kryptonPage1.UniqueName = "26EE49FE8BF4430326BBCAF7F39C9913";
             // 
             // buildCommandsLabel
             // 
-            this.buildCommandsLabel.Location = new System.Drawing.Point(5, 6);
-            this.buildCommandsLabel.Name = "buildCommandsLabel";
-            this.buildCommandsLabel.Size = new System.Drawing.Size(149, 20);
-            this.buildCommandsLabel.TabIndex = 0;
-            this.buildCommandsLabel.Values.Text = "Custom Build Commands";
+            buildCommandsLabel.Location = new System.Drawing.Point(5, 6);
+            buildCommandsLabel.Name = "buildCommandsLabel";
+            buildCommandsLabel.Size = new System.Drawing.Size(149, 20);
+            buildCommandsLabel.TabIndex = 0;
+            buildCommandsLabel.Values.Text = "Custom Build Commands";
             // 
             // removeButton
             // 
-            this.removeButton.Location = new System.Drawing.Point(82, 282);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.removeButton.Size = new System.Drawing.Size(66, 25);
-            this.removeButton.TabIndex = 2;
-            this.removeButton.Values.Text = "Remove";
-            this.removeButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            removeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            removeButton.Location = new System.Drawing.Point(88, 12);
+            removeButton.Name = "removeButton";
+            removeButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            removeButton.Size = new System.Drawing.Size(66, 25);
+            removeButton.TabIndex = 2;
+            removeButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            removeButton.Values.Text = "Remove";
+            removeButton.Click += kryptonButton1_Click;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(10, 282);
-            this.addButton.Name = "addButton";
-            this.addButton.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.addButton.Size = new System.Drawing.Size(66, 25);
-            this.addButton.TabIndex = 3;
-            this.addButton.Values.Text = "Add";
-            this.addButton.Click += new System.EventHandler(this.kryptonButton2_Click);
+            addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            addButton.Location = new System.Drawing.Point(16, 12);
+            addButton.Name = "addButton";
+            addButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            addButton.Size = new System.Drawing.Size(66, 25);
+            addButton.TabIndex = 3;
+            addButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            addButton.Values.Text = "Add";
+            addButton.Click += kryptonButton2_Click;
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(467, 282);
-            this.applyButton.Name = "applyButton";
-            this.applyButton.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.applyButton.Size = new System.Drawing.Size(66, 25);
-            this.applyButton.TabIndex = 4;
-            this.applyButton.Values.Text = "Apply";
-            this.applyButton.Click += new System.EventHandler(this.kryptonButton3_Click);
+            applyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            applyButton.Location = new System.Drawing.Point(453, 12);
+            applyButton.Name = "applyButton";
+            applyButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            applyButton.Size = new System.Drawing.Size(66, 25);
+            applyButton.TabIndex = 4;
+            applyButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            applyButton.Values.Text = "Apply";
+            applyButton.Click += kryptonButton3_Click;
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.buildCommandsListView);
-            this.mainPanel.Controls.Add(this.applyButton);
-            this.mainPanel.Controls.Add(this.buildCommandsLabel);
-            this.mainPanel.Controls.Add(this.removeButton);
-            this.mainPanel.Controls.Add(this.addButton);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(543, 320);
-            this.mainPanel.TabIndex = 6;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(buildCommandsListView);
+            mainPanel.Controls.Add(buildCommandsLabel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(531, 395);
+            mainPanel.TabIndex = 6;
             // 
             // buildCommandsListView
             // 
-            this.buildCommandsListView.AllColumns.Add(this.BuildCommandNameColumn);
-            this.buildCommandsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buildCommandsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.buildCommandsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.BuildCommandNameColumn});
-            this.buildCommandsListView.HideSelection = false;
-            this.buildCommandsListView.Location = new System.Drawing.Point(10, 29);
-            this.buildCommandsListView.MultiSelect = false;
-            this.buildCommandsListView.Name = "buildCommandsListView";
-            this.buildCommandsListView.Size = new System.Drawing.Size(523, 244);
-            this.buildCommandsListView.TabIndex = 5;
-            this.buildCommandsListView.UseCompatibleStateImageBehavior = false;
-            this.buildCommandsListView.View = System.Windows.Forms.View.Details;
-            this.buildCommandsListView.DoubleClick += new System.EventHandler(this.buildCommandsListView_DoubleClick_1);
+            buildCommandsListView.AllColumns.Add(BuildCommandNameColumn);
+            buildCommandsListView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            buildCommandsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            buildCommandsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { BuildCommandNameColumn });
+            buildCommandsListView.Location = new System.Drawing.Point(10, 29);
+            buildCommandsListView.MultiSelect = false;
+            buildCommandsListView.Name = "buildCommandsListView";
+            buildCommandsListView.Size = new System.Drawing.Size(509, 313);
+            buildCommandsListView.TabIndex = 5;
+            buildCommandsListView.UseCompatibleStateImageBehavior = false;
+            buildCommandsListView.View = System.Windows.Forms.View.Details;
+            buildCommandsListView.DoubleClick += buildCommandsListView_DoubleClick_1;
             // 
             // BuildCommandNameColumn
             // 
-            this.BuildCommandNameColumn.AspectName = "Name";
-            this.BuildCommandNameColumn.CellPadding = null;
+            BuildCommandNameColumn.AspectName = "Name";
+            BuildCommandNameColumn.CellPadding = null;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(removeButton);
+            ButtonPanel.Controls.Add(applyButton);
+            ButtonPanel.Controls.Add(addButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 348);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(531, 47);
+            ButtonPanel.TabIndex = 7;
             // 
             // BuildCommandsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(543, 320);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "BuildCommandsForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Build Commands";
-            this.Load += new System.EventHandler(this.BuildCommandsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).EndInit();
-            this.kryptonPage1.ResumeLayout(false);
-            this.kryptonPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buildCommandsListView)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            BackColor = System.Drawing.SystemColors.ControlLightLight;
+            ClientSize = new System.Drawing.Size(531, 395);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "BuildCommandsForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Build Commands";
+            Load += BuildCommandsForm_Load;
+            ((System.ComponentModel.ISupportInitialize)kryptonPage1).EndInit();
+            kryptonPage1.ResumeLayout(false);
+            kryptonPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)buildCommandsListView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -195,5 +207,6 @@
         private Krypton.Toolkit.KryptonPanel mainPanel;
         private BrightIdeasSoftware.ObjectListView buildCommandsListView;
         private BrightIdeasSoftware.OLVColumn BuildCommandNameColumn;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

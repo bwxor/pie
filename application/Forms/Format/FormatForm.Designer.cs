@@ -29,102 +29,99 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormatForm));
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
-            this.formatOptionsListView = new BrightIdeasSoftware.ObjectListView();
-            this.FormatOptionNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.FormatOptionCategoryColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.FormatOptionDescriptionColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.formatOptionsListView)).BeginInit();
-            this.SuspendLayout();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
+            formatOptionsListView = new BrightIdeasSoftware.ObjectListView();
+            FormatOptionNameColumn = new BrightIdeasSoftware.OLVColumn();
+            FormatOptionCategoryColumn = new BrightIdeasSoftware.OLVColumn();
+            FormatOptionDescriptionColumn = new BrightIdeasSoftware.OLVColumn();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)formatOptionsListView).BeginInit();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.kryptonTextBox1);
-            this.mainPanel.Controls.Add(this.formatOptionsListView);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(714, 372);
-            this.mainPanel.TabIndex = 7;
+            mainPanel.Controls.Add(kryptonTextBox1);
+            mainPanel.Controls.Add(formatOptionsListView);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(819, 417);
+            mainPanel.TabIndex = 7;
             // 
             // kryptonTextBox1
             // 
-            this.kryptonTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonTextBox1.Location = new System.Drawing.Point(10, 10);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(694, 23);
-            this.kryptonTextBox1.TabIndex = 6;
-            this.kryptonTextBox1.Text = "Search...";
-            this.kryptonTextBox1.TextChanged += new System.EventHandler(this.kryptonTextBox1_TextChanged);
+            kryptonTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            kryptonTextBox1.Location = new System.Drawing.Point(12, 12);
+            kryptonTextBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            kryptonTextBox1.Name = "kryptonTextBox1";
+            kryptonTextBox1.Size = new System.Drawing.Size(796, 23);
+            kryptonTextBox1.TabIndex = 6;
+            kryptonTextBox1.Text = "Search...";
+            kryptonTextBox1.TextChanged += kryptonTextBox1_TextChanged;
             // 
             // formatOptionsListView
             // 
-            this.formatOptionsListView.AllColumns.Add(this.FormatOptionNameColumn);
-            this.formatOptionsListView.AllColumns.Add(this.FormatOptionCategoryColumn);
-            this.formatOptionsListView.AllColumns.Add(this.FormatOptionDescriptionColumn);
-            this.formatOptionsListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.formatOptionsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.formatOptionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.FormatOptionNameColumn,
-            this.FormatOptionCategoryColumn,
-            this.FormatOptionDescriptionColumn});
-            this.formatOptionsListView.HeaderUsesThemes = false;
-            this.formatOptionsListView.HideSelection = false;
-            this.formatOptionsListView.Location = new System.Drawing.Point(10, 42);
-            this.formatOptionsListView.MultiSelect = false;
-            this.formatOptionsListView.Name = "formatOptionsListView";
-            this.formatOptionsListView.SelectColumnsOnRightClick = false;
-            this.formatOptionsListView.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
-            this.formatOptionsListView.Size = new System.Drawing.Size(694, 318);
-            this.formatOptionsListView.TabIndex = 5;
-            this.formatOptionsListView.UseCompatibleStateImageBehavior = false;
-            this.formatOptionsListView.View = System.Windows.Forms.View.Details;
-            this.formatOptionsListView.DoubleClick += new System.EventHandler(this.formatOptionsListView_DoubleClick);
+            formatOptionsListView.AllColumns.Add(FormatOptionNameColumn);
+            formatOptionsListView.AllColumns.Add(FormatOptionCategoryColumn);
+            formatOptionsListView.AllColumns.Add(FormatOptionDescriptionColumn);
+            formatOptionsListView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            formatOptionsListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            formatOptionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { FormatOptionNameColumn, FormatOptionCategoryColumn, FormatOptionDescriptionColumn });
+            formatOptionsListView.HeaderUsesThemes = false;
+            formatOptionsListView.Location = new System.Drawing.Point(12, 48);
+            formatOptionsListView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            formatOptionsListView.MultiSelect = false;
+            formatOptionsListView.Name = "formatOptionsListView";
+            formatOptionsListView.SelectColumnsOnRightClick = false;
+            formatOptionsListView.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
+            formatOptionsListView.Size = new System.Drawing.Size(795, 355);
+            formatOptionsListView.TabIndex = 5;
+            formatOptionsListView.UseCompatibleStateImageBehavior = false;
+            formatOptionsListView.View = System.Windows.Forms.View.Details;
+            formatOptionsListView.DoubleClick += formatOptionsListView_DoubleClick;
             // 
             // FormatOptionNameColumn
             // 
-            this.FormatOptionNameColumn.AspectName = "Name";
-            this.FormatOptionNameColumn.CellPadding = null;
-            this.FormatOptionNameColumn.Text = "Name";
-            this.FormatOptionNameColumn.Width = 199;
+            FormatOptionNameColumn.AspectName = "Name";
+            FormatOptionNameColumn.CellPadding = null;
+            FormatOptionNameColumn.Text = "Name";
+            FormatOptionNameColumn.Width = 199;
             // 
             // FormatOptionCategoryColumn
             // 
-            this.FormatOptionCategoryColumn.AspectName = "Category";
-            this.FormatOptionCategoryColumn.CellPadding = null;
-            this.FormatOptionCategoryColumn.Text = "Category";
+            FormatOptionCategoryColumn.AspectName = "Category";
+            FormatOptionCategoryColumn.CellPadding = null;
+            FormatOptionCategoryColumn.Text = "Category";
             // 
             // FormatOptionDescriptionColumn
             // 
-            this.FormatOptionDescriptionColumn.AspectName = "Description";
-            this.FormatOptionDescriptionColumn.CellPadding = null;
-            this.FormatOptionDescriptionColumn.Text = "Description";
+            FormatOptionDescriptionColumn.AspectName = "Description";
+            FormatOptionDescriptionColumn.CellPadding = null;
+            FormatOptionDescriptionColumn.Text = "Description";
             // 
             // FormatForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(714, 372);
-            this.Controls.Add(this.mainPanel);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "FormatForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Format";
-            this.Load += new System.EventHandler(this.FormatForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.formatOptionsListView)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.SystemColors.ControlLightLight;
+            ClientSize = new System.Drawing.Size(819, 417);
+            Controls.Add(mainPanel);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "FormatForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Format";
+            Load += FormatForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)formatOptionsListView).EndInit();
+            ResumeLayout(false);
 
         }
 

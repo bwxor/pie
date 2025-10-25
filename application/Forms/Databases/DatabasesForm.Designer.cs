@@ -29,118 +29,138 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabasesForm));
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.databasesListView = new BrightIdeasSoftware.ObjectListView();
-            this.ConnectionNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.applyButton = new Krypton.Toolkit.KryptonButton();
-            this.databaseConnectionsLabel = new Krypton.Toolkit.KryptonLabel();
-            this.removeButton = new Krypton.Toolkit.KryptonButton();
-            this.addButton = new Krypton.Toolkit.KryptonButton();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.databasesListView)).BeginInit();
-            this.SuspendLayout();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            databasesListView = new BrightIdeasSoftware.ObjectListView();
+            ConnectionNameColumn = new BrightIdeasSoftware.OLVColumn();
+            databaseConnectionsLabel = new Krypton.Toolkit.KryptonLabel();
+            applyButton = new Krypton.Toolkit.KryptonButton();
+            removeButton = new Krypton.Toolkit.KryptonButton();
+            addButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)databasesListView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.databasesListView);
-            this.mainPanel.Controls.Add(this.applyButton);
-            this.mainPanel.Controls.Add(this.databaseConnectionsLabel);
-            this.mainPanel.Controls.Add(this.removeButton);
-            this.mainPanel.Controls.Add(this.addButton);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(543, 320);
-            this.mainPanel.TabIndex = 7;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(databasesListView);
+            mainPanel.Controls.Add(databaseConnectionsLabel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(499, 367);
+            mainPanel.TabIndex = 7;
             // 
             // databasesListView
             // 
-            this.databasesListView.AllColumns.Add(this.ConnectionNameColumn);
-            this.databasesListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.databasesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.databasesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ConnectionNameColumn});
-            this.databasesListView.HideSelection = false;
-            this.databasesListView.Location = new System.Drawing.Point(10, 29);
-            this.databasesListView.MultiSelect = false;
-            this.databasesListView.Name = "databasesListView";
-            this.databasesListView.Size = new System.Drawing.Size(523, 244);
-            this.databasesListView.TabIndex = 5;
-            this.databasesListView.UseCompatibleStateImageBehavior = false;
-            this.databasesListView.View = System.Windows.Forms.View.Details;
-            this.databasesListView.DoubleClick += new System.EventHandler(this.databasesListView_DoubleClick);
+            databasesListView.AllColumns.Add(ConnectionNameColumn);
+            databasesListView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            databasesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            databasesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { ConnectionNameColumn });
+            databasesListView.Location = new System.Drawing.Point(12, 33);
+            databasesListView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databasesListView.MultiSelect = false;
+            databasesListView.Name = "databasesListView";
+            databasesListView.Size = new System.Drawing.Size(475, 279);
+            databasesListView.TabIndex = 5;
+            databasesListView.UseCompatibleStateImageBehavior = false;
+            databasesListView.View = System.Windows.Forms.View.Details;
+            databasesListView.DoubleClick += databasesListView_DoubleClick;
             // 
             // ConnectionNameColumn
             // 
-            this.ConnectionNameColumn.AspectName = "Name";
-            this.ConnectionNameColumn.CellPadding = null;
-            // 
-            // applyButton
-            // 
-            this.applyButton.Location = new System.Drawing.Point(467, 282);
-            this.applyButton.Name = "applyButton";
-            this.applyButton.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.applyButton.Size = new System.Drawing.Size(66, 25);
-            this.applyButton.TabIndex = 4;
-            this.applyButton.Values.Text = "Apply";
-            this.applyButton.Click += new System.EventHandler(this.kryptonButton3_Click);
+            ConnectionNameColumn.AspectName = "Name";
+            ConnectionNameColumn.CellPadding = null;
             // 
             // databaseConnectionsLabel
             // 
-            this.databaseConnectionsLabel.Location = new System.Drawing.Point(5, 6);
-            this.databaseConnectionsLabel.Name = "databaseConnectionsLabel";
-            this.databaseConnectionsLabel.Size = new System.Drawing.Size(132, 20);
-            this.databaseConnectionsLabel.TabIndex = 0;
-            this.databaseConnectionsLabel.Values.Text = "Database Connections";
+            databaseConnectionsLabel.Location = new System.Drawing.Point(6, 7);
+            databaseConnectionsLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            databaseConnectionsLabel.Name = "databaseConnectionsLabel";
+            databaseConnectionsLabel.Size = new System.Drawing.Size(132, 20);
+            databaseConnectionsLabel.TabIndex = 0;
+            databaseConnectionsLabel.Values.Text = "Database Connections";
+            // 
+            // applyButton
+            // 
+            applyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            applyButton.Location = new System.Drawing.Point(408, 12);
+            applyButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            applyButton.Name = "applyButton";
+            applyButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            applyButton.Size = new System.Drawing.Size(77, 29);
+            applyButton.TabIndex = 4;
+            applyButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            applyButton.Values.Text = "Apply";
+            applyButton.Click += kryptonButton3_Click;
             // 
             // removeButton
             // 
-            this.removeButton.Location = new System.Drawing.Point(82, 282);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.removeButton.Size = new System.Drawing.Size(66, 25);
-            this.removeButton.TabIndex = 2;
-            this.removeButton.Values.Text = "Remove";
-            this.removeButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            removeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            removeButton.Location = new System.Drawing.Point(98, 12);
+            removeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            removeButton.Name = "removeButton";
+            removeButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            removeButton.Size = new System.Drawing.Size(77, 29);
+            removeButton.TabIndex = 2;
+            removeButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            removeButton.Values.Text = "Remove";
+            removeButton.Click += kryptonButton1_Click;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(10, 282);
-            this.addButton.Name = "addButton";
-            this.addButton.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.addButton.Size = new System.Drawing.Size(66, 25);
-            this.addButton.TabIndex = 3;
-            this.addButton.Values.Text = "Add";
-            this.addButton.Click += new System.EventHandler(this.kryptonButton2_Click);
+            addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            addButton.Location = new System.Drawing.Point(14, 12);
+            addButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            addButton.Name = "addButton";
+            addButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            addButton.Size = new System.Drawing.Size(77, 29);
+            addButton.TabIndex = 3;
+            addButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            addButton.Values.Text = "Add";
+            addButton.Click += kryptonButton2_Click;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(applyButton);
+            ButtonPanel.Controls.Add(addButton);
+            ButtonPanel.Controls.Add(removeButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 318);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(499, 49);
+            ButtonPanel.TabIndex = 8;
             // 
             // DatabasesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 320);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "DatabasesForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Databases";
-            this.Load += new System.EventHandler(this.DatabasesForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.databasesListView)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(499, 367);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "DatabasesForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Databases";
+            Load += DatabasesForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)databasesListView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -153,5 +173,6 @@
         private Krypton.Toolkit.KryptonLabel databaseConnectionsLabel;
         private Krypton.Toolkit.KryptonButton removeButton;
         private Krypton.Toolkit.KryptonButton addButton;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

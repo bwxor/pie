@@ -29,67 +29,92 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewThemeForm));
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.themeNameLabel = new Krypton.Toolkit.KryptonLabel();
-            this.themeNameTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.createButton = new Krypton.Toolkit.KryptonButton();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            this.SuspendLayout();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            themeNameLabel = new Krypton.Toolkit.KryptonLabel();
+            themeNameTextBox = new Krypton.Toolkit.KryptonTextBox();
+            createButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.themeNameLabel);
-            this.mainPanel.Controls.Add(this.themeNameTextBox);
-            this.mainPanel.Controls.Add(this.createButton);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(474, 94);
-            this.mainPanel.TabIndex = 4;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(themeNameLabel);
+            mainPanel.Controls.Add(themeNameTextBox);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(368, 113);
+            mainPanel.TabIndex = 4;
             // 
             // themeNameLabel
             // 
-            this.themeNameLabel.Location = new System.Drawing.Point(9, 5);
-            this.themeNameLabel.Name = "themeNameLabel";
-            this.themeNameLabel.Size = new System.Drawing.Size(84, 20);
-            this.themeNameLabel.TabIndex = 4;
-            this.themeNameLabel.Values.Text = "Theme Name";
+            themeNameLabel.Location = new System.Drawing.Point(10, 6);
+            themeNameLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            themeNameLabel.Name = "themeNameLabel";
+            themeNameLabel.Size = new System.Drawing.Size(84, 20);
+            themeNameLabel.TabIndex = 4;
+            themeNameLabel.Values.Text = "Theme Name";
             // 
             // themeNameTextBox
             // 
-            this.themeNameTextBox.Location = new System.Drawing.Point(12, 25);
-            this.themeNameTextBox.Name = "themeNameTextBox";
-            this.themeNameTextBox.Size = new System.Drawing.Size(449, 23);
-            this.themeNameTextBox.TabIndex = 2;
+            themeNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            themeNameTextBox.Location = new System.Drawing.Point(13, 30);
+            themeNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            themeNameTextBox.Name = "themeNameTextBox";
+            themeNameTextBox.Size = new System.Drawing.Size(340, 23);
+            themeNameTextBox.TabIndex = 2;
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(385, 59);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(76, 25);
-            this.createButton.TabIndex = 1;
-            this.createButton.Values.Text = "Create";
-            this.createButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            createButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            createButton.Location = new System.Drawing.Point(264, 8);
+            createButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            createButton.Name = "createButton";
+            createButton.Size = new System.Drawing.Size(89, 29);
+            createButton.TabIndex = 1;
+            createButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            createButton.Values.Text = "Create";
+            createButton.Click += kryptonButton1_Click;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(createButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 73);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(368, 40);
+            ButtonPanel.TabIndex = 5;
             // 
             // NewThemeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 94);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "NewThemeForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Theme";
-            this.Load += new System.EventHandler(this.NewThemeForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(368, 113);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "NewThemeForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Add Theme";
+            Load += NewThemeForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -99,5 +124,6 @@
         private Krypton.Toolkit.KryptonLabel themeNameLabel;
         private Krypton.Toolkit.KryptonTextBox themeNameTextBox;
         private Krypton.Toolkit.KryptonButton createButton;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

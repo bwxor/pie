@@ -29,87 +29,115 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GitPushCredentialsForm));
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.remoteServerPasswordLabel = new Krypton.Toolkit.KryptonLabel();
-            this.remoteServerUsernameLabel = new Krypton.Toolkit.KryptonLabel();
-            this.remoteServerPasswordTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.remoteServerUsernameTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.saveButton = new Krypton.Toolkit.KryptonButton();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            this.SuspendLayout();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            remoteServerPasswordLabel = new Krypton.Toolkit.KryptonLabel();
+            remoteServerUsernameLabel = new Krypton.Toolkit.KryptonLabel();
+            remoteServerPasswordTextBox = new Krypton.Toolkit.KryptonTextBox();
+            remoteServerUsernameTextBox = new Krypton.Toolkit.KryptonTextBox();
+            saveButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.remoteServerPasswordLabel);
-            this.mainPanel.Controls.Add(this.remoteServerUsernameLabel);
-            this.mainPanel.Controls.Add(this.remoteServerPasswordTextBox);
-            this.mainPanel.Controls.Add(this.remoteServerUsernameTextBox);
-            this.mainPanel.Controls.Add(this.saveButton);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(474, 142);
-            this.mainPanel.TabIndex = 3;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(remoteServerPasswordLabel);
+            mainPanel.Controls.Add(remoteServerUsernameLabel);
+            mainPanel.Controls.Add(remoteServerPasswordTextBox);
+            mainPanel.Controls.Add(remoteServerUsernameTextBox);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(548, 178);
+            mainPanel.TabIndex = 3;
             // 
             // remoteServerPasswordLabel
             // 
-            this.remoteServerPasswordLabel.Location = new System.Drawing.Point(9, 55);
-            this.remoteServerPasswordLabel.Name = "remoteServerPasswordLabel";
-            this.remoteServerPasswordLabel.Size = new System.Drawing.Size(230, 20);
-            this.remoteServerPasswordLabel.TabIndex = 5;
-            this.remoteServerPasswordLabel.Values.Text = "Remote Server Password / Access Token";
+            remoteServerPasswordLabel.Location = new System.Drawing.Point(10, 63);
+            remoteServerPasswordLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            remoteServerPasswordLabel.Name = "remoteServerPasswordLabel";
+            remoteServerPasswordLabel.Size = new System.Drawing.Size(230, 20);
+            remoteServerPasswordLabel.TabIndex = 5;
+            remoteServerPasswordLabel.Values.Text = "Remote Server Password / Access Token";
             // 
             // remoteServerUsernameLabel
             // 
-            this.remoteServerUsernameLabel.Location = new System.Drawing.Point(9, 5);
-            this.remoteServerUsernameLabel.Name = "remoteServerUsernameLabel";
-            this.remoteServerUsernameLabel.Size = new System.Drawing.Size(149, 20);
-            this.remoteServerUsernameLabel.TabIndex = 4;
-            this.remoteServerUsernameLabel.Values.Text = "Remote Server Username";
+            remoteServerUsernameLabel.Location = new System.Drawing.Point(10, 6);
+            remoteServerUsernameLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            remoteServerUsernameLabel.Name = "remoteServerUsernameLabel";
+            remoteServerUsernameLabel.Size = new System.Drawing.Size(149, 20);
+            remoteServerUsernameLabel.TabIndex = 4;
+            remoteServerUsernameLabel.Values.Text = "Remote Server Username";
             // 
             // remoteServerPasswordTextBox
             // 
-            this.remoteServerPasswordTextBox.Location = new System.Drawing.Point(12, 75);
-            this.remoteServerPasswordTextBox.Name = "remoteServerPasswordTextBox";
-            this.remoteServerPasswordTextBox.PasswordChar = '●';
-            this.remoteServerPasswordTextBox.Size = new System.Drawing.Size(449, 23);
-            this.remoteServerPasswordTextBox.TabIndex = 3;
+            remoteServerPasswordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            remoteServerPasswordTextBox.Location = new System.Drawing.Point(14, 87);
+            remoteServerPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            remoteServerPasswordTextBox.Name = "remoteServerPasswordTextBox";
+            remoteServerPasswordTextBox.PasswordChar = '●';
+            remoteServerPasswordTextBox.Size = new System.Drawing.Size(521, 23);
+            remoteServerPasswordTextBox.TabIndex = 3;
             // 
             // remoteServerUsernameTextBox
             // 
-            this.remoteServerUsernameTextBox.Location = new System.Drawing.Point(12, 25);
-            this.remoteServerUsernameTextBox.Name = "remoteServerUsernameTextBox";
-            this.remoteServerUsernameTextBox.Size = new System.Drawing.Size(449, 23);
-            this.remoteServerUsernameTextBox.TabIndex = 2;
+            remoteServerUsernameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            remoteServerUsernameTextBox.Location = new System.Drawing.Point(14, 29);
+            remoteServerUsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            remoteServerUsernameTextBox.Name = "remoteServerUsernameTextBox";
+            remoteServerUsernameTextBox.Size = new System.Drawing.Size(521, 23);
+            remoteServerUsernameTextBox.TabIndex = 2;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(385, 108);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(76, 25);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Values.Text = "Save";
-            this.saveButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            saveButton.Location = new System.Drawing.Point(446, 11);
+            saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new System.Drawing.Size(89, 29);
+            saveButton.TabIndex = 1;
+            saveButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            saveButton.Values.Text = "Save";
+            saveButton.Click += kryptonButton1_Click;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(saveButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 131);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(548, 47);
+            ButtonPanel.TabIndex = 4;
             // 
             // GitPushCredentialsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 142);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "GitPushCredentialsForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Push Credentials";
-            this.Load += new System.EventHandler(this.GitPushCredentialsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(548, 178);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "GitPushCredentialsForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Push Credentials";
+            Load += GitPushCredentialsForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -121,5 +149,6 @@
         private Krypton.Toolkit.KryptonTextBox remoteServerPasswordTextBox;
         private Krypton.Toolkit.KryptonTextBox remoteServerUsernameTextBox;
         private Krypton.Toolkit.KryptonButton saveButton;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

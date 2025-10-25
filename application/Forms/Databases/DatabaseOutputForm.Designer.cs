@@ -29,66 +29,89 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseOutputForm));
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.outputDataGridView = new Krypton.Toolkit.KryptonDataGridView();
-            this.closeButton = new Krypton.Toolkit.KryptonButton();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.outputDataGridView)).BeginInit();
-            this.SuspendLayout();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            outputDataGridView = new Krypton.Toolkit.KryptonDataGridView();
+            closeButton = new Krypton.Toolkit.KryptonButton();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)outputDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.outputDataGridView);
-            this.mainPanel.Controls.Add(this.closeButton);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(625, 319);
-            this.mainPanel.TabIndex = 8;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(outputDataGridView);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(698, 452);
+            mainPanel.TabIndex = 8;
             // 
             // outputDataGridView
             // 
-            this.outputDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.outputDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.outputDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.outputDataGridView.Location = new System.Drawing.Point(12, 12);
-            this.outputDataGridView.Name = "outputDataGridView";
-            this.outputDataGridView.ReadOnly = true;
-            this.outputDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.outputDataGridView.Size = new System.Drawing.Size(601, 264);
-            this.outputDataGridView.TabIndex = 5;
+            outputDataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            outputDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            outputDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            outputDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            outputDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            outputDataGridView.Location = new System.Drawing.Point(13, 14);
+            outputDataGridView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            outputDataGridView.Name = "outputDataGridView";
+            outputDataGridView.ReadOnly = true;
+            outputDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            outputDataGridView.Size = new System.Drawing.Size(670, 396);
+            outputDataGridView.TabIndex = 5;
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(547, 282);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.OverrideDefault.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.closeButton.Size = new System.Drawing.Size(66, 25);
-            this.closeButton.TabIndex = 4;
-            this.closeButton.Values.Text = "Close";
-            this.closeButton.Click += new System.EventHandler(this.kryptonButton3_Click);
+            closeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            closeButton.Location = new System.Drawing.Point(617, 10);
+            closeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            closeButton.Name = "closeButton";
+            closeButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            closeButton.Size = new System.Drawing.Size(77, 29);
+            closeButton.TabIndex = 4;
+            closeButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            closeButton.Values.Text = "Close";
+            closeButton.Click += kryptonButton3_Click;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(closeButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 410);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(698, 42);
+            ButtonPanel.TabIndex = 9;
             // 
             // DatabaseOutputForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 319);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "DatabaseOutputForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Execute SQL Query";
-            this.Load += new System.EventHandler(this.DatabaseOutputForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.outputDataGridView)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = true;
+            ClientSize = new System.Drawing.Size(698, 452);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "DatabaseOutputForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Execute SQL Query";
+            Load += DatabaseOutputForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)outputDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -97,5 +120,6 @@
         private Krypton.Toolkit.KryptonPanel mainPanel;
         private Krypton.Toolkit.KryptonButton closeButton;
         private Krypton.Toolkit.KryptonDataGridView outputDataGridView;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }

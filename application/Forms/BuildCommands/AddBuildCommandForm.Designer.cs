@@ -29,137 +29,153 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBuildCommandForm));
-            this.displayNameTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.commandTextBox = new Krypton.Toolkit.KryptonTextBox();
-            this.displayNameLabel = new Krypton.Toolkit.KryptonLabel();
-            this.commandLabel = new Krypton.Toolkit.KryptonLabel();
-            this.saveButton = new Krypton.Toolkit.KryptonButton();
-            this.commandTipLabel = new Krypton.Toolkit.KryptonLabel();
-            this.mainPanel = new Krypton.Toolkit.KryptonPanel();
-            this.fileExtensionsTipLabel = new Krypton.Toolkit.KryptonLabel();
-            this.fileExtensionsRichTextBox = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
-            this.SuspendLayout();
+            displayNameTextBox = new Krypton.Toolkit.KryptonTextBox();
+            commandTextBox = new Krypton.Toolkit.KryptonTextBox();
+            displayNameLabel = new Krypton.Toolkit.KryptonLabel();
+            commandLabel = new Krypton.Toolkit.KryptonLabel();
+            saveButton = new Krypton.Toolkit.KryptonButton();
+            commandTipLabel = new Krypton.Toolkit.KryptonLabel();
+            mainPanel = new Krypton.Toolkit.KryptonPanel();
+            fileExtensionsTipLabel = new Krypton.Toolkit.KryptonLabel();
+            fileExtensionsRichTextBox = new Krypton.Toolkit.KryptonRichTextBox();
+            kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
+            mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
+            ButtonPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // displayNameTextBox
             // 
-            this.displayNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.displayNameTextBox.Location = new System.Drawing.Point(8, 29);
-            this.displayNameTextBox.Name = "displayNameTextBox";
-            this.displayNameTextBox.Size = new System.Drawing.Size(395, 23);
-            this.displayNameTextBox.TabIndex = 0;
+            displayNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            displayNameTextBox.Location = new System.Drawing.Point(8, 29);
+            displayNameTextBox.Name = "displayNameTextBox";
+            displayNameTextBox.Size = new System.Drawing.Size(354, 23);
+            displayNameTextBox.TabIndex = 0;
             // 
             // commandTextBox
             // 
-            this.commandTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.commandTextBox.Location = new System.Drawing.Point(8, 79);
-            this.commandTextBox.Name = "commandTextBox";
-            this.commandTextBox.Size = new System.Drawing.Size(395, 23);
-            this.commandTextBox.TabIndex = 1;
+            commandTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            commandTextBox.Location = new System.Drawing.Point(8, 79);
+            commandTextBox.Name = "commandTextBox";
+            commandTextBox.Size = new System.Drawing.Size(354, 23);
+            commandTextBox.TabIndex = 1;
             // 
             // displayNameLabel
             // 
-            this.displayNameLabel.Location = new System.Drawing.Point(4, 8);
-            this.displayNameLabel.Name = "displayNameLabel";
-            this.displayNameLabel.Size = new System.Drawing.Size(86, 20);
-            this.displayNameLabel.TabIndex = 2;
-            this.displayNameLabel.Values.Text = "Display Name";
+            displayNameLabel.Location = new System.Drawing.Point(4, 8);
+            displayNameLabel.Name = "displayNameLabel";
+            displayNameLabel.Size = new System.Drawing.Size(86, 20);
+            displayNameLabel.TabIndex = 2;
+            displayNameLabel.Values.Text = "Display Name";
             // 
             // commandLabel
             // 
-            this.commandLabel.Location = new System.Drawing.Point(4, 58);
-            this.commandLabel.Name = "commandLabel";
-            this.commandLabel.Size = new System.Drawing.Size(67, 20);
-            this.commandLabel.TabIndex = 3;
-            this.commandLabel.Values.Text = "Command";
+            commandLabel.Location = new System.Drawing.Point(4, 58);
+            commandLabel.Name = "commandLabel";
+            commandLabel.Size = new System.Drawing.Size(67, 20);
+            commandLabel.TabIndex = 3;
+            commandLabel.Values.Text = "Command";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(324, 278);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.OverrideFocus.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.saveButton.Size = new System.Drawing.Size(79, 25);
-            this.saveButton.TabIndex = 3;
-            this.saveButton.Values.Text = "Save";
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            saveButton.Location = new System.Drawing.Point(281, 6);
+            saveButton.Name = "saveButton";
+            saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            saveButton.Size = new System.Drawing.Size(79, 25);
+            saveButton.TabIndex = 3;
+            saveButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            saveButton.Values.Text = "Save";
+            saveButton.Click += saveButton_Click;
             // 
             // commandTipLabel
             // 
-            this.commandTipLabel.Location = new System.Drawing.Point(4, 105);
-            this.commandTipLabel.Name = "commandTipLabel";
-            this.commandTipLabel.Size = new System.Drawing.Size(274, 14);
-            this.commandTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.commandTipLabel.TabIndex = 5;
-            this.commandTipLabel.Values.Text = "$FILE can be used as a placeholder for the currently opened file.";
+            commandTipLabel.Location = new System.Drawing.Point(4, 105);
+            commandTipLabel.Name = "commandTipLabel";
+            commandTipLabel.Size = new System.Drawing.Size(274, 14);
+            commandTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            commandTipLabel.TabIndex = 5;
+            commandTipLabel.Values.Text = "$FILE can be used as a placeholder for the currently opened file.";
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.fileExtensionsTipLabel);
-            this.mainPanel.Controls.Add(this.fileExtensionsRichTextBox);
-            this.mainPanel.Controls.Add(this.kryptonLabel5);
-            this.mainPanel.Controls.Add(this.commandTextBox);
-            this.mainPanel.Controls.Add(this.commandTipLabel);
-            this.mainPanel.Controls.Add(this.displayNameTextBox);
-            this.mainPanel.Controls.Add(this.saveButton);
-            this.mainPanel.Controls.Add(this.displayNameLabel);
-            this.mainPanel.Controls.Add(this.commandLabel);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(411, 311);
-            this.mainPanel.TabIndex = 6;
+            mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(fileExtensionsTipLabel);
+            mainPanel.Controls.Add(fileExtensionsRichTextBox);
+            mainPanel.Controls.Add(kryptonLabel5);
+            mainPanel.Controls.Add(commandTextBox);
+            mainPanel.Controls.Add(commandTipLabel);
+            mainPanel.Controls.Add(displayNameTextBox);
+            mainPanel.Controls.Add(displayNameLabel);
+            mainPanel.Controls.Add(commandLabel);
+            mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new System.Drawing.Size(370, 320);
+            mainPanel.TabIndex = 6;
             // 
             // fileExtensionsTipLabel
             // 
-            this.fileExtensionsTipLabel.Location = new System.Drawing.Point(4, 246);
-            this.fileExtensionsTipLabel.Name = "fileExtensionsTipLabel";
-            this.fileExtensionsTipLabel.Size = new System.Drawing.Size(131, 14);
-            this.fileExtensionsTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fileExtensionsTipLabel.TabIndex = 10;
-            this.fileExtensionsTipLabel.Values.Text = "Leave blank to match all files.";
+            fileExtensionsTipLabel.Location = new System.Drawing.Point(4, 246);
+            fileExtensionsTipLabel.Name = "fileExtensionsTipLabel";
+            fileExtensionsTipLabel.Size = new System.Drawing.Size(131, 14);
+            fileExtensionsTipLabel.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            fileExtensionsTipLabel.TabIndex = 10;
+            fileExtensionsTipLabel.Values.Text = "Leave blank to match all files.";
             // 
             // fileExtensionsRichTextBox
             // 
-            this.fileExtensionsRichTextBox.Location = new System.Drawing.Point(8, 146);
-            this.fileExtensionsRichTextBox.Name = "fileExtensionsRichTextBox";
-            this.fileExtensionsRichTextBox.Size = new System.Drawing.Size(395, 96);
-            this.fileExtensionsRichTextBox.TabIndex = 2;
-            this.fileExtensionsRichTextBox.Text = "";
+            fileExtensionsRichTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            fileExtensionsRichTextBox.Location = new System.Drawing.Point(8, 146);
+            fileExtensionsRichTextBox.Name = "fileExtensionsRichTextBox";
+            fileExtensionsRichTextBox.Size = new System.Drawing.Size(354, 96);
+            fileExtensionsRichTextBox.TabIndex = 2;
+            fileExtensionsRichTextBox.Text = "";
             // 
             // kryptonLabel5
             // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(4, 125);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(152, 20);
-            this.kryptonLabel5.TabIndex = 7;
-            this.kryptonLabel5.Values.Text = "Associated File Extensions";
+            kryptonLabel5.Location = new System.Drawing.Point(4, 125);
+            kryptonLabel5.Name = "kryptonLabel5";
+            kryptonLabel5.Size = new System.Drawing.Size(152, 20);
+            kryptonLabel5.TabIndex = 7;
+            kryptonLabel5.Values.Text = "Associated File Extensions";
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(saveButton);
+            ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            ButtonPanel.Location = new System.Drawing.Point(0, 277);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new System.Drawing.Size(370, 43);
+            ButtonPanel.TabIndex = 7;
             // 
             // AddBuildCommandForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(411, 311);
-            this.Controls.Add(this.mainPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AddBuildCommandForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add / Edit Build Command";
-            this.Load += new System.EventHandler(this.AddBuildCommandForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            BackColor = System.Drawing.SystemColors.ControlLightLight;
+            ClientSize = new System.Drawing.Size(370, 320);
+            Controls.Add(ButtonPanel);
+            Controls.Add(mainPanel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "AddBuildCommandForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Add / Edit Build Command";
+            Load += AddBuildCommandForm_Load;
+            ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
+            ButtonPanel.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -175,5 +191,6 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel5;
         private Krypton.Toolkit.KryptonRichTextBox fileExtensionsRichTextBox;
         private Krypton.Toolkit.KryptonLabel fileExtensionsTipLabel;
+        private Krypton.Toolkit.KryptonPanel ButtonPanel;
     }
 }
