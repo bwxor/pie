@@ -53,5 +53,21 @@ namespace pie
         {
             this.Close();
         }
+
+        private void NotificationOKForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Close();
+            }
+        }
+
+        private void contentRichTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Close();
+            }
+        }
     }
 }

@@ -49,7 +49,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(382, 337);
+            mainPanel.Size = new System.Drawing.Size(372, 316);
             mainPanel.StateCommon.Color1 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.StateCommon.Color2 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.TabIndex = 7;
@@ -80,7 +80,7 @@
             // okButton
             // 
             okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            okButton.Location = new System.Drawing.Point(304, 30);
+            okButton.Location = new System.Drawing.Point(294, 30);
             okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             okButton.Name = "okButton";
             okButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -95,9 +95,9 @@
             // 
             kryptonPanel1.Controls.Add(okButton);
             kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            kryptonPanel1.Location = new System.Drawing.Point(0, 266);
+            kryptonPanel1.Location = new System.Drawing.Point(0, 245);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new System.Drawing.Size(382, 71);
+            kryptonPanel1.Size = new System.Drawing.Size(372, 71);
             kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(192, 0, 0);
             kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.FromArgb(192, 0, 0);
             kryptonPanel1.TabIndex = 8;
@@ -107,7 +107,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(382, 337);
+            ClientSize = new System.Drawing.Size(372, 316);
             ControlBox = false;
             Controls.Add(kryptonPanel1);
             Controls.Add(mainPanel);
@@ -130,6 +130,7 @@
             StateCommon.Header.Content.ShortText.Color2 = System.Drawing.Color.White;
             Text = "Fatal Error";
             FormClosing += NotificationFatalForm_FormClosing;
+            KeyDown += NotificationFatalForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();

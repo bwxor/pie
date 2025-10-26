@@ -71,7 +71,7 @@ namespace pie
             notificationOkForm.ShowDialog();
         }
 
-        private void kryptonButton1_Click(object sender, EventArgs e)
+        private void ProceedWithCredentials()
         {
             if (authorNameTextBox.Text != "" && authorEmailTextBox.Text != "")
             {
@@ -85,6 +85,35 @@ namespace pie
             else
             {
                 ShowNotification("Author Name and Email cannot be blank.");
+            }
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            ProceedWithCredentials();
+        }
+
+        private void GitCommitCredentialsForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithCredentials();
+            }
+        }
+
+        private void authorNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithCredentials();
+            }
+        }
+
+        private void authorEmailTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithCredentials();
             }
         }
     }

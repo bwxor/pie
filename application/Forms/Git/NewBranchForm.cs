@@ -57,7 +57,7 @@ namespace pie.Forms.Git
             }
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void ProceedWithSave()
         {
             if (string.IsNullOrWhiteSpace(branchNameTextBox.Text.Trim()))
             {
@@ -68,6 +68,11 @@ namespace pie.Forms.Git
             Output = new NewBranchFormOutput();
             Output.BranchName = branchNameTextBox.Text.Trim();
             this.Close();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            ProceedWithSave();
         }
         public void ShowNotification(string text)
         {
@@ -81,6 +86,22 @@ namespace pie.Forms.Git
             notificationOkForm.Input = notificationFormInput;
 
             notificationOkForm.ShowDialog();
+        }
+
+        private void NewBranchForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithSave();
+            }
+        }
+
+        private void branchNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithSave();
+            }
         }
     }
 }

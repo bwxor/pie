@@ -46,7 +46,7 @@
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(313, 177);
+            mainPanel.Size = new System.Drawing.Size(355, 191);
             mainPanel.TabIndex = 3;
             // 
             // commitMessageRichTextBox
@@ -54,14 +54,15 @@
             commitMessageRichTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             commitMessageRichTextBox.Location = new System.Drawing.Point(3, 12);
             commitMessageRichTextBox.Name = "commitMessageRichTextBox";
-            commitMessageRichTextBox.Size = new System.Drawing.Size(310, 119);
+            commitMessageRichTextBox.Size = new System.Drawing.Size(349, 133);
             commitMessageRichTextBox.TabIndex = 3;
             commitMessageRichTextBox.Text = "";
+            commitMessageRichTextBox.KeyDown += commitMessageRichTextBox_KeyDown;
             // 
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(234, 8);
+            saveButton.Location = new System.Drawing.Point(276, 8);
             saveButton.Name = "saveButton";
             saveButton.Size = new System.Drawing.Size(76, 25);
             saveButton.TabIndex = 1;
@@ -73,9 +74,9 @@
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 137);
+            ButtonPanel.Location = new System.Drawing.Point(0, 151);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(313, 40);
+            ButtonPanel.Size = new System.Drawing.Size(355, 40);
             ButtonPanel.TabIndex = 4;
             // 
             // GitCommitMessageForm
@@ -83,7 +84,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(313, 177);
+            ClientSize = new System.Drawing.Size(355, 191);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -94,6 +95,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Commit Message";
             Load += GitCommitMessageForm_Load;
+            KeyDown += GitCommitMessageForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();

@@ -86,7 +86,7 @@ using System.Windows.Forms;
 
 namespace pie
 {
-    public partial class MainForm : KryptonForm
+    public partial class t : KryptonForm
     {
         private ConfigurationService configurationService = new ConfigurationService();
         private ThemingService themeService = new ThemingService();
@@ -169,7 +169,7 @@ namespace pie
         }
         #endregion
         #region Initialization
-        public MainForm()
+        public t()
         {
             /*
              * Temporal coupling between ProcessCommandLineArguments and the initialization methods.
@@ -995,7 +995,7 @@ namespace pie
 
                     string[] parsedStrings = new string[generatorAction.Values.Length];
 
-                    for (int j = 0; j<generatorAction.Values.Length; j++)
+                    for (int j = 0; j < generatorAction.Values.Length; j++)
                     {
                         parsedStrings[j] = pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(generatorAction.Values[j], pluginFormOutput.ControlKeyValues);
                     }
@@ -1004,7 +1004,7 @@ namespace pie
 
                     foreach (var ea in generatedActions)
                     {
-                        actions.Insert(i+1, ea);
+                        actions.Insert(i + 1, ea);
                         i++;
                     }
                 }
@@ -1542,7 +1542,7 @@ namespace pie
             TextArea.UpdateUI += TextArea_UpdateUI;
             TextArea.IndentationGuides = IndentView.LookBoth;
             TextArea.ZoomChanged += TextArea_ZoomChanged;
-            
+
 
             if (editorProperties.Wordwrap)
             {
@@ -2270,7 +2270,7 @@ namespace pie
                     else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
                     {
                         Scintilla TextArea = (Scintilla)sender;
-                        
+
                         int lowerBound = TextArea.SelectionStart;
                         int upperBound = TextArea.SelectionStart;
                         int currentLine = TextArea.CurrentLine;
@@ -3190,12 +3190,34 @@ namespace pie
 
                 try
                 {
-                    repository.CheckoutPaths(selectedBranch.FriendlyName, paths, new CheckoutOptions { CheckoutModifiers = CheckoutModifiers.Force });
-                    doNotShowBranchChangeNotification = true;
-                    UpdateGitRepositoryInfo();
+                    if (selectedBranch != null)
+                    {
+                        repository.CheckoutPaths(selectedBranch.FriendlyName, paths, new CheckoutOptions { CheckoutModifiers = CheckoutModifiers.Force });
+                        doNotShowBranchChangeNotification = true;
+                        UpdateGitRepositoryInfo();
 
-                    // Files changed (where reverted). They don't need to keep their inconsistent state in the opened code tabs.
-                    CloseRevertedGitFiles(paths);
+                        // Files changed (where reverted). They don't need to keep their inconsistent state in the opened code tabs.
+                        CloseRevertedGitFiles(paths);
+                    }
+                    else
+                    {
+                        NotificationYesNoCancelFormOutput output = ShowYesNoCancelNotification("Your repository doesn't have any commits, meaning that a rollback is not possible. Do you want to delete the selected files?");
+                        if (output.NotificationButton.Equals(NotificationButton.YES))
+                        {
+                            foreach(string path in paths) {
+                                DeleteFile(Path.Combine(openedFolder, path));
+                                InvalidateOpenedFile(Path.Combine(openedFolder, path));
+                            }
+
+                            UpdateGitRepositoryInfo();
+                            NavigateToPath(openedFolder);
+                        }
+                        else
+                        {
+                            return;
+                        }
+
+                    }
                 }
                 catch (Exception)
                 {
@@ -3786,6 +3808,8 @@ namespace pie
                 pullButton.Values.Image = Properties.Resources.pull_black;
                 pushButton.Values.Image = Properties.Resources.push_black;
                 logButton.Values.Image = Properties.Resources.log_black;
+                createRepoButton.Values.Image = Properties.Resources.createrepo_black;
+                cloneRepoButton.Values.Image = Properties.Resources.clonerepo_black;
             }
             else if (activeTheme.IconType == "light")
             {
@@ -3796,6 +3820,8 @@ namespace pie
                 pullButton.Values.Image = Properties.Resources.pull_white;
                 pushButton.Values.Image = Properties.Resources.push_white;
                 logButton.Values.Image = Properties.Resources.log_white;
+                createRepoButton.Values.Image = Properties.Resources.createrepo_white;
+                cloneRepoButton.Values.Image = Properties.Resources.clonerepo_white;
             }
 
             // KryptonTableLayoutPanel
@@ -4535,13 +4561,14 @@ namespace pie
                 List<OnCreateFileAction> currList = plugin.OnCreateFile(src, pluginContext);
                 if (currList != null)
                 {
-                    foreach(var action in currList) {
+                    foreach (var action in currList)
+                    {
                         onCreateFileActions.Add(action);
                     }
                 }
             }
 
-            foreach(OnCreateFileAction action in onCreateFileActions)
+            foreach (OnCreateFileAction action in onCreateFileActions)
             {
                 if (action is AppendFileContentAction)
                 {
@@ -4698,6 +4725,11 @@ namespace pie
             {
                 items.Items[3].Visible = true;
             }
+        }
+
+        private void themesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

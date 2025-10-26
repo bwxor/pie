@@ -70,7 +70,7 @@ namespace pie
             notificationOkForm.ShowDialog();
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void ProceedWithSave()
         {
             if (displayNameTextBox.Text == "" || commandTextBox.Text == "")
             {
@@ -117,6 +117,11 @@ namespace pie
 
                 this.Close();
             }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            ProceedWithSave();
         }
     }
 }

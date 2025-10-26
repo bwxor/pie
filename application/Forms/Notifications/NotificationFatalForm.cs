@@ -52,6 +52,11 @@ namespace pie
             okButton.StateTracking.Border.ColorStyle = PaletteColorStyle.Solid;
         }
 
+        private void Close()
+        {
+            Environment.Exit(1);
+        }
+
         protected override CreateParams CreateParams
         {
             get
@@ -64,13 +69,21 @@ namespace pie
 
         private void okButton_Click(object sender, System.EventArgs e)
         {
-            Environment.Exit(1);
+            Close();
         }
 
         private void NotificationFatalForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             e.Cancel = true;
-            Environment.Exit(1);
+            Close();
+        }
+
+        private void NotificationFatalForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Close();
+            }
         }
     }
 }

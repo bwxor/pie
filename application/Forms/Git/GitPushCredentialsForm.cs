@@ -17,7 +17,7 @@ namespace pie
     public partial class GitPushCredentialsForm : KryptonForm
     {
         private ThemingService themeService = new ThemingService();
-        
+
         public GitPushCredentialsFormInput Input { get; set; }
         public GitPushCredentialsFormOutput Output { get; set; }
 
@@ -72,7 +72,7 @@ namespace pie
             notificationOkForm.ShowDialog();
         }
 
-        private void kryptonButton1_Click(object sender, EventArgs e)
+        private void ProceedWithCredentials()
         {
             if (remoteServerUsernameTextBox.Text != "" && remoteServerPasswordTextBox.Text != "")
             {
@@ -86,6 +86,35 @@ namespace pie
             else
             {
                 ShowNotification("Username and Password cannot be blank.");
+            }
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            ProceedWithCredentials();
+        }
+
+        private void GitPushCredentialsForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithCredentials();
+            }
+        }
+
+        private void remoteServerUsernameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithCredentials();
+            }
+        }
+
+        private void remoteServerPasswordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithCredentials();
             }
         }
     }

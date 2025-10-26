@@ -75,8 +75,7 @@ namespace pie
             notificationOkForm.ShowDialog();
         }
 
-
-        private void kryptonButton2_Click(object sender, EventArgs e)
+        private void Clone()
         {
             if (repositoryURLTextBox.Text == "" || cloneIntoTextBox.Text == "")
             {
@@ -94,6 +93,11 @@ namespace pie
             {
                 GitClone();
             }
+        }
+
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+            Clone();
         }
 
         private void GitClone()
@@ -162,6 +166,30 @@ namespace pie
             if (result == DialogResult.OK)
             {
                 cloneIntoTextBox.Text = dialog.SelectedPath;
+            }
+        }
+
+        private void GitCloneForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Clone();
+            }
+        }
+
+        private void repositoryURLTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Clone();
+            }
+        }
+
+        private void cloneIntoTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Clone();
             }
         }
     }

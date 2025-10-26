@@ -17,6 +17,6 @@ namespace pie.Classes
         public ThemeInfo ActiveTheme { get; set; }
         public KryptonCustomPaletteBase Palette { get; set; }
         public EditorProperties EditorProperties { get; set; }
-        public MainForm MainForm { get; set; }
+        public t MainForm { get; set; }
     }
 }

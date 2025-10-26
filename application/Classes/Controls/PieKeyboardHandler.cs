@@ -15,10 +15,10 @@ namespace pie.Classes
 {
     internal class PieKeyboardHandler : IKeyboardHandler
     {
-        private MainForm mainForm;
+        private t mainForm;
         private bool blockEvent;
 
-        public PieKeyboardHandler(MainForm mainForm)
+        public PieKeyboardHandler(t mainForm)
         {
             this.mainForm = mainForm;
         }
