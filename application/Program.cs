@@ -64,17 +64,17 @@ namespace pie
             // Create an instance of the main form 
             // and set it in the application; 
             // but don't try to run() it.
-            this.MainForm = new MainForm();
+            this.MainForm = new t();
 
             // We want to pass along the command-line arguments to 
             // this first instance
 
             // Allocate room in our string array
-            ((MainForm)this.MainForm).Args =
+            ((t)this.MainForm).Args =
                   new string[this.CommandLineArgs.Count];
 
             // And copy the arguments over to our form
-            this.CommandLineArgs.CopyTo(((MainForm)this.MainForm).Args, 0);
+            this.CommandLineArgs.CopyTo(((t)this.MainForm).Args, 0);
         }
 
         protected void SIApp_StartupNextInstance(object sender, StartupNextInstanceEventArgs eventArgs)
@@ -85,8 +85,8 @@ namespace pie
 
             // Need to use invoke to b/c this is being called 
             // from another thread.
-            this.MainForm.Invoke(new MainForm.ProcessParametersDelegate(
-                ((MainForm)this.MainForm).ProcessParameters), new object[] { args });
+            this.MainForm.Invoke(new t.ProcessParametersDelegate(
+                ((t)this.MainForm).ProcessParameters), new object[] { args });
         }
     }
 }

@@ -55,7 +55,7 @@ namespace pie.Forms.Git
             }
         }
 
-        private void connectButton_Click(object sender, EventArgs e)
+        private void ProceedWithConnect()
         {
             if (string.IsNullOrEmpty(repositoryURLTextBox.Text.Trim()))
             {
@@ -66,6 +66,11 @@ namespace pie.Forms.Git
                 Output.RepositoryUrl = repositoryURLTextBox.Text.Trim();
                 this.Close();
             }
+        }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            ProceedWithConnect();
         }
 
         public void ShowNotification(string text)
@@ -80,6 +85,22 @@ namespace pie.Forms.Git
             notificationOkForm.Input = notificationFormInput;
 
             notificationOkForm.ShowDialog();
+        }
+
+        private void GitConnectToRemoteForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithConnect();
+            }
+        }
+
+        private void repositoryURLTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithConnect();
+            }
         }
     }
 }

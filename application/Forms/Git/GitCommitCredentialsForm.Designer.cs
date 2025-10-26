@@ -45,7 +45,7 @@
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(363, 14);
+            saveButton.Location = new System.Drawing.Point(367, 14);
             saveButton.Name = "saveButton";
             saveButton.Size = new System.Drawing.Size(76, 25);
             saveButton.TabIndex = 1;
@@ -63,7 +63,7 @@
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(451, 166);
+            mainPanel.Size = new System.Drawing.Size(455, 172);
             mainPanel.TabIndex = 2;
             // 
             // authorEmailLabel
@@ -87,24 +87,26 @@
             authorEmailTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             authorEmailTextBox.Location = new System.Drawing.Point(12, 75);
             authorEmailTextBox.Name = "authorEmailTextBox";
-            authorEmailTextBox.Size = new System.Drawing.Size(420, 23);
+            authorEmailTextBox.Size = new System.Drawing.Size(424, 23);
             authorEmailTextBox.TabIndex = 3;
+            authorEmailTextBox.KeyDown += authorEmailTextBox_KeyDown;
             // 
             // authorNameTextBox
             // 
             authorNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             authorNameTextBox.Location = new System.Drawing.Point(12, 25);
             authorNameTextBox.Name = "authorNameTextBox";
-            authorNameTextBox.Size = new System.Drawing.Size(420, 23);
+            authorNameTextBox.Size = new System.Drawing.Size(424, 23);
             authorNameTextBox.TabIndex = 2;
+            authorNameTextBox.KeyDown += authorNameTextBox_KeyDown;
             // 
             // ButtonPanel
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 117);
+            ButtonPanel.Location = new System.Drawing.Point(0, 123);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(451, 49);
+            ButtonPanel.Size = new System.Drawing.Size(455, 49);
             ButtonPanel.TabIndex = 3;
             // 
             // GitCommitCredentialsForm
@@ -113,7 +115,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSize = true;
             BackColor = System.Drawing.SystemColors.ControlLightLight;
-            ClientSize = new System.Drawing.Size(451, 166);
+            ClientSize = new System.Drawing.Size(455, 172);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -124,6 +126,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Commit Credentials";
             Load += GitCommitCredentialsForm_Load;
+            KeyDown += GitCommitCredentialsForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();

@@ -49,9 +49,10 @@ namespace pie.Forms.Git
             }
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void ProceedWithSave()
         {
-            if (string.IsNullOrEmpty(commitMessageRichTextBox.Text.Trim())) {
+            if (string.IsNullOrEmpty(commitMessageRichTextBox.Text.Trim()))
+            {
                 ShowNotification("Commit message cannot be empty.");
             }
             else
@@ -59,6 +60,11 @@ namespace pie.Forms.Git
                 Output.Message = commitMessageRichTextBox.Text.Trim();
                 this.Close();
             }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            ProceedWithSave();
         }
 
         public void ShowNotification(string text)
@@ -73,6 +79,22 @@ namespace pie.Forms.Git
             notificationOkForm.Input = notificationFormInput;
 
             notificationOkForm.ShowDialog();
+        }
+
+        private void GitCommitMessageForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithSave();
+            }
+        }
+
+        private void commitMessageRichTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ProceedWithSave();
+            }
         }
     }
 }

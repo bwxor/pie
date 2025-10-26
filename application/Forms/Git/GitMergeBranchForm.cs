@@ -59,7 +59,24 @@ namespace pie.Forms.Git
             Output.SelectedBranch = null;
         }
 
+        private void ProceedWithMerge()
+        {
+            Output.SelectedBranch = branchComboBox.SelectedItem.ToString();
+            this.Close();
+        }
+
         private void mergeButton_Click(object sender, EventArgs e)
+        {
+            ProceedWithMerge();
+        }
+
+        private void GitMergeBranchForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            Output.SelectedBranch = branchComboBox.SelectedItem.ToString();
+            this.Close();
+        }
+
+        private void branchComboBox_KeyDown(object sender, KeyEventArgs e)
         {
             Output.SelectedBranch = branchComboBox.SelectedItem.ToString();
             this.Close();

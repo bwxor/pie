@@ -47,7 +47,7 @@
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(351, 89);
+            mainPanel.Size = new System.Drawing.Size(367, 92);
             mainPanel.TabIndex = 4;
             // 
             // branchComboBox
@@ -56,15 +56,16 @@
             branchComboBox.DropDownWidth = 370;
             branchComboBox.Location = new System.Drawing.Point(3, 12);
             branchComboBox.Name = "branchComboBox";
-            branchComboBox.Size = new System.Drawing.Size(338, 22);
+            branchComboBox.Size = new System.Drawing.Size(354, 22);
             branchComboBox.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             branchComboBox.TabIndex = 2;
             branchComboBox.Text = "kryptonComboBox1";
+            branchComboBox.KeyDown += branchComboBox_KeyDown;
             // 
             // mergeButton
             // 
             mergeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            mergeButton.Location = new System.Drawing.Point(265, 9);
+            mergeButton.Location = new System.Drawing.Point(281, 9);
             mergeButton.Name = "mergeButton";
             mergeButton.Size = new System.Drawing.Size(76, 25);
             mergeButton.TabIndex = 1;
@@ -76,9 +77,9 @@
             // 
             ButtonPanel.Controls.Add(mergeButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 50);
+            ButtonPanel.Location = new System.Drawing.Point(0, 53);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(351, 39);
+            ButtonPanel.Size = new System.Drawing.Size(367, 39);
             ButtonPanel.TabIndex = 5;
             // 
             // GitMergeBranchForm
@@ -86,7 +87,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(351, 89);
+            ClientSize = new System.Drawing.Size(367, 92);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -97,6 +98,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Merge branch into...";
             Load += GitMergeBranchForm_Load;
+            KeyDown += GitMergeBranchForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)branchComboBox).EndInit();

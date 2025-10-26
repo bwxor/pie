@@ -74,7 +74,7 @@ namespace pie.Forms.Git
             }
         }
 
-        private void kryptonButton1_Click(object sender, EventArgs e)
+        private void ProceedWithSettings()
         {
             Input.GitCredentials.Name = authorNameTextBox.Text;
             Input.GitCredentials.Email = authorEmailTextBox.Text;
@@ -85,6 +85,11 @@ namespace pie.Forms.Git
             Output.Saved = true;
 
             this.Close();
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            ProceedWithSettings();
         }
     }
 }

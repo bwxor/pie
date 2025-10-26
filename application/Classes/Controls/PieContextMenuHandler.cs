@@ -22,10 +22,10 @@ namespace pie.Classes
 {
     internal class PieContextMenuHandler : IContextMenuHandler
     {
-        private MainForm mainForm;
+        private t mainForm;
         private KryptonContextMenu kryptonContextMenu;
 
-        public PieContextMenuHandler(MainForm mainForm, KryptonContextMenu kryptonContextMenu)
+        public PieContextMenuHandler(t mainForm, KryptonContextMenu kryptonContextMenu)
         {
             this.mainForm = mainForm;
             this.kryptonContextMenu = kryptonContextMenu;

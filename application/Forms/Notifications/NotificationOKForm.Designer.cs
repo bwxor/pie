@@ -48,22 +48,22 @@
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new System.Windows.Forms.Padding(5);
-            mainPanel.Size = new System.Drawing.Size(443, 127);
+            mainPanel.Size = new System.Drawing.Size(459, 120);
             mainPanel.TabIndex = 7;
             // 
             // ButtonPanel
             // 
             ButtonPanel.Controls.Add(okButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(5, 77);
+            ButtonPanel.Location = new System.Drawing.Point(5, 70);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(433, 45);
+            ButtonPanel.Size = new System.Drawing.Size(449, 45);
             ButtonPanel.TabIndex = 6;
             // 
             // okButton
             // 
             okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            okButton.Location = new System.Drawing.Point(359, 11);
+            okButton.Location = new System.Drawing.Point(375, 11);
             okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             okButton.Name = "okButton";
             okButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
@@ -80,18 +80,19 @@
             contentRichTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             contentRichTextBox.Name = "contentRichTextBox";
             contentRichTextBox.ReadOnly = true;
-            contentRichTextBox.Size = new System.Drawing.Size(433, 117);
+            contentRichTextBox.Size = new System.Drawing.Size(449, 110);
             contentRichTextBox.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
             contentRichTextBox.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             contentRichTextBox.TabIndex = 5;
             contentRichTextBox.Text = "";
+            contentRichTextBox.KeyDown += contentRichTextBox_KeyDown;
             // 
             // NotificationOKForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(443, 127);
+            ClientSize = new System.Drawing.Size(459, 120);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -102,6 +103,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Notification";
             Load += CustomMessageBox_Load;
+            KeyDown += NotificationOKForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();

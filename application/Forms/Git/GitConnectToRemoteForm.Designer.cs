@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GitConnectToRemoteForm));
             mainPanel = new Krypton.Toolkit.KryptonPanel();
-            connectButton = new Krypton.Toolkit.KryptonButton();
             repositoryURLLabel = new Krypton.Toolkit.KryptonLabel();
             repositoryURLTextBox = new Krypton.Toolkit.KryptonTextBox();
+            connectButton = new Krypton.Toolkit.KryptonButton();
             ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
@@ -49,20 +49,8 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(452, 107);
+            mainPanel.Size = new System.Drawing.Size(468, 113);
             mainPanel.TabIndex = 4;
-            // 
-            // connectButton
-            // 
-            connectButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            connectButton.Location = new System.Drawing.Point(350, 4);
-            connectButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            connectButton.Name = "connectButton";
-            connectButton.Size = new System.Drawing.Size(89, 29);
-            connectButton.TabIndex = 6;
-            connectButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
-            connectButton.Values.Text = "Connect";
-            connectButton.Click += connectButton_Click;
             // 
             // repositoryURLLabel
             // 
@@ -79,16 +67,29 @@
             repositoryURLTextBox.Location = new System.Drawing.Point(14, 29);
             repositoryURLTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             repositoryURLTextBox.Name = "repositoryURLTextBox";
-            repositoryURLTextBox.Size = new System.Drawing.Size(424, 23);
+            repositoryURLTextBox.Size = new System.Drawing.Size(440, 23);
             repositoryURLTextBox.TabIndex = 2;
+            repositoryURLTextBox.KeyDown += repositoryURLTextBox_KeyDown;
+            // 
+            // connectButton
+            // 
+            connectButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            connectButton.Location = new System.Drawing.Point(366, 4);
+            connectButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            connectButton.Name = "connectButton";
+            connectButton.Size = new System.Drawing.Size(89, 29);
+            connectButton.TabIndex = 6;
+            connectButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            connectButton.Values.Text = "Connect";
+            connectButton.Click += connectButton_Click;
             // 
             // ButtonPanel
             // 
             ButtonPanel.Controls.Add(connectButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 71);
+            ButtonPanel.Location = new System.Drawing.Point(0, 77);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(452, 36);
+            ButtonPanel.Size = new System.Drawing.Size(468, 36);
             ButtonPanel.TabIndex = 5;
             // 
             // GitConnectToRemoteForm
@@ -96,7 +97,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(452, 107);
+            ClientSize = new System.Drawing.Size(468, 113);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -107,6 +108,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Connect to remote repository";
             Load += GitConnectToRemoteForm_Load;
+            KeyDown += GitConnectToRemoteForm_KeyDown;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
