@@ -46,7 +46,7 @@ Last but not least, the highest level of extension is obtained through plugins, 
 
 ## Installing and Updating Pie
 
-An installer for Pie is yet to be implemented, but at the moment, one can navigate to the [Releases](https://github.com/bwxor/pie/releases) section and download the latest release in an archive whose contents should be extracted in a preferred directory. Running the executable should then work smoothly. 
+An installer for Pie has now been implemented and is available to be downloaded from the [Releases](https://github.com/bwxor/pie/releases) section. This is now considered the only proper way to get Pie on your local computer. 
 
 Pie also features an automatic updater, called `PieSync.exe`, which is a console app that extracts the contents of the latest release from GitHub inside the launch directory of the executable. This is why it is **not** recommended to not change the directory structure of the binaries. PieSync can also be run manually, but the editor sends a notification (on launch) whenever a newer release is published, and the update process can be started directly from the application's user interface. It is, however, recommended to explicitly run PieSync when there are errors coming from manually configured JSON files, and Pie cannot resolve them by itself.
 
