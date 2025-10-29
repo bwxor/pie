@@ -85,7 +85,7 @@ namespace pie.Forms.Other
                 else if (control is plugin.Classes.UI.Buttons.Button)
                 {
                     plugin.Classes.UI.Buttons.Button b = (plugin.Classes.UI.Buttons.Button)control;
-                    controlToAdd = new KryptonButton { Text = b.Text };
+                    controlToAdd = new KryptonButton { Text = b.Text};
                     controlToAdd.Tag = b;
 
                     if (b.OnClick != null)

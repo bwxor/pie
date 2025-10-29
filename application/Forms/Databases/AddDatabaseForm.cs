@@ -112,8 +112,8 @@ namespace pie.Forms.Databases
                 databaseUsernameTextBox.Text = Input.Database.Username;
                 databasePasswordTextBox.Text = Input.Database.Password;
                 selectedDatabaseType = Input.Database.DatabaseType;
-                
-                switch(Input.Database.DatabaseType)
+
+                switch (Input.Database.DatabaseType)
                 {
                     case DatabaseType.MySQL:
                         mysqlCheckButton.Checked = true;
@@ -217,19 +217,24 @@ namespace pie.Forms.Databases
 
             string type = ((KryptonCheckButton)sender).Text.Trim();
 
-            switch(type)
+            switch (type)
             {
                 case "MySQL":
                     selectedDatabaseType = DatabaseType.MySQL;
                     break;
                 case "Microsoft SQL":
-                    selectedDatabaseType= DatabaseType.MSSQL;
+                    selectedDatabaseType = DatabaseType.MSSQL;
                     break;
                 case "PostgreSQL":
                     selectedDatabaseType = DatabaseType.PostgreSQL;
                     break;
             }
 
+        }
+
+        private void AddDatabaseForm_Resize(object sender, EventArgs e)
+        {
+            databasesPanel.Left = (this.Width - databasesPanel.Width) / 2;
         }
     }
 }
