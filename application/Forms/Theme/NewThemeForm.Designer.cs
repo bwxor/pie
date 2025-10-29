@@ -49,7 +49,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(368, 113);
+            mainPanel.Size = new System.Drawing.Size(372, 101);
             mainPanel.TabIndex = 4;
             // 
             // themeNameLabel
@@ -67,14 +67,15 @@
             themeNameTextBox.Location = new System.Drawing.Point(13, 30);
             themeNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             themeNameTextBox.Name = "themeNameTextBox";
-            themeNameTextBox.Size = new System.Drawing.Size(340, 23);
+            themeNameTextBox.Size = new System.Drawing.Size(344, 23);
             themeNameTextBox.TabIndex = 2;
             // 
             // createButton
             // 
             createButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            createButton.Location = new System.Drawing.Point(264, 8);
+            createButton.Location = new System.Drawing.Point(268, 8);
             createButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            createButton.MinimumSize = new System.Drawing.Size(0, 29);
             createButton.Name = "createButton";
             createButton.Size = new System.Drawing.Size(89, 29);
             createButton.TabIndex = 1;
@@ -86,9 +87,9 @@
             // 
             ButtonPanel.Controls.Add(createButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 73);
+            ButtonPanel.Location = new System.Drawing.Point(0, 61);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(368, 40);
+            ButtonPanel.Size = new System.Drawing.Size(372, 40);
             ButtonPanel.TabIndex = 5;
             // 
             // NewThemeForm
@@ -96,7 +97,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(368, 113);
+            ClientSize = new System.Drawing.Size(372, 101);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -91,9 +91,10 @@
             // 
             removeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             removeButton.Location = new System.Drawing.Point(88, 12);
+            removeButton.MinimumSize = new System.Drawing.Size(0, 24);
             removeButton.Name = "removeButton";
             removeButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            removeButton.Size = new System.Drawing.Size(66, 25);
+            removeButton.Size = new System.Drawing.Size(66, 24);
             removeButton.TabIndex = 2;
             removeButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             removeButton.Values.Text = "Remove";
@@ -103,9 +104,10 @@
             // 
             addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             addButton.Location = new System.Drawing.Point(16, 12);
+            addButton.MinimumSize = new System.Drawing.Size(0, 24);
             addButton.Name = "addButton";
             addButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            addButton.Size = new System.Drawing.Size(66, 25);
+            addButton.Size = new System.Drawing.Size(66, 24);
             addButton.TabIndex = 3;
             addButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             addButton.Values.Text = "Add";
@@ -114,10 +116,11 @@
             // applyButton
             // 
             applyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            applyButton.Location = new System.Drawing.Point(453, 12);
+            applyButton.Location = new System.Drawing.Point(457, 12);
+            applyButton.MinimumSize = new System.Drawing.Size(0, 24);
             applyButton.Name = "applyButton";
             applyButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            applyButton.Size = new System.Drawing.Size(66, 25);
+            applyButton.Size = new System.Drawing.Size(66, 24);
             applyButton.TabIndex = 4;
             applyButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             applyButton.Values.Text = "Apply";
@@ -131,7 +134,7 @@
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(531, 395);
+            mainPanel.Size = new System.Drawing.Size(535, 383);
             mainPanel.TabIndex = 6;
             // 
             // buildCommandsListView
@@ -143,7 +146,7 @@
             buildCommandsListView.Location = new System.Drawing.Point(10, 29);
             buildCommandsListView.MultiSelect = false;
             buildCommandsListView.Name = "buildCommandsListView";
-            buildCommandsListView.Size = new System.Drawing.Size(509, 313);
+            buildCommandsListView.Size = new System.Drawing.Size(513, 301);
             buildCommandsListView.TabIndex = 5;
             buildCommandsListView.UseCompatibleStateImageBehavior = false;
             buildCommandsListView.View = System.Windows.Forms.View.Details;
@@ -160,9 +163,9 @@
             ButtonPanel.Controls.Add(applyButton);
             ButtonPanel.Controls.Add(addButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 348);
+            ButtonPanel.Location = new System.Drawing.Point(0, 336);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(531, 47);
+            ButtonPanel.Size = new System.Drawing.Size(535, 47);
             ButtonPanel.TabIndex = 7;
             // 
             // BuildCommandsForm
@@ -171,7 +174,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSize = true;
             BackColor = System.Drawing.SystemColors.ControlLightLight;
-            ClientSize = new System.Drawing.Size(531, 395);
+            ClientSize = new System.Drawing.Size(535, 383);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

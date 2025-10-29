@@ -3104,9 +3104,19 @@ namespace pie
                     ShowNotification("You have nothing to commit.");
                 }
             }
+
+            foreach (var branch in repository.Branches)
+            {
+                if (branch.FriendlyName == gitBranchesComboBox.Text)
+                {
+                    selectedBranch = branch;
+                    Commands.Checkout(repository, branch);
+                }
+            }
         }
 
-        private void kryptonButton6_Click(object sender, EventArgs e)
+        // ToDo: Maybe we'll need it for later. It was replaced with CommitSelectedFiles
+        private void CommitAllFiles()
         {
             if (repository != null)
             {
@@ -3116,6 +3126,11 @@ namespace pie
             {
                 ShowNotification("No repository opened.");
             }
+        }
+
+        private void kryptonButton6_Click(object sender, EventArgs e)
+        {
+            CommitSelectedFiles();
         }
 
         private void kryptonContextMenuItem9_Click(object sender, EventArgs e)
@@ -3219,7 +3234,7 @@ namespace pie
 
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     ShowNotification("Could not rollback files.");
                 }
@@ -3245,17 +3260,29 @@ namespace pie
             }
         }
 
+        private void CommitSelectedFiles()
+        {
+            if (gitStagingAreaListView.SelectedObjects.Count > 0)
+            {
+                string items = "";
+
+                foreach (var gitFile in gitStagingAreaListView.SelectedObjects)
+                {
+                    items += ((GitFile)gitFile).Name;
+                    items += " ";
+                }
+
+                GitCommit(items);
+            }
+            else
+            {
+                ShowNotification("Select the files you would like to commit.");
+            }
+        }
+
         private void KryptonContextMenuItem_CommitSelectedFiles(object sender, EventArgs e)
         {
-            string items = "";
-
-            foreach (var gitFile in gitStagingAreaListView.SelectedObjects)
-            {
-                items += ((GitFile)gitFile).Name;
-                items += " ";
-            }
-
-            GitCommit(items);
+            CommitSelectedFiles();
         }
 
         private void KryptonContextMenuItem_OpenSelectedGitFiles(object sender, EventArgs e)

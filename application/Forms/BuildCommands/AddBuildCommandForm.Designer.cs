@@ -51,7 +51,7 @@
             displayNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             displayNameTextBox.Location = new System.Drawing.Point(8, 29);
             displayNameTextBox.Name = "displayNameTextBox";
-            displayNameTextBox.Size = new System.Drawing.Size(370, 23);
+            displayNameTextBox.Size = new System.Drawing.Size(374, 23);
             displayNameTextBox.TabIndex = 0;
             // 
             // commandTextBox
@@ -59,7 +59,7 @@
             commandTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             commandTextBox.Location = new System.Drawing.Point(8, 79);
             commandTextBox.Name = "commandTextBox";
-            commandTextBox.Size = new System.Drawing.Size(370, 23);
+            commandTextBox.Size = new System.Drawing.Size(374, 23);
             commandTextBox.TabIndex = 1;
             // 
             // displayNameLabel
@@ -81,10 +81,11 @@
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(297, 6);
+            saveButton.Location = new System.Drawing.Point(301, 6);
+            saveButton.MinimumSize = new System.Drawing.Size(0, 24);
             saveButton.Name = "saveButton";
             saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            saveButton.Size = new System.Drawing.Size(79, 25);
+            saveButton.Size = new System.Drawing.Size(79, 24);
             saveButton.TabIndex = 3;
             saveButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             saveButton.Values.Text = "Save";
@@ -113,7 +114,7 @@
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(386, 321);
+            mainPanel.Size = new System.Drawing.Size(390, 309);
             mainPanel.TabIndex = 6;
             // 
             // fileExtensionsTipLabel
@@ -130,7 +131,7 @@
             fileExtensionsRichTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             fileExtensionsRichTextBox.Location = new System.Drawing.Point(8, 146);
             fileExtensionsRichTextBox.Name = "fileExtensionsRichTextBox";
-            fileExtensionsRichTextBox.Size = new System.Drawing.Size(370, 96);
+            fileExtensionsRichTextBox.Size = new System.Drawing.Size(374, 96);
             fileExtensionsRichTextBox.TabIndex = 2;
             fileExtensionsRichTextBox.Text = "";
             // 
@@ -146,9 +147,9 @@
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 278);
+            ButtonPanel.Location = new System.Drawing.Point(0, 266);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(386, 43);
+            ButtonPanel.Size = new System.Drawing.Size(390, 43);
             ButtonPanel.TabIndex = 7;
             // 
             // AddBuildCommandForm
@@ -157,7 +158,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSize = true;
             BackColor = System.Drawing.SystemColors.ControlLightLight;
-            ClientSize = new System.Drawing.Size(386, 321);
+            ClientSize = new System.Drawing.Size(390, 309);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

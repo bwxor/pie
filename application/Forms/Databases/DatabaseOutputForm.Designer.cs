@@ -48,7 +48,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(698, 452);
+            mainPanel.Size = new System.Drawing.Size(702, 440);
             mainPanel.TabIndex = 8;
             // 
             // outputDataGridView
@@ -63,14 +63,15 @@
             outputDataGridView.Name = "outputDataGridView";
             outputDataGridView.ReadOnly = true;
             outputDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            outputDataGridView.Size = new System.Drawing.Size(670, 396);
+            outputDataGridView.Size = new System.Drawing.Size(674, 384);
             outputDataGridView.TabIndex = 5;
             // 
             // closeButton
             // 
             closeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            closeButton.Location = new System.Drawing.Point(617, 10);
+            closeButton.Location = new System.Drawing.Point(621, 10);
             closeButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            closeButton.MinimumSize = new System.Drawing.Size(0, 29);
             closeButton.Name = "closeButton";
             closeButton.OverrideDefault.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             closeButton.Size = new System.Drawing.Size(77, 29);
@@ -83,9 +84,9 @@
             // 
             ButtonPanel.Controls.Add(closeButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 410);
+            ButtonPanel.Location = new System.Drawing.Point(0, 398);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(698, 42);
+            ButtonPanel.Size = new System.Drawing.Size(702, 42);
             ButtonPanel.TabIndex = 9;
             // 
             // DatabaseOutputForm
@@ -93,7 +94,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(698, 452);
+            ClientSize = new System.Drawing.Size(702, 440);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

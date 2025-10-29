@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DesignerForm));
             mainPanel = new Krypton.Toolkit.KryptonPanel();
-            saveButton = new Krypton.Toolkit.KryptonButton();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
             themeTabControl = new Krypton.Docking.KryptonDockableNavigator();
             kryptonPage1 = new Krypton.Navigator.KryptonPage();
@@ -102,6 +101,7 @@
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             themeListView = new BrightIdeasSoftware.ObjectListView();
             ThemeNameColumn = new BrightIdeasSoftware.OLVColumn();
+            saveButton = new Krypton.Toolkit.KryptonButton();
             newThemeButton = new Krypton.Toolkit.KryptonButton();
             deleteThemeButton = new Krypton.Toolkit.KryptonButton();
             CommandButtonPanel = new Krypton.Toolkit.KryptonPanel();
@@ -154,20 +154,8 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(962, 541);
+            mainPanel.Size = new System.Drawing.Size(966, 529);
             mainPanel.TabIndex = 7;
-            // 
-            // saveButton
-            // 
-            saveButton.Location = new System.Drawing.Point(0, 4);
-            saveButton.Margin = new System.Windows.Forms.Padding(4);
-            saveButton.Name = "saveButton";
-            saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            saveButton.Size = new System.Drawing.Size(130, 28);
-            saveButton.TabIndex = 11;
-            saveButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
-            saveButton.Values.Text = "Save changes";
-            saveButton.Click += kryptonButton3_Click;
             // 
             // kryptonPanel2
             // 
@@ -178,7 +166,7 @@
             kryptonPanel2.Location = new System.Drawing.Point(0, 41);
             kryptonPanel2.Margin = new System.Windows.Forms.Padding(4);
             kryptonPanel2.Name = "kryptonPanel2";
-            kryptonPanel2.Size = new System.Drawing.Size(962, 500);
+            kryptonPanel2.Size = new System.Drawing.Size(966, 488);
             kryptonPanel2.TabIndex = 10;
             // 
             // themeTabControl
@@ -215,7 +203,7 @@
             themeTabControl.PageBackStyle = Krypton.Toolkit.PaletteBackStyle.PanelClient;
             themeTabControl.Pages.AddRange(new Krypton.Navigator.KryptonPage[] { kryptonPage1, kryptonPage2, kryptonPage3 });
             themeTabControl.SelectedIndex = 0;
-            themeTabControl.Size = new System.Drawing.Size(704, 500);
+            themeTabControl.Size = new System.Drawing.Size(708, 488);
             themeTabControl.StateCommon.Tab.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Solid;
             themeTabControl.TabIndex = 8;
             themeTabControl.Text = "kryptonDockableNavigator1";
@@ -254,7 +242,7 @@
             kryptonPage1.LastVisibleSet = true;
             kryptonPage1.MinimumSize = new System.Drawing.Size(150, 50);
             kryptonPage1.Name = "kryptonPage1";
-            kryptonPage1.Size = new System.Drawing.Size(702, 473);
+            kryptonPage1.Size = new System.Drawing.Size(706, 461);
             kryptonPage1.Text = "General";
             kryptonPage1.ToolTipTitle = "Page ToolTip";
             kryptonPage1.UniqueName = "dd30b80b13a344ffa7bbc6a736e37e1c";
@@ -911,7 +899,7 @@
             themeListView.Margin = new System.Windows.Forms.Padding(4);
             themeListView.MultiSelect = false;
             themeListView.Name = "themeListView";
-            themeListView.Size = new System.Drawing.Size(258, 500);
+            themeListView.Size = new System.Drawing.Size(258, 488);
             themeListView.TabIndex = 6;
             themeListView.UseCompatibleStateImageBehavior = false;
             themeListView.View = System.Windows.Forms.View.Details;
@@ -922,14 +910,28 @@
             ThemeNameColumn.AspectName = "Name";
             ThemeNameColumn.CellPadding = null;
             // 
+            // saveButton
+            // 
+            saveButton.Location = new System.Drawing.Point(0, 4);
+            saveButton.Margin = new System.Windows.Forms.Padding(4);
+            saveButton.MinimumSize = new System.Drawing.Size(0, 29);
+            saveButton.Name = "saveButton";
+            saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            saveButton.Size = new System.Drawing.Size(130, 29);
+            saveButton.TabIndex = 11;
+            saveButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
+            saveButton.Values.Text = "Save changes";
+            saveButton.Click += kryptonButton3_Click;
+            // 
             // newThemeButton
             // 
             newThemeButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            newThemeButton.Location = new System.Drawing.Point(695, 4);
+            newThemeButton.Location = new System.Drawing.Point(699, 4);
             newThemeButton.Margin = new System.Windows.Forms.Padding(4);
+            newThemeButton.MinimumSize = new System.Drawing.Size(0, 29);
             newThemeButton.Name = "newThemeButton";
             newThemeButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            newThemeButton.Size = new System.Drawing.Size(130, 28);
+            newThemeButton.Size = new System.Drawing.Size(130, 29);
             newThemeButton.TabIndex = 8;
             newThemeButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             newThemeButton.Values.Text = "New Theme";
@@ -938,11 +940,12 @@
             // deleteThemeButton
             // 
             deleteThemeButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            deleteThemeButton.Location = new System.Drawing.Point(832, 4);
+            deleteThemeButton.Location = new System.Drawing.Point(836, 4);
             deleteThemeButton.Margin = new System.Windows.Forms.Padding(4);
+            deleteThemeButton.MinimumSize = new System.Drawing.Size(0, 29);
             deleteThemeButton.Name = "deleteThemeButton";
             deleteThemeButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            deleteThemeButton.Size = new System.Drawing.Size(130, 28);
+            deleteThemeButton.Size = new System.Drawing.Size(130, 29);
             deleteThemeButton.TabIndex = 7;
             deleteThemeButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             deleteThemeButton.Values.Text = "Delete Theme";
@@ -956,7 +959,7 @@
             CommandButtonPanel.Dock = System.Windows.Forms.DockStyle.Top;
             CommandButtonPanel.Location = new System.Drawing.Point(0, 0);
             CommandButtonPanel.Name = "CommandButtonPanel";
-            CommandButtonPanel.Size = new System.Drawing.Size(962, 35);
+            CommandButtonPanel.Size = new System.Drawing.Size(966, 35);
             CommandButtonPanel.TabIndex = 8;
             // 
             // DesignerForm
@@ -964,7 +967,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(962, 541);
+            ClientSize = new System.Drawing.Size(966, 529);
             Controls.Add(CommandButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

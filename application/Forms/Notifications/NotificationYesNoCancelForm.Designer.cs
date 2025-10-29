@@ -50,7 +50,7 @@
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new System.Windows.Forms.Padding(5);
-            mainPanel.Size = new System.Drawing.Size(461, 105);
+            mainPanel.Size = new System.Drawing.Size(473, 148);
             mainPanel.TabIndex = 8;
             // 
             // ButtonPanel
@@ -59,16 +59,17 @@
             ButtonPanel.Controls.Add(cancelButton);
             ButtonPanel.Controls.Add(noButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(5, 49);
+            ButtonPanel.Location = new System.Drawing.Point(5, 92);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(451, 51);
+            ButtonPanel.Size = new System.Drawing.Size(463, 51);
             ButtonPanel.TabIndex = 4;
             // 
             // yesButton
             // 
             yesButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            yesButton.Location = new System.Drawing.Point(215, 17);
+            yesButton.Location = new System.Drawing.Point(227, 17);
             yesButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            yesButton.MinimumSize = new System.Drawing.Size(0, 29);
             yesButton.Name = "yesButton";
             yesButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             yesButton.Size = new System.Drawing.Size(74, 29);
@@ -80,8 +81,9 @@
             // cancelButton
             // 
             cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            cancelButton.Location = new System.Drawing.Point(376, 17);
+            cancelButton.Location = new System.Drawing.Point(388, 17);
             cancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cancelButton.MinimumSize = new System.Drawing.Size(0, 29);
             cancelButton.Name = "cancelButton";
             cancelButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             cancelButton.Size = new System.Drawing.Size(74, 29);
@@ -93,8 +95,9 @@
             // noButton
             // 
             noButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            noButton.Location = new System.Drawing.Point(296, 17);
+            noButton.Location = new System.Drawing.Point(308, 17);
             noButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            noButton.MinimumSize = new System.Drawing.Size(0, 29);
             noButton.Name = "noButton";
             noButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             noButton.Size = new System.Drawing.Size(74, 29);
@@ -110,7 +113,7 @@
             contentRichTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             contentRichTextBox.Name = "contentRichTextBox";
             contentRichTextBox.ReadOnly = true;
-            contentRichTextBox.Size = new System.Drawing.Size(451, 95);
+            contentRichTextBox.Size = new System.Drawing.Size(463, 138);
             contentRichTextBox.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
             contentRichTextBox.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             contentRichTextBox.TabIndex = 3;
@@ -121,7 +124,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(461, 105);
+            ClientSize = new System.Drawing.Size(473, 148);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");

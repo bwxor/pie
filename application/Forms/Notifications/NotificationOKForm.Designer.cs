@@ -48,23 +48,24 @@
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new System.Windows.Forms.Padding(5);
-            mainPanel.Size = new System.Drawing.Size(459, 120);
+            mainPanel.Size = new System.Drawing.Size(471, 133);
             mainPanel.TabIndex = 7;
             // 
             // ButtonPanel
             // 
             ButtonPanel.Controls.Add(okButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(5, 70);
+            ButtonPanel.Location = new System.Drawing.Point(5, 86);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(449, 45);
+            ButtonPanel.Size = new System.Drawing.Size(461, 42);
             ButtonPanel.TabIndex = 6;
             // 
             // okButton
             // 
             okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            okButton.Location = new System.Drawing.Point(375, 11);
+            okButton.Location = new System.Drawing.Point(387, 8);
             okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            okButton.MinimumSize = new System.Drawing.Size(0, 29);
             okButton.Name = "okButton";
             okButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             okButton.Size = new System.Drawing.Size(74, 29);
@@ -80,7 +81,7 @@
             contentRichTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             contentRichTextBox.Name = "contentRichTextBox";
             contentRichTextBox.ReadOnly = true;
-            contentRichTextBox.Size = new System.Drawing.Size(449, 110);
+            contentRichTextBox.Size = new System.Drawing.Size(461, 123);
             contentRichTextBox.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
             contentRichTextBox.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             contentRichTextBox.TabIndex = 5;
@@ -92,7 +93,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(459, 120);
+            ClientSize = new System.Drawing.Size(471, 133);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");

@@ -49,7 +49,7 @@
             DynamicTableLayoutPanel.Name = "DynamicTableLayoutPanel";
             DynamicTableLayoutPanel.RowCount = 1;
             DynamicTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            DynamicTableLayoutPanel.Size = new System.Drawing.Size(526, 0);
+            DynamicTableLayoutPanel.Size = new System.Drawing.Size(534, 0);
             DynamicTableLayoutPanel.TabIndex = 0;
             // 
             // kryptonPanel1
@@ -57,16 +57,17 @@
             kryptonPanel1.Controls.Add(ApplyButton);
             kryptonPanel1.Controls.Add(CancelButton);
             kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            kryptonPanel1.Location = new System.Drawing.Point(2, 230);
+            kryptonPanel1.Location = new System.Drawing.Point(2, 206);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new System.Drawing.Size(526, 51);
+            kryptonPanel1.Size = new System.Drawing.Size(534, 51);
             kryptonPanel1.TabIndex = 2;
             // 
             // ApplyButton
             // 
-            ApplyButton.Location = new System.Drawing.Point(351, 21);
+            ApplyButton.Location = new System.Drawing.Point(358, 21);
+            ApplyButton.MinimumSize = new System.Drawing.Size(0, 29);
             ApplyButton.Name = "ApplyButton";
-            ApplyButton.Size = new System.Drawing.Size(75, 25);
+            ApplyButton.Size = new System.Drawing.Size(75, 29);
             ApplyButton.StateTracking.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             ApplyButton.TabIndex = 4;
             ApplyButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
@@ -75,9 +76,10 @@
             // 
             // CancelButton
             // 
-            CancelButton.Location = new System.Drawing.Point(432, 21);
+            CancelButton.Location = new System.Drawing.Point(439, 21);
+            CancelButton.MinimumSize = new System.Drawing.Size(0, 29);
             CancelButton.Name = "CancelButton";
-            CancelButton.Size = new System.Drawing.Size(75, 25);
+            CancelButton.Size = new System.Drawing.Size(75, 29);
             CancelButton.StateTracking.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             CancelButton.TabIndex = 3;
             CancelButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
@@ -94,7 +96,7 @@
             kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             kryptonPanel2.Name = "kryptonPanel2";
             kryptonPanel2.Padding = new System.Windows.Forms.Padding(2);
-            kryptonPanel2.Size = new System.Drawing.Size(530, 283);
+            kryptonPanel2.Size = new System.Drawing.Size(538, 259);
             kryptonPanel2.TabIndex = 4;
             // 
             // PluginForm
@@ -104,7 +106,7 @@
             AutoScroll = true;
             AutoSize = true;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            ClientSize = new System.Drawing.Size(530, 283);
+            ClientSize = new System.Drawing.Size(538, 259);
             Controls.Add(kryptonPanel2);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             MaximizeBox = false;
