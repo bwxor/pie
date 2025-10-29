@@ -51,18 +51,19 @@
             testConnectionButton = new Krypton.Toolkit.KryptonButton();
             saveButton = new Krypton.Toolkit.KryptonButton();
             ButtonPanel = new Krypton.Toolkit.KryptonPanel();
+            databasesPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ButtonPanel).BeginInit();
             ButtonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)databasesPanel).BeginInit();
+            databasesPanel.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
             // 
             mainPanel.AutoSize = true;
-            mainPanel.Controls.Add(postgresqlCheckButton);
-            mainPanel.Controls.Add(mssqlCheckButton);
-            mainPanel.Controls.Add(mysqlCheckButton);
+            mainPanel.Controls.Add(databasesPanel);
             mainPanel.Controls.Add(typeLabel);
             mainPanel.Controls.Add(hostnameTipLabel);
             mainPanel.Controls.Add(databaseConnectionNameTipLabel);
@@ -82,12 +83,12 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(494, 482);
+            mainPanel.Size = new System.Drawing.Size(501, 502);
             mainPanel.TabIndex = 7;
             // 
             // postgresqlCheckButton
             // 
-            postgresqlCheckButton.Location = new System.Drawing.Point(323, 31);
+            postgresqlCheckButton.Location = new System.Drawing.Point(321, 2);
             postgresqlCheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             postgresqlCheckButton.MinimumSize = new System.Drawing.Size(0, 57);
             postgresqlCheckButton.Name = "postgresqlCheckButton";
@@ -100,7 +101,7 @@
             // 
             // mssqlCheckButton
             // 
-            mssqlCheckButton.Location = new System.Drawing.Point(167, 31);
+            mssqlCheckButton.Location = new System.Drawing.Point(165, 2);
             mssqlCheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mssqlCheckButton.MinimumSize = new System.Drawing.Size(0, 57);
             mssqlCheckButton.Name = "mssqlCheckButton";
@@ -113,7 +114,7 @@
             // 
             // mysqlCheckButton
             // 
-            mysqlCheckButton.Location = new System.Drawing.Point(9, 31);
+            mysqlCheckButton.Location = new System.Drawing.Point(7, 2);
             mysqlCheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mysqlCheckButton.MinimumSize = new System.Drawing.Size(0, 57);
             mysqlCheckButton.Name = "mysqlCheckButton";
@@ -160,7 +161,7 @@
             databasePasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             databasePasswordTextBox.Name = "databasePasswordTextBox";
             databasePasswordTextBox.PasswordChar = '*';
-            databasePasswordTextBox.Size = new System.Drawing.Size(468, 23);
+            databasePasswordTextBox.Size = new System.Drawing.Size(475, 23);
             databasePasswordTextBox.TabIndex = 6;
             // 
             // passwordLabel
@@ -178,7 +179,7 @@
             databaseUsernameTextBox.Location = new System.Drawing.Point(8, 328);
             databaseUsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             databaseUsernameTextBox.Name = "databaseUsernameTextBox";
-            databaseUsernameTextBox.Size = new System.Drawing.Size(468, 23);
+            databaseUsernameTextBox.Size = new System.Drawing.Size(475, 23);
             databaseUsernameTextBox.TabIndex = 5;
             // 
             // usernameLabel
@@ -196,7 +197,7 @@
             databaseNameTextBox.Location = new System.Drawing.Point(9, 270);
             databaseNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             databaseNameTextBox.Name = "databaseNameTextBox";
-            databaseNameTextBox.Size = new System.Drawing.Size(468, 23);
+            databaseNameTextBox.Size = new System.Drawing.Size(475, 23);
             databaseNameTextBox.TabIndex = 4;
             // 
             // databaseNameLabel
@@ -214,7 +215,7 @@
             databasePortTextBox.Location = new System.Drawing.Point(362, 196);
             databasePortTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             databasePortTextBox.Name = "databasePortTextBox";
-            databasePortTextBox.Size = new System.Drawing.Size(115, 23);
+            databasePortTextBox.Size = new System.Drawing.Size(122, 23);
             databasePortTextBox.TabIndex = 3;
             // 
             // portLabel
@@ -240,7 +241,7 @@
             databaseConnectionNameTextBox.Location = new System.Drawing.Point(9, 122);
             databaseConnectionNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             databaseConnectionNameTextBox.Name = "databaseConnectionNameTextBox";
-            databaseConnectionNameTextBox.Size = new System.Drawing.Size(468, 23);
+            databaseConnectionNameTextBox.Size = new System.Drawing.Size(475, 23);
             databaseConnectionNameTextBox.TabIndex = 0;
             // 
             // databaseConnectionNameLabel
@@ -264,7 +265,7 @@
             // testConnectionButton
             // 
             testConnectionButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            testConnectionButton.Location = new System.Drawing.Point(248, 20);
+            testConnectionButton.Location = new System.Drawing.Point(255, 20);
             testConnectionButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             testConnectionButton.MinimumSize = new System.Drawing.Size(0, 29);
             testConnectionButton.Name = "testConnectionButton";
@@ -278,7 +279,7 @@
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(383, 20);
+            saveButton.Location = new System.Drawing.Point(390, 20);
             saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             saveButton.MinimumSize = new System.Drawing.Size(0, 29);
             saveButton.Name = "saveButton";
@@ -294,17 +295,27 @@
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Controls.Add(testConnectionButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 421);
+            ButtonPanel.Location = new System.Drawing.Point(0, 441);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(494, 61);
+            ButtonPanel.Size = new System.Drawing.Size(501, 61);
             ButtonPanel.TabIndex = 8;
+            // 
+            // databasesPanel
+            // 
+            databasesPanel.Controls.Add(mysqlCheckButton);
+            databasesPanel.Controls.Add(postgresqlCheckButton);
+            databasesPanel.Controls.Add(mssqlCheckButton);
+            databasesPanel.Location = new System.Drawing.Point(12, 29);
+            databasesPanel.Name = "databasesPanel";
+            databasesPanel.Size = new System.Drawing.Size(476, 63);
+            databasesPanel.TabIndex = 21;
             // 
             // AddDatabaseForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(494, 482);
+            ClientSize = new System.Drawing.Size(501, 502);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -316,11 +327,14 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Add / Edit Database";
             Load += AddDatabaseForm_Load;
+            Resize += AddDatabaseForm_Resize;
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ButtonPanel).EndInit();
             ButtonPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)databasesPanel).EndInit();
+            databasesPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -350,5 +364,6 @@
         private Krypton.Toolkit.KryptonCheckButton mssqlCheckButton;
         private Krypton.Toolkit.KryptonCheckButton postgresqlCheckButton;
         private Krypton.Toolkit.KryptonPanel ButtonPanel;
+        private Krypton.Toolkit.KryptonPanel databasesPanel;
     }
 }
