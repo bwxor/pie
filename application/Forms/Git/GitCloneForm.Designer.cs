@@ -55,7 +55,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(617, 181);
+            mainPanel.Size = new System.Drawing.Size(621, 169);
             mainPanel.TabIndex = 3;
             // 
             // cloneIntoLabel
@@ -98,6 +98,7 @@
             // 
             browseButton.Location = new System.Drawing.Point(495, 82);
             browseButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            browseButton.MinimumSize = new System.Drawing.Size(0, 28);
             browseButton.Name = "browseButton";
             browseButton.Size = new System.Drawing.Size(89, 28);
             browseButton.TabIndex = 1;
@@ -108,8 +109,9 @@
             // cloneButton
             // 
             cloneButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            cloneButton.Location = new System.Drawing.Point(515, 6);
+            cloneButton.Location = new System.Drawing.Point(519, 6);
             cloneButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cloneButton.MinimumSize = new System.Drawing.Size(0, 29);
             cloneButton.Name = "cloneButton";
             cloneButton.Size = new System.Drawing.Size(89, 29);
             cloneButton.TabIndex = 6;
@@ -121,9 +123,9 @@
             // 
             ButtonPanel.Controls.Add(cloneButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 143);
+            ButtonPanel.Location = new System.Drawing.Point(0, 131);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(617, 38);
+            ButtonPanel.Size = new System.Drawing.Size(621, 38);
             ButtonPanel.TabIndex = 4;
             // 
             // GitCloneForm
@@ -131,7 +133,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(617, 181);
+            ClientSize = new System.Drawing.Size(621, 169);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

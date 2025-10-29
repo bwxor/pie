@@ -51,35 +51,6 @@ namespace pie.Forms.Other
         {
             Window window = Input.Plugin.InvokeTask(Input.TaskName, Input.PluginContext);
 
-            //int height = 225;
-
-            //foreach(plugin.Classes.UI.Control c in window.Controls)
-            //{
-            //    if (c is plugin.Classes.UI.Decoration.Label)
-            //    {
-            //        height += 20;
-            //    }
-            //    else if (c is plugin.Classes.UI.Decoration.SpaceDelimiter)
-            //    {
-            //        height += 10;
-            //    }
-            //    else if (c is plugin.Classes.UI.Buttons.CheckButton)
-            //    {
-            //        height += 35;
-            //    }
-            //    else if (c is plugin.Classes.UI.ValueContainers.TextBox || c is plugin.Classes.UI.ValueContainers.ComboBox)
-            //    {
-            //        height += 35;
-            //    }
-            //    else
-            //    {
-            //        height += 35;
-            //    }
-            //}
-
-            //this.Size = new Size(this.Width, height);
-
-
             themeService.SetPaletteToObjects(this, Input.Palette);
 
             if (Input.EditorProperties.Glass)

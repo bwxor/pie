@@ -49,7 +49,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(468, 113);
+            mainPanel.Size = new System.Drawing.Size(472, 101);
             mainPanel.TabIndex = 4;
             // 
             // repositoryURLLabel
@@ -67,15 +67,16 @@
             repositoryURLTextBox.Location = new System.Drawing.Point(14, 29);
             repositoryURLTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             repositoryURLTextBox.Name = "repositoryURLTextBox";
-            repositoryURLTextBox.Size = new System.Drawing.Size(440, 23);
+            repositoryURLTextBox.Size = new System.Drawing.Size(444, 23);
             repositoryURLTextBox.TabIndex = 2;
             repositoryURLTextBox.KeyDown += repositoryURLTextBox_KeyDown;
             // 
             // connectButton
             // 
             connectButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            connectButton.Location = new System.Drawing.Point(366, 4);
+            connectButton.Location = new System.Drawing.Point(370, 4);
             connectButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            connectButton.MinimumSize = new System.Drawing.Size(0, 29);
             connectButton.Name = "connectButton";
             connectButton.Size = new System.Drawing.Size(89, 29);
             connectButton.TabIndex = 6;
@@ -87,9 +88,9 @@
             // 
             ButtonPanel.Controls.Add(connectButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 77);
+            ButtonPanel.Location = new System.Drawing.Point(0, 65);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(468, 36);
+            ButtonPanel.Size = new System.Drawing.Size(472, 36);
             ButtonPanel.TabIndex = 5;
             // 
             // GitConnectToRemoteForm
@@ -97,7 +98,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(468, 113);
+            ClientSize = new System.Drawing.Size(472, 101);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -49,7 +49,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(378, 133);
+            mainPanel.Size = new System.Drawing.Size(382, 121);
             mainPanel.TabIndex = 9;
             // 
             // branchNameTextBox
@@ -58,7 +58,7 @@
             branchNameTextBox.Location = new System.Drawing.Point(9, 37);
             branchNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             branchNameTextBox.Name = "branchNameTextBox";
-            branchNameTextBox.Size = new System.Drawing.Size(365, 23);
+            branchNameTextBox.Size = new System.Drawing.Size(369, 23);
             branchNameTextBox.TabIndex = 0;
             branchNameTextBox.KeyDown += branchNameTextBox_KeyDown;
             // 
@@ -74,8 +74,9 @@
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(282, 3);
+            saveButton.Location = new System.Drawing.Point(286, 3);
             saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            saveButton.MinimumSize = new System.Drawing.Size(0, 29);
             saveButton.Name = "saveButton";
             saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             saveButton.Size = new System.Drawing.Size(92, 29);
@@ -88,9 +89,9 @@
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 95);
+            ButtonPanel.Location = new System.Drawing.Point(0, 83);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(378, 38);
+            ButtonPanel.Size = new System.Drawing.Size(382, 38);
             ButtonPanel.TabIndex = 10;
             // 
             // NewBranchForm
@@ -98,7 +99,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(378, 133);
+            ClientSize = new System.Drawing.Size(382, 121);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

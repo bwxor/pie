@@ -50,7 +50,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(479, 111);
+            mainPanel.Size = new System.Drawing.Size(483, 114);
             mainPanel.TabIndex = 8;
             // 
             // matchWholeWordCheckBox
@@ -89,7 +89,7 @@
             findTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             findTextBox.Location = new System.Drawing.Point(4, 11);
             findTextBox.Name = "findTextBox";
-            findTextBox.Size = new System.Drawing.Size(347, 23);
+            findTextBox.Size = new System.Drawing.Size(349, 23);
             findTextBox.TabIndex = 1;
             findTextBox.Text = "Find...";
             findTextBox.KeyDown += findTextBox_KeyDown;
@@ -100,7 +100,7 @@
             replaceTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             replaceTextBox.Location = new System.Drawing.Point(4, 38);
             replaceTextBox.Name = "replaceTextBox";
-            replaceTextBox.Size = new System.Drawing.Size(347, 23);
+            replaceTextBox.Size = new System.Drawing.Size(349, 23);
             replaceTextBox.TabIndex = 3;
             replaceTextBox.Text = "Replace...";
             replaceTextBox.KeyDown += replaceTextBox_KeyDown;
@@ -109,9 +109,10 @@
             // kryptonButton3
             // 
             kryptonButton3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            kryptonButton3.Location = new System.Drawing.Point(361, 65);
+            kryptonButton3.Location = new System.Drawing.Point(363, 79);
+            kryptonButton3.MinimumSize = new System.Drawing.Size(0, 29);
             kryptonButton3.Name = "kryptonButton3";
-            kryptonButton3.Size = new System.Drawing.Size(114, 25);
+            kryptonButton3.Size = new System.Drawing.Size(114, 29);
             kryptonButton3.TabIndex = 15;
             kryptonButton3.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             kryptonButton3.Values.Text = "Replace all";
@@ -121,9 +122,10 @@
             // kryptonButton2
             // 
             kryptonButton2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            kryptonButton2.Location = new System.Drawing.Point(361, 38);
+            kryptonButton2.Location = new System.Drawing.Point(363, 45);
+            kryptonButton2.MinimumSize = new System.Drawing.Size(0, 29);
             kryptonButton2.Name = "kryptonButton2";
-            kryptonButton2.Size = new System.Drawing.Size(114, 25);
+            kryptonButton2.Size = new System.Drawing.Size(114, 29);
             kryptonButton2.TabIndex = 4;
             kryptonButton2.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             kryptonButton2.Values.Text = "Find and Replace";
@@ -133,9 +135,10 @@
             // kryptonButton1
             // 
             kryptonButton1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            kryptonButton1.Location = new System.Drawing.Point(361, 11);
+            kryptonButton1.Location = new System.Drawing.Point(363, 11);
+            kryptonButton1.MinimumSize = new System.Drawing.Size(0, 29);
             kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.Size = new System.Drawing.Size(114, 25);
+            kryptonButton1.Size = new System.Drawing.Size(114, 29);
             kryptonButton1.StateTracking.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             kryptonButton1.TabIndex = 2;
             kryptonButton1.Values.DropDownArrowColor = System.Drawing.Color.Empty;
@@ -148,7 +151,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(479, 111);
+            ClientSize = new System.Drawing.Size(483, 114);
             Controls.Add(findTextBox);
             Controls.Add(replaceTextBox);
             Controls.Add(kryptonButton3);

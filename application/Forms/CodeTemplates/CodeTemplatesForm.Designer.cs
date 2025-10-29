@@ -64,7 +64,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(475, 535);
+            mainPanel.Size = new System.Drawing.Size(479, 523);
             mainPanel.TabIndex = 8;
             // 
             // HotkeyPanel
@@ -91,6 +91,7 @@
             // 
             template1CheckButton.Location = new System.Drawing.Point(23, 9);
             template1CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template1CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template1CheckButton.Name = "template1CheckButton";
             template1CheckButton.Size = new System.Drawing.Size(41, 29);
             template1CheckButton.TabIndex = 18;
@@ -111,6 +112,7 @@
             // 
             template6CheckButton.Location = new System.Drawing.Point(227, 9);
             template6CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template6CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template6CheckButton.Name = "template6CheckButton";
             template6CheckButton.Size = new System.Drawing.Size(41, 29);
             template6CheckButton.TabIndex = 23;
@@ -121,6 +123,7 @@
             // 
             template0CheckButton.Location = new System.Drawing.Point(391, 9);
             template0CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template0CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template0CheckButton.Name = "template0CheckButton";
             template0CheckButton.Size = new System.Drawing.Size(41, 29);
             template0CheckButton.TabIndex = 27;
@@ -131,6 +134,7 @@
             // 
             template5CheckButton.Location = new System.Drawing.Point(187, 9);
             template5CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template5CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template5CheckButton.Name = "template5CheckButton";
             template5CheckButton.Size = new System.Drawing.Size(41, 29);
             template5CheckButton.TabIndex = 22;
@@ -141,6 +145,7 @@
             // 
             template2CheckButton.Location = new System.Drawing.Point(64, 9);
             template2CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template2CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template2CheckButton.Name = "template2CheckButton";
             template2CheckButton.Size = new System.Drawing.Size(41, 29);
             template2CheckButton.TabIndex = 19;
@@ -151,6 +156,7 @@
             // 
             template7CheckButton.Location = new System.Drawing.Point(268, 9);
             template7CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template7CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template7CheckButton.Name = "template7CheckButton";
             template7CheckButton.Size = new System.Drawing.Size(41, 29);
             template7CheckButton.TabIndex = 24;
@@ -161,6 +167,7 @@
             // 
             template9CheckButton.Location = new System.Drawing.Point(350, 9);
             template9CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template9CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template9CheckButton.Name = "template9CheckButton";
             template9CheckButton.Size = new System.Drawing.Size(41, 29);
             template9CheckButton.TabIndex = 26;
@@ -171,6 +178,7 @@
             // 
             template4CheckButton.Location = new System.Drawing.Point(146, 9);
             template4CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template4CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template4CheckButton.Name = "template4CheckButton";
             template4CheckButton.Size = new System.Drawing.Size(41, 29);
             template4CheckButton.TabIndex = 21;
@@ -181,6 +189,7 @@
             // 
             template3CheckButton.Location = new System.Drawing.Point(105, 9);
             template3CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template3CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template3CheckButton.Name = "template3CheckButton";
             template3CheckButton.Size = new System.Drawing.Size(41, 29);
             template3CheckButton.TabIndex = 20;
@@ -191,6 +200,7 @@
             // 
             template8CheckButton.Location = new System.Drawing.Point(309, 9);
             template8CheckButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            template8CheckButton.MinimumSize = new System.Drawing.Size(0, 29);
             template8CheckButton.Name = "template8CheckButton";
             template8CheckButton.Size = new System.Drawing.Size(41, 29);
             template8CheckButton.TabIndex = 25;
@@ -205,7 +215,7 @@
             textAreaPanel.Location = new System.Drawing.Point(13, 88);
             textAreaPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textAreaPanel.Name = "textAreaPanel";
-            textAreaPanel.Size = new System.Drawing.Size(448, 390);
+            textAreaPanel.Size = new System.Drawing.Size(452, 378);
             textAreaPanel.TabIndex = 28;
             // 
             // placeholderLabel
@@ -221,8 +231,9 @@
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(370, 16);
+            saveButton.Location = new System.Drawing.Point(374, 16);
             saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            saveButton.MinimumSize = new System.Drawing.Size(0, 29);
             saveButton.Name = "saveButton";
             saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             saveButton.Size = new System.Drawing.Size(92, 29);
@@ -235,9 +246,9 @@
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 478);
+            ButtonPanel.Location = new System.Drawing.Point(0, 466);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(475, 57);
+            ButtonPanel.Size = new System.Drawing.Size(479, 57);
             ButtonPanel.TabIndex = 9;
             // 
             // CodeTemplatesForm
@@ -245,7 +256,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(475, 535);
+            ClientSize = new System.Drawing.Size(479, 523);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");

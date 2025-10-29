@@ -33,9 +33,9 @@
             titleLabel = new Krypton.Toolkit.KryptonLabel();
             descriptionLabel = new Krypton.Toolkit.KryptonLabel();
             mainPanel = new Krypton.Toolkit.KryptonPanel();
+            iconPictureBox = new System.Windows.Forms.PictureBox();
             websiteButton = new Krypton.Toolkit.KryptonButton();
             repoButton = new Krypton.Toolkit.KryptonButton();
-            iconPictureBox = new System.Windows.Forms.PictureBox();
             ButtonPanel = new Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             mainPanel.SuspendLayout();
@@ -81,16 +81,29 @@
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(356, 286);
+            mainPanel.Size = new System.Drawing.Size(360, 274);
             mainPanel.TabIndex = 6;
+            // 
+            // iconPictureBox
+            // 
+            iconPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            iconPictureBox.BackColor = System.Drawing.Color.Transparent;
+            iconPictureBox.BackgroundImage = (System.Drawing.Image)resources.GetObject("iconPictureBox.BackgroundImage");
+            iconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            iconPictureBox.Location = new System.Drawing.Point(301, 8);
+            iconPictureBox.Name = "iconPictureBox";
+            iconPictureBox.Size = new System.Drawing.Size(51, 48);
+            iconPictureBox.TabIndex = 6;
+            iconPictureBox.TabStop = false;
             // 
             // websiteButton
             // 
             websiteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            websiteButton.Location = new System.Drawing.Point(238, 17);
+            websiteButton.Location = new System.Drawing.Point(242, 17);
+            websiteButton.MinimumSize = new System.Drawing.Size(0, 29);
             websiteButton.Name = "websiteButton";
             websiteButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            websiteButton.Size = new System.Drawing.Size(113, 25);
+            websiteButton.Size = new System.Drawing.Size(113, 29);
             websiteButton.TabIndex = 8;
             websiteButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             websiteButton.Values.Text = "Author's Website";
@@ -99,35 +112,24 @@
             // repoButton
             // 
             repoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            repoButton.Location = new System.Drawing.Point(119, 17);
+            repoButton.Location = new System.Drawing.Point(123, 17);
+            repoButton.MinimumSize = new System.Drawing.Size(0, 29);
             repoButton.Name = "repoButton";
             repoButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            repoButton.Size = new System.Drawing.Size(113, 25);
+            repoButton.Size = new System.Drawing.Size(113, 29);
             repoButton.TabIndex = 7;
             repoButton.Values.DropDownArrowColor = System.Drawing.Color.Empty;
             repoButton.Values.Text = "GitHub Repo";
             repoButton.Click += kryptonButton1_Click;
-            // 
-            // iconPictureBox
-            // 
-            iconPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            iconPictureBox.BackColor = System.Drawing.Color.Transparent;
-            iconPictureBox.BackgroundImage = (System.Drawing.Image)resources.GetObject("iconPictureBox.BackgroundImage");
-            iconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            iconPictureBox.Location = new System.Drawing.Point(297, 8);
-            iconPictureBox.Name = "iconPictureBox";
-            iconPictureBox.Size = new System.Drawing.Size(51, 48);
-            iconPictureBox.TabIndex = 6;
-            iconPictureBox.TabStop = false;
             // 
             // ButtonPanel
             // 
             ButtonPanel.Controls.Add(websiteButton);
             ButtonPanel.Controls.Add(repoButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 236);
+            ButtonPanel.Location = new System.Drawing.Point(0, 224);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(356, 50);
+            ButtonPanel.Size = new System.Drawing.Size(360, 50);
             ButtonPanel.TabIndex = 7;
             // 
             // AboutForm
@@ -136,7 +138,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSize = true;
             BackColor = System.Drawing.SystemColors.ControlLightLight;
-            ClientSize = new System.Drawing.Size(356, 286);
+            ClientSize = new System.Drawing.Size(360, 274);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -49,7 +49,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(372, 316);
+            mainPanel.Size = new System.Drawing.Size(362, 295);
             mainPanel.StateCommon.Color1 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.StateCommon.Color2 = System.Drawing.Color.FromArgb(192, 0, 0);
             mainPanel.TabIndex = 7;
@@ -80,8 +80,9 @@
             // okButton
             // 
             okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            okButton.Location = new System.Drawing.Point(294, 30);
+            okButton.Location = new System.Drawing.Point(284, 30);
             okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            okButton.MinimumSize = new System.Drawing.Size(0, 29);
             okButton.Name = "okButton";
             okButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             okButton.Size = new System.Drawing.Size(74, 29);
@@ -95,9 +96,9 @@
             // 
             kryptonPanel1.Controls.Add(okButton);
             kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            kryptonPanel1.Location = new System.Drawing.Point(0, 245);
+            kryptonPanel1.Location = new System.Drawing.Point(0, 224);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new System.Drawing.Size(372, 71);
+            kryptonPanel1.Size = new System.Drawing.Size(362, 71);
             kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(192, 0, 0);
             kryptonPanel1.StateCommon.Color2 = System.Drawing.Color.FromArgb(192, 0, 0);
             kryptonPanel1.TabIndex = 8;
@@ -107,7 +108,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(372, 316);
+            ClientSize = new System.Drawing.Size(362, 295);
             ControlBox = false;
             Controls.Add(kryptonPanel1);
             Controls.Add(mainPanel);

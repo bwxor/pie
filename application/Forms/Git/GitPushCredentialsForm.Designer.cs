@@ -53,7 +53,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(568, 175);
+            mainPanel.Size = new System.Drawing.Size(572, 163);
             mainPanel.TabIndex = 3;
             // 
             // remoteServerPasswordLabel
@@ -81,7 +81,7 @@
             remoteServerPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             remoteServerPasswordTextBox.Name = "remoteServerPasswordTextBox";
             remoteServerPasswordTextBox.PasswordChar = '●';
-            remoteServerPasswordTextBox.Size = new System.Drawing.Size(541, 23);
+            remoteServerPasswordTextBox.Size = new System.Drawing.Size(545, 23);
             remoteServerPasswordTextBox.TabIndex = 3;
             remoteServerPasswordTextBox.KeyDown += remoteServerPasswordTextBox_KeyDown;
             // 
@@ -91,15 +91,16 @@
             remoteServerUsernameTextBox.Location = new System.Drawing.Point(14, 29);
             remoteServerUsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             remoteServerUsernameTextBox.Name = "remoteServerUsernameTextBox";
-            remoteServerUsernameTextBox.Size = new System.Drawing.Size(541, 23);
+            remoteServerUsernameTextBox.Size = new System.Drawing.Size(545, 23);
             remoteServerUsernameTextBox.TabIndex = 2;
             remoteServerUsernameTextBox.KeyDown += remoteServerUsernameTextBox_KeyDown;
             // 
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(466, 11);
+            saveButton.Location = new System.Drawing.Point(470, 11);
             saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            saveButton.MinimumSize = new System.Drawing.Size(0, 29);
             saveButton.Name = "saveButton";
             saveButton.Size = new System.Drawing.Size(89, 29);
             saveButton.TabIndex = 1;
@@ -111,9 +112,9 @@
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 128);
+            ButtonPanel.Location = new System.Drawing.Point(0, 116);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(568, 47);
+            ButtonPanel.Size = new System.Drawing.Size(572, 47);
             ButtonPanel.TabIndex = 4;
             // 
             // GitPushCredentialsForm
@@ -121,7 +122,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(568, 175);
+            ClientSize = new System.Drawing.Size(572, 163);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

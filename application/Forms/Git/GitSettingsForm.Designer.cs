@@ -67,7 +67,7 @@
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(476, 401);
+            mainPanel.Size = new System.Drawing.Size(480, 389);
             mainPanel.TabIndex = 8;
             // 
             // proxyTipLabel
@@ -85,7 +85,7 @@
             proxyTextBox.Location = new System.Drawing.Point(9, 268);
             proxyTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             proxyTextBox.Name = "proxyTextBox";
-            proxyTextBox.Size = new System.Drawing.Size(455, 23);
+            proxyTextBox.Size = new System.Drawing.Size(459, 23);
             proxyTextBox.TabIndex = 20;
             // 
             // proxyLabel
@@ -104,7 +104,7 @@
             remoteServerPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             remoteServerPasswordTextBox.Name = "remoteServerPasswordTextBox";
             remoteServerPasswordTextBox.PasswordChar = '●';
-            remoteServerPasswordTextBox.Size = new System.Drawing.Size(455, 23);
+            remoteServerPasswordTextBox.Size = new System.Drawing.Size(459, 23);
             remoteServerPasswordTextBox.TabIndex = 3;
             // 
             // remoteServerUsernameTextBox
@@ -113,7 +113,7 @@
             remoteServerUsernameTextBox.Location = new System.Drawing.Point(9, 152);
             remoteServerUsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             remoteServerUsernameTextBox.Name = "remoteServerUsernameTextBox";
-            remoteServerUsernameTextBox.Size = new System.Drawing.Size(456, 23);
+            remoteServerUsernameTextBox.Size = new System.Drawing.Size(460, 23);
             remoteServerUsernameTextBox.TabIndex = 2;
             // 
             // remoteServerUsernameLabel
@@ -140,7 +140,7 @@
             authorEmailTextBox.Location = new System.Drawing.Point(9, 95);
             authorEmailTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             authorEmailTextBox.Name = "authorEmailTextBox";
-            authorEmailTextBox.Size = new System.Drawing.Size(455, 23);
+            authorEmailTextBox.Size = new System.Drawing.Size(459, 23);
             authorEmailTextBox.TabIndex = 1;
             // 
             // authorNameTextBox
@@ -149,7 +149,7 @@
             authorNameTextBox.Location = new System.Drawing.Point(9, 37);
             authorNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             authorNameTextBox.Name = "authorNameTextBox";
-            authorNameTextBox.Size = new System.Drawing.Size(456, 23);
+            authorNameTextBox.Size = new System.Drawing.Size(460, 23);
             authorNameTextBox.TabIndex = 0;
             // 
             // authorNameLabel
@@ -173,8 +173,9 @@
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(373, 11);
+            saveButton.Location = new System.Drawing.Point(377, 11);
             saveButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            saveButton.MinimumSize = new System.Drawing.Size(0, 29);
             saveButton.Name = "saveButton";
             saveButton.OverrideFocus.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             saveButton.Size = new System.Drawing.Size(92, 29);
@@ -187,9 +188,9 @@
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 354);
+            ButtonPanel.Location = new System.Drawing.Point(0, 342);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(476, 47);
+            ButtonPanel.Size = new System.Drawing.Size(480, 47);
             ButtonPanel.TabIndex = 9;
             // 
             // GitSettingsForm
@@ -197,7 +198,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new System.Drawing.Size(476, 401);
+            ClientSize = new System.Drawing.Size(480, 389);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
