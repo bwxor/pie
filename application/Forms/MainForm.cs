@@ -1018,10 +1018,17 @@ namespace pie
                 if (action is CreateFileAction)
                 {
                     CreateFileAction createFileAction = (CreateFileAction)action;
-                    secureFileService.CreateFile(
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Path, pluginFormOutput.ControlKeyValues),
-                            pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Content, pluginFormOutput.ControlKeyValues)
-                    );
+                    try
+                    {
+                        secureFileService.CreateFile(
+                                pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Path, pluginFormOutput.ControlKeyValues),
+                                pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Content, pluginFormOutput.ControlKeyValues)
+                        );
+                    } catch(Exception)
+                    {
+                        ShowNotification("Could not create file in the specified location. Check if you have the necessary permissions or select another path.");
+                        return;
+                    }
                 }
                 else if (action is CreateDirectoryAction)
                 {
