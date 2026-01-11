@@ -81,6 +81,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -109,6 +110,7 @@ namespace pie
         private List<LanguageMapping> languageMappings;
         private EditorProperties editorProperties;
         private GitCredentials gitCredentials;
+        private CancellationTokenSource _authCancellationSource;
 
         private Repository repository;
         private ThemeInfo activeTheme;
@@ -3309,7 +3311,7 @@ namespace pie
             }
         }
 
-        private void GitPush()
+        private async void GitPush()
         {
             if (repository != null)
             {
@@ -3319,22 +3321,56 @@ namespace pie
                 {
                     if (string.IsNullOrEmpty(gitCredentials.Username) || string.IsNullOrEmpty(gitCredentials.Password))
                     {
-                        GitPushCredentialsForm gitPushCredentialsForm = new GitPushCredentialsForm();
+                        _authCancellationSource = new CancellationTokenSource();
 
-                        GitPushCredentialsFormInput gitPushCredentialsFormInput = new GitPushCredentialsFormInput();
-                        gitPushCredentialsFormInput.GitCredentials = gitCredentials;
-                        gitPushCredentialsFormInput.Palette = KryptonCustomPaletteBase;
-                        gitPushCredentialsFormInput.EditorProperties = editorProperties;
+                        var auth = new GitHubDeviceFlowService();
 
-                        gitPushCredentialsForm.Input = gitPushCredentialsFormInput;
-
-                        gitPushCredentialsForm.ShowDialog();
-
-                        if (gitPushCredentialsForm.Output.Saved)
+                        try
                         {
-                            configurationService.WriteToFile(System.IO.Path.Combine(SpecialPaths.Config, "git.json"), new List<GitCredentials>() { gitCredentials });
+                            var deviceData = await auth.StartDeviceFlowAsync();
+
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(deviceData.VerificationUri)
+                            {
+                                UseShellExecute = true
+                            });
+
+                            ShowNotification($"1. A browser has opened to GitHub.\n2. Enter this code: {deviceData.UserCode}\n\nClick OK once you have authorized the app.");
+
+                            string token = await auth.PollForTokenAsync(deviceData.DeviceCode, deviceData.Interval, _authCancellationSource.Token);
+
+                            string username = await auth.GetGitHubUsername(token, _authCancellationSource.Token);
+
+                            gitCredentials.Username = username;
+                            gitCredentials.Password = token;
+
+                            configurationService.WriteToFile(
+                                System.IO.Path.Combine(SpecialPaths.Config, "git.json"),
+                                new List<GitCredentials>() { gitCredentials }
+                            );
+
                             GitPush();
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Authentication failed: {ex.Message}");
+                        }
+
+                        //GitPushCredentialsForm gitPushCredentialsForm = new GitPushCredentialsForm();
+
+                        //GitPushCredentialsFormInput gitPushCredentialsFormInput = new GitPushCredentialsFormInput();
+                        //gitPushCredentialsFormInput.GitCredentials = gitCredentials;
+                        //gitPushCredentialsFormInput.Palette = KryptonCustomPaletteBase;
+                        //gitPushCredentialsFormInput.EditorProperties = editorProperties;
+
+                        //gitPushCredentialsForm.Input = gitPushCredentialsFormInput;
+
+                        //gitPushCredentialsForm.ShowDialog();
+
+                        //if (gitPushCredentialsForm.Output.Saved)
+                        //{
+                        //    configurationService.WriteToFile(System.IO.Path.Combine(SpecialPaths.Config, "git.json"), new List<GitCredentials>() { gitCredentials });
+                        //    GitPush();
+                        //}
                     }
                     else
                     {
@@ -3611,7 +3647,7 @@ namespace pie
             GitPull();
         }
 
-        private void GitPull()
+        private async void GitPull()
         {
             if (repository != null)
             {
@@ -3636,22 +3672,56 @@ namespace pie
                 }
                 else if (string.IsNullOrEmpty(gitCredentials.Username) || string.IsNullOrEmpty(gitCredentials.Password))
                 {
-                    GitPushCredentialsForm gitPushCredentialsForm = new GitPushCredentialsForm();
+                    _authCancellationSource = new CancellationTokenSource();
 
-                    GitPushCredentialsFormInput gitPushCredentialsFormInput = new GitPushCredentialsFormInput();
-                    gitPushCredentialsFormInput.GitCredentials = gitCredentials;
-                    gitPushCredentialsFormInput.Palette = KryptonCustomPaletteBase;
-                    gitPushCredentialsFormInput.EditorProperties = editorProperties;
+                    var auth = new GitHubDeviceFlowService();
 
-                    gitPushCredentialsForm.Input = gitPushCredentialsFormInput;
-
-                    gitPushCredentialsForm.ShowDialog();
-
-                    if (gitPushCredentialsForm.Output.Saved)
+                    try
                     {
-                        configurationService.WriteToFile(System.IO.Path.Combine(SpecialPaths.Config, "git.json"), new List<GitCredentials>() { gitCredentials });
+                        var deviceData = await auth.StartDeviceFlowAsync();
+
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(deviceData.VerificationUri)
+                        {
+                            UseShellExecute = true
+                        });
+
+                        ShowNotification($"1. A browser has opened to GitHub.\n2. Enter this code: {deviceData.UserCode}\n\nClick OK once you have authorized the app.");
+
+                        string token = await auth.PollForTokenAsync(deviceData.DeviceCode, deviceData.Interval, _authCancellationSource.Token);
+
+                        string username = await auth.GetGitHubUsername(token, _authCancellationSource.Token);
+
+                        gitCredentials.Username = username;
+                        gitCredentials.Password = token;
+
+                        configurationService.WriteToFile(
+                            System.IO.Path.Combine(SpecialPaths.Config, "git.json"),
+                            new List<GitCredentials>() { gitCredentials }
+                        );
+
                         GitPull();
+
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show($"Authentication failed: {ex.Message}");
                     }
+
+                    //GitPushCredentialsForm gitPushCredentialsForm = new GitPushCredentialsForm();
+
+                    //GitPushCredentialsFormInput gitPushCredentialsFormInput = new GitPushCredentialsFormInput();
+                    //gitPushCredentialsFormInput.GitCredentials = gitCredentials;
+                    //gitPushCredentialsFormInput.Palette = KryptonCustomPaletteBase;
+                    //gitPushCredentialsFormInput.EditorProperties = editorProperties;
+
+                    //gitPushCredentialsForm.Input = gitPushCredentialsFormInput;
+
+                    //gitPushCredentialsForm.ShowDialog();
+
+                    //if (gitPushCredentialsForm.Output.Saved)
+                    //{
+                    //    configurationService.WriteToFile(System.IO.Path.Combine(SpecialPaths.Config, "git.json"), new List<GitCredentials>() { gitCredentials });
+                    //    GitPull();
+                    //}
                 }
                 else if (!repository.Network.Remotes.Any())
                 {
