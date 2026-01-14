@@ -79,6 +79,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -3354,23 +3355,6 @@ namespace pie
                         {
                             MessageBox.Show($"Authentication failed: {ex.Message}");
                         }
-
-                        //GitPushCredentialsForm gitPushCredentialsForm = new GitPushCredentialsForm();
-
-                        //GitPushCredentialsFormInput gitPushCredentialsFormInput = new GitPushCredentialsFormInput();
-                        //gitPushCredentialsFormInput.GitCredentials = gitCredentials;
-                        //gitPushCredentialsFormInput.Palette = KryptonCustomPaletteBase;
-                        //gitPushCredentialsFormInput.EditorProperties = editorProperties;
-
-                        //gitPushCredentialsForm.Input = gitPushCredentialsFormInput;
-
-                        //gitPushCredentialsForm.ShowDialog();
-
-                        //if (gitPushCredentialsForm.Output.Saved)
-                        //{
-                        //    configurationService.WriteToFile(System.IO.Path.Combine(SpecialPaths.Config, "git.json"), new List<GitCredentials>() { gitCredentials });
-                        //    GitPush();
-                        //}
                     }
                     else
                     {
@@ -3394,6 +3378,18 @@ namespace pie
 
                         // Push the branch to the remote                        
                         var pushOptions = new PushOptions();
+
+                        if (gitCredentials.Proxy != null && gitCredentials.Proxy.Length > 0)
+                        {
+                            pushOptions.ProxyOptions.Url = gitCredentials.Proxy;
+                            pushOptions.ProxyOptions.ProxyType = ProxyType.Specified;
+                        }
+                        else
+                        {
+                            pushOptions.ProxyOptions.Url = null;
+                            pushOptions.ProxyOptions.ProxyType = ProxyType.None;
+                        }
+
                         pushOptions.CredentialsProvider = new LibGit2Sharp.Handlers.CredentialsHandler(
                            (url, usernameFromUrl, types) =>
                                new UsernamePasswordCredentials()
@@ -3408,8 +3404,6 @@ namespace pie
 
                             try
                             {
-                                ToggleGitProxy();
-
                                 Task.Run(() =>
                                 {
                                     repository.Network.Push(remote, $"refs/heads/{branchName}:refs/heads/{branchName}", pushOptions);
@@ -3417,7 +3411,7 @@ namespace pie
                             }
                             catch (Exception ex)
                             {
-                                ShowNotification("Error interacting with the remote repository. Check your credentials or reinitialize the local repository.");
+                                ShowNotification(ex.Message);
                                 return;
                             }
 
@@ -3446,7 +3440,6 @@ namespace pie
                     {
                         try
                         {
-                            ToggleGitProxy();
                             repository.Network.Remotes.Add("origin", gitConnectToRemoteForm.Output.RepositoryUrl);
                             GitPush();
                         }
@@ -3460,20 +3453,6 @@ namespace pie
             else
             {
                 ShowNotification("No repository opened.");
-            }
-        }
-
-        private void ToggleGitProxy()
-        {
-            if (string.IsNullOrEmpty(gitCredentials.Proxy))
-            {
-                repository.Config.Unset("http.proxy");
-                repository.Config.Unset("https.proxy");
-            }
-            else
-            {
-                repository.Config.Set("http.proxy", gitCredentials.Proxy);
-                repository.Config.Set("https.proxy", gitCredentials.Proxy);
             }
         }
 
@@ -3631,6 +3610,7 @@ namespace pie
             gitCloneFormInput.Palette = KryptonCustomPaletteBase;
             gitCloneFormInput.EditorProperties = editorProperties;
             gitCloneFormInput.GitCredentials = gitCredentials;
+            gitCloneFormInput._authCancellationSource = _authCancellationSource;
 
             gitCloneForm.Input = gitCloneFormInput;
 
@@ -3705,23 +3685,6 @@ namespace pie
                     {
                         MessageBox.Show($"Authentication failed: {ex.Message}");
                     }
-
-                    //GitPushCredentialsForm gitPushCredentialsForm = new GitPushCredentialsForm();
-
-                    //GitPushCredentialsFormInput gitPushCredentialsFormInput = new GitPushCredentialsFormInput();
-                    //gitPushCredentialsFormInput.GitCredentials = gitCredentials;
-                    //gitPushCredentialsFormInput.Palette = KryptonCustomPaletteBase;
-                    //gitPushCredentialsFormInput.EditorProperties = editorProperties;
-
-                    //gitPushCredentialsForm.Input = gitPushCredentialsFormInput;
-
-                    //gitPushCredentialsForm.ShowDialog();
-
-                    //if (gitPushCredentialsForm.Output.Saved)
-                    //{
-                    //    configurationService.WriteToFile(System.IO.Path.Combine(SpecialPaths.Config, "git.json"), new List<GitCredentials>() { gitCredentials });
-                    //    GitPull();
-                    //}
                 }
                 else if (!repository.Network.Remotes.Any())
                 {
@@ -3738,7 +3701,6 @@ namespace pie
                     {
                         try
                         {
-                            ToggleGitProxy();
                             repository.Network.Remotes.Add("origin", gitConnectToRemoteForm.Output.RepositoryUrl);
                             GitPull();
                         }
@@ -3754,6 +3716,17 @@ namespace pie
 
                     pullOptions.FetchOptions = new FetchOptions();
 
+                    if (gitCredentials.Proxy != null && gitCredentials.Proxy.Length > 0)
+                    {
+                        pullOptions.FetchOptions.ProxyOptions.Url = gitCredentials.Proxy;
+                        pullOptions.FetchOptions.ProxyOptions.ProxyType = ProxyType.Specified;
+                    }
+                    else
+                    {
+                        pullOptions.FetchOptions.ProxyOptions.Url = null;
+                        pullOptions.FetchOptions.ProxyOptions.ProxyType = ProxyType.None;
+                    }
+
                     pullOptions.FetchOptions.CredentialsProvider = new LibGit2Sharp.Handlers.CredentialsHandler(
                         (_url, _user, _cred) => new UsernamePasswordCredentials()
                         {
@@ -3764,36 +3737,41 @@ namespace pie
                     Signature signature = new Signature(gitCredentials.Name, gitCredentials.Email, DateTime.Now);
 
                     Remote remote = repository.Network.Remotes["origin"];
-                    string branchName = gitBranchesComboBox.SelectedItem.ToString();
 
-                    var checkoutOptions = new CheckoutOptions();
-
-                    Branch currentBranch = repository.Head;
-                    Branch remoteBranch = repository.Branches[$"origin/{branchName}"];
-
-                    if (currentBranch != null && remoteBranch != null && !currentBranch.IsTracking)
+                    if (gitBranchesComboBox.SelectedItem != null)
                     {
-                        repository.Branches.Update(currentBranch,
-                            b => b.UpstreamBranch = remoteBranch.CanonicalName);
-                    }
+                        string branchName = gitBranchesComboBox.SelectedItem.ToString();
 
-                    try
-                    {
-                        ToggleGitProxy();
+                        var checkoutOptions = new CheckoutOptions();
 
-                        Task.Run(() =>
+                        Branch currentBranch = repository.Head;
+                        Branch remoteBranch = repository.Branches[$"origin/{branchName}"];
+
+                        if (currentBranch != null && remoteBranch != null && !currentBranch.IsTracking)
                         {
-                            Commands.Fetch(repository, "origin", new string[0], pullOptions.FetchOptions, null);
-                            repository.Merge(remoteBranch, signature);
-                        }).Wait();
+                            repository.Branches.Update(currentBranch,
+                                b => b.UpstreamBranch = remoteBranch.CanonicalName);
+                        }
 
-                        UpdateGitRepositoryInfo();
-                        ShowNotification("Pull successful.");
-                        NavigateToPath(openedFolder);
-                    }
-                    catch (Exception ex)
+                        try
+                        {
+                            Task.Run(() =>
+                            {
+                                Commands.Fetch(repository, "origin", new string[0], pullOptions.FetchOptions, null);
+                                repository.Merge(remoteBranch, signature);
+                            }).Wait();
+
+                            UpdateGitRepositoryInfo();
+                            ShowNotification("Pull successful.");
+                            NavigateToPath(openedFolder);
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowNotification("There was an error while trying to pull from remote.");
+                        }
+                    } else
                     {
-                        ShowNotification("There was an error while trying to pull from remote.");
+                        ShowNotification("Your cannot pull from this repository. Most likely it isn't connected to any remote.");
                     }
                 }
 

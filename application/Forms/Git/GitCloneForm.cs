@@ -1,26 +1,29 @@
 ﻿/* SPDX-FileCopyrightText: 2023-2025 Mario-Mihai Mateas <mateasmario@aol.com> */
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 
-using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Threading.Tasks;
-using pie.Services;
-using pie.Classes;
-
-/**
- * LibGit2Sharp is used for integrating several advanced Git functionalities into pie.
- * 
- * Copyright (c) LibGit2Sharp contributors
- */
-using LibGit2Sharp;
-
 /** 
  * Krypton Suite's Standard Toolkit was often used in order to design the .NET controls found inside this application.
  * 
  * Copyright (c) 2017 - 2022, Krypton Suite
 */
 using Krypton.Toolkit;
+/**
+ * LibGit2Sharp is used for integrating several advanced Git functionalities into pie.
+ * 
+ * Copyright (c) LibGit2Sharp contributors
+ */
+using LibGit2Sharp;
+using pie.Classes;
+using pie.Constants;
+using pie.Services;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace pie
 {
@@ -100,37 +103,67 @@ namespace pie
             Clone();
         }
 
-        private void GitClone()
+        private async void GitClone()
         {
             if (Input.GitCredentials.Username == null || Input.GitCredentials.Password == null)
             {
-                GitPushCredentialsForm gitPushCredentialsForm = new GitPushCredentialsForm();
+                Input._authCancellationSource = new CancellationTokenSource();
 
-                GitPushCredentialsFormInput gitPushCredentialsFormInput = new GitPushCredentialsFormInput();
-                gitPushCredentialsFormInput.EditorProperties = Input.EditorProperties;
-                gitPushCredentialsFormInput.GitCredentials = Input.GitCredentials;
-                gitPushCredentialsFormInput.Palette = Input.Palette;
+                var auth = new GitHubDeviceFlowService();
 
-                gitPushCredentialsForm.Input = gitPushCredentialsFormInput;
-
-                gitPushCredentialsForm.ShowDialog();
-
-                if (gitPushCredentialsForm.Output.Saved)
+                try
                 {
-                    File.WriteAllText("git.config", Input.GitCredentials.Name + "\n" + Input.GitCredentials.Email + "\n" + Input.GitCredentials.Username + "\n" + Input.GitCredentials.Password);
+                    var deviceData = await auth.StartDeviceFlowAsync();
+
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(deviceData.VerificationUri)
+                    {
+                        UseShellExecute = true
+                    });
+
+                    ShowNotification($"1. A browser has opened to GitHub.\n2. Enter this code: {deviceData.UserCode}\n\nClick OK once you have authorized the app.");
+
+                    string token = await auth.PollForTokenAsync(deviceData.DeviceCode, deviceData.Interval, Input._authCancellationSource.Token);
+
+                    string username = await auth.GetGitHubUsername(token, Input._authCancellationSource.Token);
+
+                    Input.GitCredentials.Username = username;
+                    Input.GitCredentials.Password = token;
+
+                    new ConfigurationService().WriteToFile(
+                        System.IO.Path.Combine(SpecialPaths.Config, "git.json"),
+                        new List<GitCredentials>() { Input.GitCredentials }
+                    );
+
                     GitClone();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Authentication failed: {ex.Message}");
                 }
             }
             else
             {
                 var options = new CloneOptions
                 {
-                    CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials
-                    {
-                        Username = Input.GitCredentials.Username,
-                        Password = Input.GitCredentials.Password
+                    FetchOptions = {
+                        CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials
+                        {
+                            Username = Input.GitCredentials.Username,
+                            Password = Input.GitCredentials.Password
+                        }
                     }
                 };
+
+                if (Input.GitCredentials.Proxy != null && Input.GitCredentials.Proxy.Length > 0)
+                {
+                    options.FetchOptions.ProxyOptions.Url = Input.GitCredentials.Proxy;
+                    options.FetchOptions.ProxyOptions.ProxyType = ProxyType.Specified;
+                }
+                else
+                {
+                    options.FetchOptions.ProxyOptions.Url = null;
+                    options.FetchOptions.ProxyOptions.ProxyType = ProxyType.None;
+                }
 
                 try
                 {
