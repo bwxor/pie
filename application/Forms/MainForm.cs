@@ -4737,48 +4737,57 @@ namespace pie
 
         private void mergeButton_Click(object sender, EventArgs e)
         {
-            GitMergeBranchForm gitMergeBranchForm = new GitMergeBranchForm();
+            List<string> branches = gitBranchesComboBox.Items.Cast<string>().Where(b => !b.StartsWith("origin/")).ToList();
 
-            GitMergeBranchFormInput gitMergeBranchFormInput = new GitMergeBranchFormInput();
-            gitMergeBranchFormInput.Palette = KryptonCustomPaletteBase;
-            gitMergeBranchFormInput.EditorProperties = editorProperties;
-            gitMergeBranchFormInput.Branches = gitBranchesComboBox.Items.Cast<string>().Where(b => !b.StartsWith("origin/")).ToList();
-            gitMergeBranchFormInput.CurrentBranch = selectedBranch.FriendlyName;
-            gitMergeBranchForm.Input = gitMergeBranchFormInput;
-
-            gitMergeBranchForm.ShowDialog();
-
-            if (repository != null)
+            if (branches.Count > 1)
             {
-                if (gitMergeBranchForm.Output.SelectedBranch != null)
-                {
-                    try
-                    {
-                        Branch currentBranch = selectedBranch;
-                        Branch branchToMergeInto = repository.Branches[gitMergeBranchForm.Output.SelectedBranch];
-                        Commands.Checkout(repository, branchToMergeInto);
-                        Signature signature = new Signature(gitCredentials.Name, gitCredentials.Email, DateTime.Now);
-                        MergeResult mergeResult = repository.Merge(currentBranch, signature, new MergeOptions());
+                GitMergeBranchForm gitMergeBranchForm = new GitMergeBranchForm();
 
-                        if (mergeResult.Status == MergeStatus.Conflicts)
-                        {
-                            ShowNotification("There are merge conflicts. Please resolve them before proceeding.");
-                        }
-                        else
-                        {
-                            ShowNotification($"Successfully merged branch '{selectedBranch.FriendlyName}' into '{branchToMergeInto.FriendlyName}'.");
-                            UpdateGitRepositoryInfo();
-                        }
-                    }
-                    catch (Exception ex)
+                GitMergeBranchFormInput gitMergeBranchFormInput = new GitMergeBranchFormInput();
+                gitMergeBranchFormInput.Palette = KryptonCustomPaletteBase;
+                gitMergeBranchFormInput.EditorProperties = editorProperties;
+                gitMergeBranchFormInput.Branches = branches;
+                gitMergeBranchFormInput.CurrentBranch = selectedBranch.FriendlyName;
+                gitMergeBranchForm.Input = gitMergeBranchFormInput;
+
+                gitMergeBranchForm.ShowDialog();
+
+                if (repository != null)
+                {
+                    if (gitMergeBranchForm.Output.SelectedBranch != null)
                     {
-                        ShowNotification("An error occurred while merging branches: " + ex.Message);
+                        try
+                        {
+                            Branch currentBranch = selectedBranch;
+                            Branch branchToMergeInto = repository.Branches[gitMergeBranchForm.Output.SelectedBranch];
+                            Commands.Checkout(repository, branchToMergeInto);
+                            Signature signature = new Signature(gitCredentials.Name, gitCredentials.Email, DateTime.Now);
+                            MergeResult mergeResult = repository.Merge(currentBranch, signature, new MergeOptions());
+
+                            if (mergeResult.Status == MergeStatus.Conflicts)
+                            {
+                                ShowNotification("There are merge conflicts. Please resolve them before proceeding.");
+                            }
+                            else
+                            {
+                                ShowNotification($"Successfully merged branch '{selectedBranch.FriendlyName}' into '{branchToMergeInto.FriendlyName}'.");
+                                UpdateGitRepositoryInfo();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowNotification("An error occurred while merging branches: " + ex.Message);
+                        }
                     }
+                }
+                else
+                {
+                    ShowNotification("No repository opened.");
                 }
             }
             else
             {
-                ShowNotification("No repository opened.");
+                ShowNotification("You need to create at least one more branch before attempting to merge.");
             }
         }
 
