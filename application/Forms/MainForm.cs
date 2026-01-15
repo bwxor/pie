@@ -1027,7 +1027,8 @@ namespace pie
                                 pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Path, pluginFormOutput.ControlKeyValues),
                                 pluginPlaceholderReplaceService.ReplaceInputControlPlaceholders(createFileAction.Content, pluginFormOutput.ControlKeyValues)
                         );
-                    } catch(Exception)
+                    }
+                    catch (Exception)
                     {
                         ShowNotification("Could not create file in the specified location. Check if you have the necessary permissions or select another path.");
                         return;
@@ -3229,7 +3230,8 @@ namespace pie
                         NotificationYesNoCancelFormOutput output = ShowYesNoCancelNotification("Your repository doesn't have any commits, meaning that a rollback is not possible. Do you want to delete the selected files?");
                         if (output.NotificationButton.Equals(NotificationButton.YES))
                         {
-                            foreach(string path in paths) {
+                            foreach (string path in paths)
+                            {
                                 DeleteFile(Path.Combine(openedFolder, path));
                                 InvalidateOpenedFile(Path.Combine(openedFolder, path));
                             }
@@ -3681,7 +3683,8 @@ namespace pie
 
                         GitPull();
 
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show($"Authentication failed: {ex.Message}");
                     }
@@ -3769,7 +3772,8 @@ namespace pie
                         {
                             ShowNotification("There was an error while trying to pull from remote.");
                         }
-                    } else
+                    }
+                    else
                     {
                         ShowNotification("Your cannot pull from this repository. Most likely it isn't connected to any remote.");
                     }
@@ -4821,6 +4825,14 @@ namespace pie
         private void themesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void stagingAreaListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && e.Modifiers == Keys.Control)
+            {
+                gitStagingAreaListView.SelectAll();
+            }
         }
     }
 }

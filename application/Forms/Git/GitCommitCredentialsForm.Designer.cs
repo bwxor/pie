@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GitCommitCredentialsForm));
             saveButton = new Krypton.Toolkit.KryptonButton();
             mainPanel = new Krypton.Toolkit.KryptonPanel();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             authorEmailLabel = new Krypton.Toolkit.KryptonLabel();
             authorNameLabel = new Krypton.Toolkit.KryptonLabel();
             authorEmailTextBox = new Krypton.Toolkit.KryptonTextBox();
@@ -45,7 +46,7 @@
             // saveButton
             // 
             saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            saveButton.Location = new System.Drawing.Point(371, 14);
+            saveButton.Location = new System.Drawing.Point(379, 14);
             saveButton.MinimumSize = new System.Drawing.Size(0, 29);
             saveButton.Name = "saveButton";
             saveButton.Size = new System.Drawing.Size(76, 29);
@@ -57,6 +58,7 @@
             // mainPanel
             // 
             mainPanel.AutoSize = true;
+            mainPanel.Controls.Add(kryptonLabel1);
             mainPanel.Controls.Add(authorEmailLabel);
             mainPanel.Controls.Add(authorNameLabel);
             mainPanel.Controls.Add(authorEmailTextBox);
@@ -64,8 +66,16 @@
             mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             mainPanel.Location = new System.Drawing.Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new System.Drawing.Size(459, 160);
+            mainPanel.Size = new System.Drawing.Size(467, 202);
             mainPanel.TabIndex = 2;
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new System.Drawing.Point(9, 104);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new System.Drawing.Size(358, 36);
+            kryptonLabel1.TabIndex = 6;
+            kryptonLabel1.Values.Text = "These are just local credentials. You can input whatever you like.\r\nGitHub credentials will be requested later.";
             // 
             // authorEmailLabel
             // 
@@ -88,7 +98,7 @@
             authorEmailTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             authorEmailTextBox.Location = new System.Drawing.Point(12, 75);
             authorEmailTextBox.Name = "authorEmailTextBox";
-            authorEmailTextBox.Size = new System.Drawing.Size(428, 23);
+            authorEmailTextBox.Size = new System.Drawing.Size(436, 23);
             authorEmailTextBox.TabIndex = 3;
             authorEmailTextBox.KeyDown += authorEmailTextBox_KeyDown;
             // 
@@ -97,7 +107,7 @@
             authorNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             authorNameTextBox.Location = new System.Drawing.Point(12, 25);
             authorNameTextBox.Name = "authorNameTextBox";
-            authorNameTextBox.Size = new System.Drawing.Size(428, 23);
+            authorNameTextBox.Size = new System.Drawing.Size(436, 23);
             authorNameTextBox.TabIndex = 2;
             authorNameTextBox.KeyDown += authorNameTextBox_KeyDown;
             // 
@@ -105,9 +115,9 @@
             // 
             ButtonPanel.Controls.Add(saveButton);
             ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ButtonPanel.Location = new System.Drawing.Point(0, 111);
+            ButtonPanel.Location = new System.Drawing.Point(0, 153);
             ButtonPanel.Name = "ButtonPanel";
-            ButtonPanel.Size = new System.Drawing.Size(459, 49);
+            ButtonPanel.Size = new System.Drawing.Size(467, 49);
             ButtonPanel.TabIndex = 3;
             // 
             // GitCommitCredentialsForm
@@ -116,7 +126,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSize = true;
             BackColor = System.Drawing.SystemColors.ControlLightLight;
-            ClientSize = new System.Drawing.Size(459, 160);
+            ClientSize = new System.Drawing.Size(467, 202);
             Controls.Add(ButtonPanel);
             Controls.Add(mainPanel);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -146,5 +156,6 @@
         private Krypton.Toolkit.KryptonLabel authorEmailLabel;
         private Krypton.Toolkit.KryptonLabel authorNameLabel;
         private Krypton.Toolkit.KryptonPanel ButtonPanel;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
     }
 }
